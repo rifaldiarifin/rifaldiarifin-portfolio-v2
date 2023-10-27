@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Landing from '../pages/landing'
+import CihuyCode from '../pages/cihuyCode'
 
 const router = createBrowserRouter([
-  // landing page
+  // CihuyCode page
   {
-    path: '/',
-    element: <Landing />
+    path: '/*',
+    element: <CihuyCode />
   }
 ])
 
