@@ -1,0 +1,132 @@
+.inputfield {
+  --i-color: var(--accent-color1);
+  --h-input: 44px;
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  min-width: 40px;
+}
+
+.inputfield.currency .box > .curr {
+  font-size: 14px;
+  color: var(--disabled-color2);
+  position: absolute;
+  margin-left: 16px;
+}
+
+.inputfield.label::before {
+  content: attr(data-label);
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: MainFont;
+  letter-spacing: var(--space-14);
+  z-index: 1;
+}
+
+.inputfield.invalid.label::before {
+  color: var(--danger-color);
+}
+
+.inputfield::after {
+  content: attr(data-message);
+  position: absolute;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  color: white;
+  font-size: 15px;
+  top: calc(100% - 14px);
+  left: -10px;
+  transform: scaleY(0) scaleX(0.8);
+  background-color: var(--danger-color);
+  border-top-right-radius: var(--rounded1);
+  border-bottom-left-radius: var(--rounded1);
+  border-bottom-right-radius: var(--rounded1);
+  box-shadow: var(--box-shadow-1);
+  z-index: 4;
+}
+
+.inputfield.invalid::after {
+  left: 0px;
+  top: calc(100% + 4px);
+  transform: scaleY(1) scaleX(1);
+  transition: var(--trns-02) var(--Cubic-Bezier2);
+}
+
+.inputfield input {
+  width: 100%;
+  border-radius: var(--rounded3);
+  border: 1px solid var(--separator);
+  box-sizing: border-box;
+  height: var(--h-input);
+  outline: none;
+  font-family: SecondFont;
+  color: var(--text1);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 16px;
+  background-color: transparent;
+  transition: var(--trns-04) var(--Cubic-Bezier1);
+}
+
+.inputfield.noline input {
+  border: none;
+}
+
+.inputfield.icon input {
+  padding-left: calc(var(--icon-ratio) + (var(--h-input) / 2));
+}
+.inputfield.currency input {
+  padding-left: 38px;
+  letter-spacing: 1.4px;
+}
+
+.inputfield.icon .icons8-filled,
+.inputfield.icon .icons8-regular {
+  position: absolute;
+  filter: var(--icon2);
+  left: calc(var(--h-input) / 2 - 5px);
+}
+
+.inputfield input:focus {
+  border-color: var(--i-color);
+}
+
+.inputfield input::placeholder {
+  color: var(--disabled-color2);
+}
+
+/* password */
+
+.inputfield span.see-pass {
+  --i8-ratio: 20px;
+  filter: var(--icon2);
+  display: none;
+  text-align: center;
+  position: absolute;
+  cursor: pointer;
+  right: calc(var(--h-input) / 2 - 5px);
+  user-select: none;
+  transition: var(--trns-02);
+}
+
+.inputfield input[type='password']::-ms-reveal {
+  display: none;
+}
+
+.inputfield span.see-pass.active {
+  display: block;
+}
+
+/* number */
+
+.inputfield input[type='number']::-webkit-outer-spin-button,
+.inputfield input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputfield input[type='number'] {
+  -moz-appearance: textfield;
+}

@@ -1,5 +1,10 @@
-@import url('layout-ui1.css');
-@import url('landing.css');
+@import url('cihuy-code.css');
+@import url('dynamicDropdown.css');
+@import url('popupalert.css');
+@import url('button.css');
+@import url('inputCheckbox.css');
+@import url('inputField.css');
+@import url('inputToggle.css');
 
 /* GLOBAL ROOT ----------------------------------------- */
 :root {
@@ -30,6 +35,7 @@
     --icon3: brightness(0.15);
     --icon4: brightness(0);
     --icon5: brightness(99);
+    --icon6: brightness(0);
   
     --hover-color1: rgb(235, 235, 240);
     --hover-color2: rgb(220, 220, 230);
@@ -55,8 +61,10 @@
     --glassmorphism-top: 1px solid rgba(255, 255, 255, 0.8);
     --glassmorphism-bottom: 1px solid rgba(0, 0, 0, 0.1);
   
-    --primary-font: "Poppins", sans-serif;
-    --secondary-font: "Montserrat", sans-serif;
+    --main-font: "Fira Code", sans-serif;
+    --second-font: "JetBrains Mono", sans-serif;
+    --third-font: "Poppins", sans-serif;
+    --fourth-font: "Montserrat", sans-serif;
   
     /* Letter spacing */
     --space-04: 0.4px;
@@ -111,6 +119,9 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
   }
   
@@ -142,14 +153,15 @@
     --icon3: brightness(0.9);
     --icon4: brightness(99);
     --icon5: brightness(0);
+    --icon6: brightness(1);
     
     --hover-color1: rgb(60, 60, 70);
     --hover-color2: rgb(80, 80, 90);
     --hover-color3: rgb(100, 100, 110);
   
     --text1: rgb(250, 250, 255);
-    --text2: rgb(240, 240, 255);
-    --text3: rgb(230, 230, 240);
+    --text2: rgb(230, 230, 245);
+    --text3: rgb(210, 210, 220);
   
     --neumorphism1: -2px -2px 10px -8px rgba(40, 40, 40, 0.8),
       2px 2px 10px -6px rgba(0, 0, 0, 0.2);
@@ -162,7 +174,7 @@
     --box-shadow-2: 1px 20px 60px -3px rgba(0, 0, 0, 0.5);
     --box-shadow-3: 1px 20px 60px -5px rgba(0, 0, 0, 0.6);
   
-    --glassmorphism-top: 1px solid rgba(235, 235, 245, 0.1);
+    --glassmorphism-top: 1px solid rgba(235, 235, 245, 0.3);
     --glassmorphism-bottom: 1px solid rgba(0, 0, 0, 0.4);
   }
   
@@ -197,9 +209,10 @@
   .space-18 {letter-spacing: var(--space-18);}
   .space-2 {letter-spacing: var(--space-2);}
   .font-consolas {font-family: consolas;}
-  .font-main {font-family: MainFont;}
-  .font-second {font-family: SecondFont;}
-  .font-third {font-family: ThirdFont;}
+  .font-main {font-family: var(--main-font);}
+  .font-second {font-family: var(--second-font);}
+  .font-third {font-family: var(--third-font);}
+  .font-fourth {font-family: var(--fourth-font);}
   
   /* z-index */
   .z-1 {z-index: 1;}
@@ -472,9 +485,13 @@
   */
   #root {min-width: 100vw;min-height: 100vh;background-color: var(--main-color);color:var(--text2);}
   
-  .icons8-regular,
-  .icons8-filled{
-    filter: var(--icon4);
+  #root .icons8-regular,
+  #root .icons8-filled{
+    filter: var(--icon2);
+  }
+  #root .icons8-regular.gradient,
+  #root .icons8-filled.gradient{
+    filter: var(--icon4), saturate(1);
   }
   
   html {scroll-behavior: smooth;}
@@ -482,7 +499,7 @@
   ::-webkit-scrollbar-thumb {background-color: var(--fourth-color);border-radius: 50px;}
   ::-webkit-scrollbar {width: 6px; height: 6px; background-color: var(--second-color);}
   
-  body {margin: 0;padding: 0;box-sizing: border-box;font-family: SecondFont, sans-serif;font-weight: 400;color: var(--text1);height: fit-content;min-height: 100vh;overflow-x: hidden;}
+  body {margin: 0;padding: 0;box-sizing: border-box;font-family: var(--fourth-font);font-weight: 400;color: var(--text1);height: fit-content;min-height: 100vh;overflow-x: hidden;background-color: var(--second-color);}
   
   h1,h2,h3,h4,h5,h6,p,label, ul {margin: 0;padding: 0;}
   
