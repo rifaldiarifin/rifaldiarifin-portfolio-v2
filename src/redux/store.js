@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import landingSliceReducer from './slices/landingSlice'
+import cihuyCodeReducer from './slices/cihuyCodeSlice'
+import searchPopupReducer from './slices/searchPopupSlice'
 
 const store = configureStore({
   reducer: {
     // reducers
-    landingReducer: landingSliceReducer
+    cihuyCode: cihuyCodeReducer,
+    searchPopup: searchPopupReducer
   }
 })
 
