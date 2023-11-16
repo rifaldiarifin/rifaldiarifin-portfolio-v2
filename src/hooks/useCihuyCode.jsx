@@ -15,27 +15,47 @@ import {
   trnOffSidebarReverse,
   tgglStatusBar,
   tgglMenuBar,
-  resetEditorView
+  resetEditorView,
+  tgglSettingSync,
+  setColorTheme,
+  closeAll
 } from '../redux/slices/cihuyCodeSlice'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   closeSearchPopup,
+  openColorTheme,
   openCommandPallete,
   openCustomizeLayout,
   openOpenView,
+  openOpenedEditor,
   openSearchFile
 } from '../redux/slices/searchPopupSlice'
+import usePathName from './usePathname'
+import { useToastNotification } from '../contexts/ToastNotificationContext'
 
-const useCihuyCode = ({ explorer }) => {
+const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySidebarRef, titleBarRef }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const codeData = useSelector((state) => state.cihuyCode.data)
   const searchPopup = useSelector((state) => state.searchPopup.data)
+  const pathname = usePathName()
+  const [fullPanel, setFullPanel] = useState(false)
   const [loadDataStatus, setLoadDataStatus] = useState(false)
+  const refOnceLoad = useRef(false)
 
+  // Custom Toast Notification
+  const toast = useToastNotification()
+
+  const toggleSettingSync = () => {
+    dispatch(tgglSettingSync())
+  }
   const closeSearch = () => {
     dispatch(closeSearchPopup())
+  }
+  const toggleOpenedEditor = () => {
+    if (searchPopup.isActive && searchPopup.actionName === 'CUSTOMIZE_LAYOUT') return dispatch(closeSearchPopup())
+    dispatch(openOpenedEditor())
   }
   const toggleCustomizeLayout = () => {
     if (searchPopup.isActive && searchPopup.actionName === 'CUSTOMIZE_LAYOUT') return dispatch(closeSearchPopup())
@@ -52,6 +72,13 @@ const useCihuyCode = ({ explorer }) => {
   const toggleSearchFile = () => {
     if (searchPopup.isActive && searchPopup.actionName === 'SEARCH_FILE') return dispatch(closeSearchPopup())
     dispatch(openSearchFile())
+  }
+  const toggleColorTheme = () => {
+    if (searchPopup.isActive && searchPopup.actionName === 'COLOR_THEME') return dispatch(closeSearchPopup())
+    dispatch(openColorTheme())
+  }
+  const setTheme = (payload) => {
+    dispatch(setColorTheme(payload))
   }
   const toggleActivityBar = () => {
     dispatch(tgglActivityBar())
@@ -73,6 +100,7 @@ const useCihuyCode = ({ explorer }) => {
   }
   const findPathnameDirectory = (to, explorer) => {
     let file = {
+      uuid: 'file-not-found-404',
       name: 'page404.jsx',
       type: 'file',
       directory: null,
@@ -103,6 +131,9 @@ const useCihuyCode = ({ explorer }) => {
   const togglePanel = () => {
     dispatch(tgglPanel())
   }
+  const toggleFullPanel = () => {
+    setFullPanel(!fullPanel)
+  }
   const togglePanelNavPage = (index, closeNavIfMatch = true) => {
     if (closeNavIfMatch === true && (codeData.panel.navindex[index] === true || codeData.panel.panel === false)) {
       dispatch(tgglPanel())
@@ -120,7 +151,7 @@ const useCihuyCode = ({ explorer }) => {
     dispatch(tgglStatusBar())
   }
   const handleSelected = (file) => {
-    if (file.type === 'file' || file.type === 'paginated file') dispatch(openFile(file))
+    if (file.type === 'file' || file.type === 'paginated file' || file.type === 'page') dispatch(openFile(file))
     if (file.to) navigate(file.to, { replace: true })
     dispatch(hndlSelected(file.directory))
   }
@@ -191,6 +222,10 @@ const useCihuyCode = ({ explorer }) => {
     window.open('/', '_blank')
   }
 
+  const closeAllFile = () => {
+    dispatch(closeAll())
+  }
+
   useEffect(() => {
     if (!loadDataStatus) return
     if (codeData.editorLayout.currentlyOpen?.to) {
@@ -201,36 +236,111 @@ const useCihuyCode = ({ explorer }) => {
   }, [codeData.editorLayout.currentlyOpen])
 
   useEffect(() => {
-    if (!loadDataStatus || !explorer) return
-    if (window.location.pathname === '/') {
+    if (!loadDataStatus || !explorer || !extensionPages) return
+    if (pathname[0] === '') {
       const welcome = explorer.children[0].children[0].children[0]
       handleSelected(welcome)
+    } else if (pathname.length === 3 && pathname[0] === 'extension') {
+      const find = extensionPages.find((find) => find.publisher === pathname[1] && find.name === pathname[2])
+      handleSelected({
+        uuid: find ? find?.uuid : 'extension-not-found-404',
+        name: `Extension: ${find ? find?.displayName : pathname[2]}`,
+        type: 'page',
+        directory: null,
+        to: `/extension/${pathname[1]}/${pathname[2]}`,
+        children: null
+      })
     } else {
-      const find = findPathnameDirectory(window.location.pathname, explorer)
+      const find = findPathnameDirectory(`/${pathname[0]}`, explorer)
       handleSelected(find)
     }
-  }, [explorer, loadDataStatus])
+  }, [extensionPages, explorer, loadDataStatus])
+
+  useEffect(() => {
+    if (codeData.colorTheme.toString().includes('dark')) return document.body.classList.add('dark')
+    document.body.classList.remove('dark')
+  }, [codeData.colorTheme])
 
   useEffect(() => {
     if (!loadDataStatus && explorer) {
       const loadData = () => {
+        if (!codeData.settingSync) return
         const getData = localStorage.getItem('SAVE_DATA_CIHUY_CODE')
         if (!getData) return
         dispatch(syncData(JSON.parse(getData)))
       }
       loadData()
       setLoadDataStatus(true)
+      if (window.screen.width < 520) {
+        toast({
+          title: 'We recomended open this on Desktop :D',
+          source: 'For Experience',
+          type: 'info'
+        })
+      }
     }
   }, [dispatch, explorer, loadDataStatus])
 
   useEffect(() => {
-    if (loadDataStatus && explorer) {
+    const checkScreen = () => {
+      if (window.screen.width > 520) return
+      if (codeData.primarySidebar.primaryBar) togglePrimarySidebar()
+      if (codeData.primarySidebar.activityBar) toggleActivityBar()
+    }
+    if (!refOnceLoad.current && loadDataStatus) {
+      checkScreen()
+      return () => (refOnceLoad.current = true)
+    }
+    if (loadDataStatus) {
+      window.addEventListener('resize', checkScreen)
+      return () => window.removeEventListener('resize', checkScreen)
+    }
+  }, [codeData.primarySidebar.primaryBar, codeData.primarySidebar.activityBar, loadDataStatus])
+
+  useEffect(() => {
+    if (loadDataStatus && explorer && codeData.settingSync) {
       const saveData = () => {
         localStorage.setItem('SAVE_DATA_CIHUY_CODE', JSON.stringify(codeData))
       }
       saveData()
     }
   }, [codeData, explorer, loadDataStatus])
+
+  // Primary Outside Click
+  useEffect(() => {
+    if (primarySidebarRef.current) {
+      const handlePrimarySidebarClick = (event) => {
+        if (
+          !primarySidebarRef.current.contains(event.target) &&
+          !titleBarRef.current.contains(event.target) &&
+          !event.target.classList.contains('prim-click') &&
+          window.innerWidth <= 1160 &&
+          codeData.primarySidebar.primaryBar === true
+        )
+          togglePrimarySidebar()
+      }
+      document.addEventListener('click', handlePrimarySidebarClick)
+      return () => document.removeEventListener('click', handlePrimarySidebarClick)
+    }
+  }, [primarySidebarRef.current, titleBarRef.current, codeData.primarySidebar.primaryBar])
+
+  // Secondary Outside Click
+  useEffect(() => {
+    if (secondarySidebarRef.current) {
+      const handleSecondarySidebarClick = (event) => {
+        if (
+          !secondarySidebarRef.current.contains(event.target) &&
+          !titleBarRef.current.contains(event.target) &&
+          !event.target.classList.contains('secn-click') &&
+          window.innerWidth <= 1160 &&
+          codeData.secondarySidebar === true
+        )
+          toggleSecondarySidebar()
+      }
+      document.addEventListener('click', handleSecondarySidebarClick)
+      return () => document.removeEventListener('click', handleSecondarySidebarClick)
+    }
+  }, [secondarySidebarRef.current, titleBarRef.current, codeData.secondarySidebar])
 
   return {
     menuBar: codeData.menuBar,
@@ -241,10 +351,15 @@ const useCihuyCode = ({ explorer }) => {
     editorLayout: codeData.editorLayout,
     sidebarReverse: codeData.sidebarReverse,
     statusBar: codeData.statusBar,
+    settingSync: codeData.settingSync,
+    colorTheme: codeData.colorTheme,
+    fullPanel,
     loadDataStatus,
+    toast,
     findIndexActive,
     handleSelected,
     handleCloseFile,
+    toggleSettingSync,
     toggleCustomizeLayout,
     togglePanel,
     togglePanelNavPage,
@@ -257,15 +372,20 @@ const useCihuyCode = ({ explorer }) => {
     turnOffSidebarReverse,
     toggleMenuBar,
     toggleStatusBar,
+    toggleOpenedEditor,
     resetView,
     toggleFullScreen,
     toggleCommandPallete,
     toggleOpenView,
     toggleSearchFile,
+    toggleFullPanel,
     searchPopup,
     closeSearch,
+    closeAllFile,
     closeCihuyCode,
-    openNewWindow
+    openNewWindow,
+    toggleColorTheme,
+    setTheme
   }
 }
 

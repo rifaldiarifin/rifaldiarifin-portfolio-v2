@@ -1,17 +1,15 @@
 import { useEffect } from 'react'
-import { useMatch } from 'react-router-dom'
 
-const useFolderAutoExpand = (refElement, match, pathMatchExpand) => {
-  const isMatch = useMatch({ path: match, end: true })
+const useFolderAutoExpand = (refElement, match, pathMatchExpand, isSelected) => {
   useEffect(() => {
     if (refElement && pathMatchExpand && match) {
-      if (isMatch) {
+      if (match === isSelected) {
         refElement.current.classList.add('active')
       } else {
         refElement.current.classList.remove('active')
       }
     }
-  }, [isMatch])
+  }, [isSelected])
 }
 
 export default useFolderAutoExpand
