@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { predictClass } from '../../utils/predictClass'
 import Icons8 from '../elements/Icons8'
 
-const DynamicDropdown = ({ button, position, children, openOnHover = false }) => {
+const DynamicDropdown = ({ button, position, moreClass, children, openOnHover = false }) => {
   const dropdownParent = useRef(null)
 
   const useOutsideClick = (combobox) => {
@@ -38,7 +38,7 @@ const DynamicDropdown = ({ button, position, children, openOnHover = false }) =>
       className={`dynamic-dropdown-group${predictClass(() => position, position)}${predictClass(
         () => openOnHover,
         'on-hover'
-      )}`}
+      )}${predictClass(() => moreClass, moreClass)}`}
       ref={dropdownParent}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -47,8 +47,8 @@ const DynamicDropdown = ({ button, position, children, openOnHover = false }) =>
         {button}
       </div>
       <div className="dy-menu">
-        <span className="dp-point"></span>
         {children}
+        <span className="dp-point"></span>
       </div>
     </div>
   )
@@ -56,7 +56,10 @@ const DynamicDropdown = ({ button, position, children, openOnHover = false }) =>
 
 const DyGroup = ({ name }) => {
   const switchPoint = (event) => {
-    const point = event.target.parentElement.parentElement.parentElement.children[0]
+    const point =
+      event.target.parentElement.parentElement.parentElement.children[
+        event.target.parentElement.parentElement.parentElement.children.length - 1
+      ]
     const offsetTopElement = event.target.offsetParent.offsetTop
 
     point.setAttribute('style', `--offset-top: ${offsetTopElement}px`)
@@ -65,7 +68,7 @@ const DyGroup = ({ name }) => {
     <div className="dy-group-button" onMouseEnter={switchPoint}>
       {name}
       <div className="icon">
-        <Icons8 icon="forward" style="filled" size={'11px'} />
+        <Icons8 icon="forward" style="filled" size={'11px'} gradient />
       </div>
     </div>
   )
@@ -79,7 +82,8 @@ const Li = ({
   rightIcon = null,
   rightIconSize = '11px',
   rightIconStyle = 'regular',
-  brightness = 'var(--icon4)',
+  // brightness = 'var(--icon4)',
+  moreClass = null,
   disabled = false,
   callback = async () => {}
 }) => {
@@ -90,19 +94,23 @@ const Li = ({
   }
   const switchPoint = (event) => {
     if (disabled === true) return
-    const point = event.target.parentElement.children[0]
+    const point = event.target.parentElement.children[event.target.parentElement.children.length - 1]
     const offsetTopElement = event.target.offsetTop
 
     point.setAttribute('style', `--offset-top: ${offsetTopElement}px`)
   }
   return (
-    <div className={`dp-list${predictClass(() => disabled, 'disabled')}`} onClick={onClick} onMouseEnter={switchPoint}>
+    <div
+      className={`dp-list${predictClass(() => disabled, 'disabled')}${predictClass(() => moreClass, moreClass)}`}
+      onClick={onClick}
+      onMouseEnter={switchPoint}
+    >
       <div className="dp-left-icon">
-        {leftIcon && <Icons8 icon={leftIcon} style={leftIconStyle} size={leftIconSize} filter={brightness} />}
+        {leftIcon && <Icons8 icon={leftIcon} style={leftIconStyle} size={leftIconSize} gradient />}
       </div>
       {name}
       <div className="dp-right-icon">
-        {rightIcon && <Icons8 icon={rightIcon} style={rightIconStyle} size={rightIconSize} filter={brightness} />}
+        {rightIcon && <Icons8 icon={rightIcon} style={rightIconStyle} size={rightIconSize} gradient />}
       </div>
     </div>
   )

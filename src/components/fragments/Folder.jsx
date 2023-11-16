@@ -19,7 +19,7 @@ const Folder = ({
 }) => {
   const navigate = useNavigate()
   const ref = useRef(null)
-  useFolderAutoExpand(ref, to, pathMatchExpand)
+  useFolderAutoExpand(ref, directory, pathMatchExpand, isSelected)
   const navigateTo = () => {
     if (to) navigate(to, { replace: true, state: true })
   }

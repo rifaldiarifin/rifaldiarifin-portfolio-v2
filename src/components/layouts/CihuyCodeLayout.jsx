@@ -5,17 +5,112 @@ import Icons8 from '../elements/Icons8'
 import DynamicDropdown from '../fragments/DynamicDropdown'
 import { useEffect, useRef } from 'react'
 import { forwardRef } from 'react'
+import { useToastNotificationData } from '../../contexts/ToastNotificationContext'
 
 // Container Cihuy Code Layout ############################################
-const CihuyCodeLayout = ({ children, theme = 'cihuy-theme', isSidebarReverse = false }) => {
+const CihuyCodeLayout = ({
+  children,
+  theme = 'cihuy-theme',
+  isSidebarReverse = false,
+  activityActive = true,
+  primaryActive = true,
+  secondaryActive = false,
+  statusbarActive = true,
+  panelActive = false,
+  isFullPanel = false
+}) => {
   return (
     <div
-      className={`cihuy-code${predictClass(() => theme, 'cihuy-theme')}${predictClass(
+      className={`cihuy-code${predictClass(() => theme, theme)}${predictClass(
         () => isSidebarReverse,
         'sidebar-reverse'
-      )}`}
+      )}${predictClass(() => activityActive, 'act-active')}${predictClass(
+        () => primaryActive,
+        'primbar-active'
+      )}${predictClass(() => secondaryActive, 'secn-active')}${predictClass(
+        () => statusbarActive,
+        'stsbar-active'
+      )}${predictClass(() => panelActive, 'pnl-active')}${predictClass(() => isFullPanel, 'full-panel')}`}
     >
       {children}
+    </div>
+  )
+}
+
+// Ci Toast Notification
+export const CiToastNotification = () => {
+  const { toast, clearToastNotification } = useToastNotificationData()
+  // const [isActive, setIsActive] = useState(false)
+  const typeCheck = () => {
+    switch (toast.type) {
+      case 'info':
+        return 'info'
+      case 'error':
+        return 'cancel'
+      case 'warning':
+        return 'error'
+      case 'success':
+        return 'checkmark'
+
+      default:
+        return 'info'
+    }
+  }
+  const toggleActive = (event) => event.target.parentElement.parentElement.parentElement.classList.toggle('active')
+  return (
+    <div id="ci-toastnotification" className={predictClass(() => toast.isActive)}>
+      <div key={toast.id} className={`toast ${toast.type}`}>
+        {toast.isActive && (
+          <>
+            <div className="toast-header">
+              <div className="box dsp-flex align-itms-center gap-6">
+                <div className="toast-icon">
+                  <Icons8 icon={typeCheck()} gradient />
+                </div>
+                {toast.title}
+              </div>
+              <div className="box dsp-flex align-itms-center gap-6">
+                <Button
+                  style={'fill'}
+                  color="classic"
+                  iconStyle={'filled'}
+                  icon={'forward'}
+                  iconSize={'12px'}
+                  height={'22px'}
+                  moreClass={'icon btn-expand'}
+                  onClick={toggleActive}
+                />
+                <Button
+                  style={'fill'}
+                  color="classic"
+                  iconStyle={'filled'}
+                  icon={'delete'}
+                  iconSize={'12px'}
+                  height={'22px'}
+                  moreClass={'icon'}
+                  onClick={clearToastNotification}
+                />
+              </div>
+            </div>
+            <div className="toast-body">
+              <p>Source: {toast.source}</p>
+              <div className="toast-actions">
+                {toast.actions.map((action, index) => (
+                  <Button
+                    key={`${action.title}${index}`}
+                    color="default"
+                    height={'30px'}
+                    style={'fill'}
+                    onClick={action.onClick}
+                  >
+                    {action.name}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }
@@ -32,7 +127,8 @@ export const CiSearchPopup = ({
   isActive = false,
   placeHolder = 'Search',
   closeOnOutsideClick = true,
-  children
+  children,
+  moreClass
 }) => {
   const ref = useRef(null)
   useEffect(() => {
@@ -42,9 +138,12 @@ export const CiSearchPopup = ({
         isActive &&
         ref.current &&
         !ref.current.contains(event.target) &&
-        !titleBarRef.current.contains(event.target)
+        !titleBarRef.current.contains(event.target) &&
+        !event.target.classList.contains('btn-searchpopup')
       ) {
+        ref.current.children[1].children[0].setAttribute('style', '--offset-top: 0px')
         onOutsideClick()
+        ref.current.children[1].scrollTo(0, 0)
       }
     }
     document.addEventListener('click', handleOutsideClick)
@@ -52,7 +151,11 @@ export const CiSearchPopup = ({
   }, [isActive, closeOnOutsideClick])
 
   return (
-    <div id="ci-searchpopup" className={predictClass(() => isActive)} ref={ref}>
+    <div
+      id="ci-searchpopup"
+      className={`${predictClass(() => isActive)}${predictClass(() => moreClass, moreClass)}`}
+      ref={ref}
+    >
       <div className="searchpopup-header">
         {allowLabel && (
           <div className="labelsearch">
@@ -88,7 +191,7 @@ export const CiSearchPopup = ({
   )
 }
 
-const CiSearchPopup_btnTool = ({ icon, size = '14px', style = 'regular', onClick }) => {
+const CiSearchPopup_btnTool = ({ icon, size = '14px', style = 'regular', onClick, moreClass }) => {
   return (
     <Button
       style={'fill'}
@@ -97,7 +200,7 @@ const CiSearchPopup_btnTool = ({ icon, size = '14px', style = 'regular', onClick
       icon={icon}
       iconSize={size}
       height={'20px'}
-      moreClass={'icon'}
+      moreClass={`icon${predictClass(() => moreClass, moreClass)}`}
       onClick={onClick}
     />
   )
@@ -112,17 +215,20 @@ const CiSearchPopup_Li = ({
   rightIcon = null,
   rightIconSize = '14px',
   rightIconStyle = 'regular',
-  leftBrightness = 'var(--icon2)',
-  rightBrightness = 'var(--icon2)',
+  // keyCode = [],
   isActive = false,
+  disabledAutoActive = false,
+  closeAfterClick = () => {},
   isChecked = false,
-  callback = async () => {}
+  callback = async () => {},
+  moreClass = ''
 }) => {
+  const keyCode = []
   const spList = useRef(null)
   const onClick = async (event) => {
     await callback(event)
-    if (!spList) return
-    spList.current.classList.add('active')
+    if (!event.target.classList.contains('btn-searchpopup')) closeAfterClick()
+    if (spList && disabledAutoActive) spList.current.classList.add('active')
   }
 
   const switchPoint = () => {
@@ -138,7 +244,8 @@ const CiSearchPopup_Li = ({
         if (
           element.current &&
           !element.current.contains(e.target) &&
-          element.current.parentElement.contains(e.target)
+          element.current.parentElement.contains(e.target) &&
+          !disabledAutoActive
         ) {
           spList.current.classList.remove('active')
         }
@@ -150,25 +257,46 @@ const CiSearchPopup_Li = ({
 
   useOtherListClick(spList)
   return (
-    <div className={`sp-list${predictClass(() => isActive)}`} ref={spList} onMouseEnter={switchPoint} onClick={onClick}>
+    <div
+      className={`sp-list${predictClass(() => isActive)}${predictClass(() => moreClass, moreClass)}`}
+      ref={spList}
+      onMouseEnter={switchPoint}
+      onClick={onClick}
+    >
       <div>
         {leftIcon && (
           <div className="sp-left-icon">
-            <Icons8 icon={leftIcon} style={leftIconStyle} size={leftIconSize} filter={leftBrightness} />
+            <Icons8 gradient icon={leftIcon} style={leftIconStyle} size={leftIconSize} />
           </div>
         )}
         {name}
         {isChecked && (
           <div className="checked-icon">
-            <Icons8 icon={'done'} style={'filled'} size={'18px'} filter={leftBrightness} />
+            <Icons8 gradient icon={'done'} style={'filled'} size={'18px'} />
           </div>
         )}
       </div>
       <div>
+        {keyCode.length > 0 && (
+          <div className="box dsp-flex gap-10">
+            {keyCode.map((keys, index) => {
+              return (
+                <div key={index} className="box dsp-flex gap-4">
+                  {keys.map((key, i) => (
+                    <div key={`${key}${index}`} className="box dsp-flex gap-4">
+                      <div className="keycode">{key}</div>
+                      {keys.length - 1 !== i && '+'}
+                    </div>
+                  ))}
+                </div>
+              )
+            })}
+          </div>
+        )}
         {label}
         {rightIcon && (
           <div className="sp-right-icon">
-            <Icons8 icon={rightIcon} style={rightIconStyle} size={rightIconSize} filter={rightBrightness} />
+            <Icons8 gradient icon={rightIcon} style={rightIconStyle} size={rightIconSize} />
           </div>
         )}
       </div>
@@ -222,7 +350,7 @@ const CiTitlebar_Btnbar = ({ icon, isActive, onClick }) => {
       style={'fill'}
       color="classic"
       iconStyle={isActive ? 'filled' : 'regular'}
-      icon={icon}
+      icon={`${icon} gradient`}
       iconSize={'24px'}
       height={'26px'}
       moreClass={'icon'}
@@ -235,27 +363,23 @@ CiTitleBar.Menu = CiTitlebar_Menu
 CiTitleBar.Btnbar = CiTitlebar_Btnbar
 
 // Ci Primary Sidebar ############################################
-export const CiPrimarySidebar = ({
-  activityActive = true,
-  primaryActive = true,
-  findIndexActive = () => {},
-  buttonNavPages,
-  buttonOptions,
-  navPages
-}) => {
-  return (
-    <nav id="ci-primary-sidebar">
-      <div className={`activity-bar${predictClass(() => activityActive)}`}>
-        <ul className="box">
-          <li className="point" style={{ '--index-point': findIndexActive() }}></li>
-          {buttonNavPages}
-        </ul>
-        <ul className="box">{buttonOptions}</ul>
-      </div>
-      <div className={`primary-bar${predictClass(() => primaryActive)}`}>{navPages}</div>
-    </nav>
-  )
-}
+// eslint-disable-next-line react/display-name
+export const CiPrimarySidebar = forwardRef(
+  ({ findIndexActive = () => {}, activityActive = false, buttonNavPages, buttonOptions, navPages }, ref) => {
+    return (
+      <nav id="ci-primary-sidebar" ref={ref}>
+        <div className={`activity-bar${predictClass(() => activityActive)}`}>
+          <ul className="box">
+            <li className="point" style={{ '--index-point': findIndexActive() }}></li>
+            {buttonNavPages}
+          </ul>
+          <ul className="box">{buttonOptions}</ul>
+        </div>
+        <div className="primary-bar">{navPages}</div>
+      </nav>
+    )
+  }
+)
 
 const CiPrimSidebar_BtnNav = ({ icon, isActive, onClick = () => {} }) => {
   return (
@@ -287,9 +411,10 @@ CiPrimarySidebar.BtnNav = CiPrimSidebar_BtnNav
 CiPrimarySidebar.BtnOption = CiPrimSidebar_BtnOption
 
 // Ci Secondary Sidebar ############################################
-export const CiSecondarySidebar = ({ isActive, onClose = () => {} }) => {
+// eslint-disable-next-line react/display-name
+export const CiSecondarySidebar = forwardRef(({ onClose = () => {} }, ref) => {
   return (
-    <nav id="ci-secondary-sidebar" className={`${predictClass(() => isActive)}`}>
+    <nav id="ci-secondary-sidebar" ref={ref}>
       <div className="close">
         <Button
           icon={'delete'}
@@ -306,24 +431,25 @@ export const CiSecondarySidebar = ({ isActive, onClose = () => {} }) => {
       <p>Preview Display</p>
     </nav>
   )
-}
+})
 
 // Ci Panel ############################################
-export const CiPanel = ({ menuBar, isActive, onClose = () => {} }) => {
+export const CiPanel = ({ menuBar, onFullPanel = () => {}, onClose = () => {}, children }) => {
   return (
-    <div id="ci-panel" className={`${predictClass(() => isActive)}`}>
+    <div id="ci-panel">
       <div className="panel-header">
         <ul>{menuBar}</ul>
         <div className="box">
           <Button
-            icon={'more'}
+            icon={'forward'}
             iconStyle="filled"
             iconSize={'16px'}
             height={'26px'}
-            moreClass={'icon'}
+            moreClass={'btn-fullpanel icon'}
             style={'fill'}
             brightness={'var(--icon1)'}
             color="classic"
+            onClick={onFullPanel}
           />
           <Button
             icon={'delete'}
@@ -338,7 +464,7 @@ export const CiPanel = ({ menuBar, isActive, onClose = () => {} }) => {
           />
         </div>
       </div>
-      <div className="panel-body"></div>
+      <div className="panel-body">{children}</div>
     </div>
   )
 }
@@ -366,7 +492,13 @@ export const CiEditorLayout = ({
   children
 }) => {
   return (
-    <div id="ci-editorlayout" className={predictClass(() => editorStatus === false, 'loading')}>
+    <div
+      id="ci-editorlayout"
+      className={`${predictClass(() => editorStatus === false, 'loading')}${predictClass(
+        () => isActiveDirectory,
+        'read-directory'
+      )}`}
+    >
       {editorStatus > 0 ? (
         <>
           <div className="editorlayout-header">
@@ -374,7 +506,7 @@ export const CiEditorLayout = ({
               <ul>{menuBar}</ul>
             </div>
             <div className="editor-options">{btnOptions}</div>
-            {isActiveDirectory && <div className="editor-directory">{directory}</div>}
+            <div className="editor-directory">{isActiveDirectory && directory}</div>
           </div>
           <div className="editorlayout-body">{children}</div>
         </>
@@ -387,7 +519,7 @@ export const CiEditorLayout = ({
             <h2>Nothing to View</h2>
             <p>Click something on explorer, left primary sidebar</p>
             <span>OR</span>
-            <Button color="default" style={'fill'} onClick={onOpenShortcut}>
+            <Button color="default" style={'fill'} moreClass={'rounded10'} onClick={onOpenShortcut}>
               Open main
             </Button>
           </div>
@@ -397,26 +529,18 @@ export const CiEditorLayout = ({
   )
 }
 
-const CiEditorLayout_Menubar = ({
-  name,
-  currentlyOpenDirectory,
-  directory,
-  onClick = () => {},
-  onClose = () => {}
-}) => {
+const CiEditorLayout_Menubar = ({ name, currentlyOpen, directory, to, onClick = () => {}, onClose = () => {} }) => {
   const onClickMenubar = (event) => {
     if (event.target.classList.contains('menubar')) onClick(event)
   }
   const onCloseMenubar = (event) => {
     if (event.target.classList.contains('close')) onClose(event)
   }
-
+  const checkOpen = () => {
+    return directory ? currentlyOpen.directory === directory : to ? currentlyOpen.to === to : false
+  }
   return (
-    <li
-      className={`menubar${predictClass(() => currentlyOpenDirectory === directory)}`}
-      tabIndex={0}
-      onClick={onClickMenubar}
-    >
+    <li className={`menubar${predictClass(() => checkOpen())}`} tabIndex={0} onClick={onClickMenubar}>
       {name}
       <Button
         icon={'delete'}
@@ -425,7 +549,7 @@ const CiEditorLayout_Menubar = ({
         height={'20px'}
         moreClass={'close icon'}
         style={'fill'}
-        brightness={currentlyOpenDirectory === directory ? 'var(--icon4)' : 'var(--icon1)'}
+        brightness={checkOpen() ? 'var(--icon4)' : 'var(--icon1)'}
         onClick={onCloseMenubar}
         color="classic"
       />
@@ -441,7 +565,7 @@ const CiEditorLayout_Directory = ({ directory }) => {
       {arrDirectory.map((directory, index) => (
         <div key={`${directory}${index}`} className="dir-arrow">
           {directory}
-          {index !== arrDirectory.length - 1 && <Icons8 icon="forward" style="filled" size={'11px'} />}
+          {index !== arrDirectory.length - 1 && <Icons8 icon="forward" style="filled" size={'11px'} gradient />}
         </div>
       ))}
     </>
@@ -452,10 +576,34 @@ CiEditorLayout.Menubar = CiEditorLayout_Menubar
 CiEditorLayout.Directory = CiEditorLayout_Directory
 
 // Ci Statusbar ############################################
-export const CiStatusbar = ({ children, isActive }) => {
+export const CiStatusbar = ({ children, onClickPorts = () => {}, onClickProblems = () => {} }) => {
   return (
-    <footer id="ci-statusbar" className={predictClass(() => isActive)}>
-      {children}
+    <footer id="ci-statusbar">
+      <div className="box">
+        <button className="remote">
+          <Icons8 icon="remote-desktop" gradient />
+        </button>
+        {children}
+        <div className="mrgn-x-10"></div>
+        <button className="btn-sts" onClick={onClickProblems}>
+          <Icons8 icon="cancel" gradient />
+          0
+          <Icons8 icon="error" gradient />0
+        </button>
+        <button className="btn-sts" onClick={onClickPorts}>
+          <Icons8 icon="radio-tower" gradient />0
+        </button>
+        {/* <p>Copyright © 2023, All Rights Reserved.</p> */}
+      </div>
+      <div className="box pad-r-8">
+        <button className="btn-sts">
+          <Icons8 icon="code" gradient />
+          React Code Render
+        </button>
+        <button className="btn-sts">
+          <Icons8 icon="notification" gradient />
+        </button>
+      </div>
     </footer>
   )
 }
@@ -466,7 +614,8 @@ export const BtnIcon = ({
   iconStyle,
   height = '26px',
   iconSize = '20px',
-  brightness = 'var(--icon1)'
+  brightness = 'var(--icon1)',
+  onClick = () => {}
 }) => {
   return (
     <Button
@@ -478,6 +627,7 @@ export const BtnIcon = ({
       style={'fill'}
       brightness={brightness}
       color="classic"
+      onClick={onClick}
     />
   )
 }

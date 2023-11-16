@@ -9,16 +9,18 @@ const cihuySlice = createSlice({
       primarySidebar: {
         activityBar: true,
         primaryBar: true,
-        navindex: [true, false, false, false, false]
+        navindex: [true, false, false, false]
       },
       sidebarReverse: false,
+      colorTheme: 'cihuy-code-dark',
       secondarySidebar: false,
       panel: {
         panel: false,
-        navindex: [false, false, false, true, false]
+        navindex: [false, true, false]
       },
       statusBar: true,
       selected: null,
+      settingSync: true,
       editorLayout: {
         openedFiles: [],
         currentlyOpen: null
@@ -28,6 +30,12 @@ const cihuySlice = createSlice({
   reducers: {
     syncData: (state, action) => {
       state.data = action.payload
+    },
+    setColorTheme: (state, action) => {
+      state.data.colorTheme = action.payload
+    },
+    tgglSettingSync: (state) => {
+      state.data.settingSync = !state.data.settingSync
     },
     tgglMenuBar: (state) => {
       state.data.menuBar = !state.data.menuBar
@@ -65,6 +73,11 @@ const cihuySlice = createSlice({
     tgglStatusBar: (state) => {
       state.data.statusBar = !state.data.statusBar
     },
+    closeAll: (state) => {
+      state.data.selected = null
+      state.data.editorLayout.openedFiles = []
+      state.data.editorLayout.currentlyOpen = null
+    },
     resetEditorView: (state) => {
       state.data.menuBar = true
       state.data.primarySidebar.activityBar = true
@@ -75,14 +88,26 @@ const cihuySlice = createSlice({
       state.data.statusBar = true
     },
     openFile: (state, action) => {
-      const find = state.data.editorLayout.openedFiles.findIndex((find) => find.directory === action.payload.directory)
+      const findData = () => {
+        switch (action.payload.type) {
+          case 'file':
+            return state.data.editorLayout.openedFiles.findIndex((find) => find.directory === action.payload.directory)
+          case 'paginated file':
+            return state.data.editorLayout.openedFiles.findIndex((find) => find.directory === action.payload.directory)
+          case 'page':
+            return state.data.editorLayout.openedFiles.findIndex((find) => find.to === action.payload.to)
+          default:
+            throw new Error(`Error while open the file: Unknown type file "${action.payload.type}"`)
+        }
+      }
+      const find = findData()
       state.data.editorLayout.currentlyOpen = action.payload
       if (find !== -1) return
       state.data.editorLayout.openedFiles.push(action.payload)
     },
     closeFile: (state, action) => {
       const find = state.data.editorLayout.openedFiles.findIndex(
-        (find) => find.directory === state.data.editorLayout.currentlyOpen?.directory
+        (find) => find.uuid === state.data.editorLayout.currentlyOpen?.uuid
       )
       state.data.editorLayout.openedFiles.splice(action.payload, 1)
       if (find !== action.payload) return
@@ -91,11 +116,12 @@ const cihuySlice = createSlice({
         state.data.editorLayout.currentlyOpen = null
         return
       }
-      if (state.data.editorLayout.openedFiles[0]) {
+      if (action.payload === 0 && state.data.editorLayout.openedFiles.length > 0) {
         state.data.selected = state.data.editorLayout.openedFiles[0].directory
         state.data.editorLayout.currentlyOpen = state.data.editorLayout.openedFiles[0]
         return
       }
+      state.data.selected = state.data.editorLayout.openedFiles[action.payload - 1]?.directory
       state.data.editorLayout.currentlyOpen = state.data.editorLayout.openedFiles[action.payload - 1]
     }
   }
@@ -106,6 +132,8 @@ export const {
   openFile,
   closeFile,
   hndlSelected,
+  setColorTheme,
+  tgglSettingSync,
   tgglPanel,
   tgglPanelNavPage,
   tgglPrimNavPage,
@@ -115,6 +143,7 @@ export const {
   tgglSidebarReverse,
   trnOffSidebarReverse,
   trnOnSidebarReverse,
+  closeAll,
   tgglMenuBar,
   tgglStatusBar,
   resetEditorView
