@@ -50,7 +50,6 @@ const PopupAlertContextProvider = ({ children }) => {
                 clearPopupAlert()
               },
               ok: async () => {
-                console.log('hahaha')
                 await alertData.action.ok()
                 clearPopupAlert()
               },

@@ -49,6 +49,7 @@
   border-radius: var(--rounded1);
   box-sizing: border-box;
   border-top: var(--glassmorphism-top);
+  box-shadow: var(--box-shadow-3);
   animation: popup-screen-animation var(--trns-02) var(--Cubic-Bezier1);
 }
 .alert-window .header-alert {
@@ -93,6 +94,7 @@
 .alert-window .content-alert p {
   font-size: 15px;
   font-weight: 500;
+  white-space: pre-wrap;
   text-align: center;
 }
 
