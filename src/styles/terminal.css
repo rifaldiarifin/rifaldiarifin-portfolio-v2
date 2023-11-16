@@ -1,0 +1,112 @@
+.terminal {
+  display: grid;
+  font-size: 14px;
+}
+.terminal .cihuy-term {
+  width: 100%;
+  height: calc(var(--panel) - 40px - var(--base-padding));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* TERMINAL COMMAND */
+.cihuy-term {
+  cursor: text;
+  display: block;
+  transition: var(--trns-04) var(--Cubic-Bezier1);
+}
+.cihuy-term > .term-body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--base-padding);
+  gap: 10px;
+}
+.cihuy-term > .term-body > input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  opacity: 0;
+}
+
+.cihuy-term .line-command,
+.cihuy-term .input-command {
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+  font-family: consolas;
+  background-color: transparent;
+  border: none;
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: 20px;
+  color: var(--panel-foreground);
+  box-sizing: border-box;
+}
+
+.cihuy-term .input-command > .carret {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(3px);
+}
+.cihuy-term .input-command > .carret::after {
+  content: '';
+  bottom: -2px;
+  position: absolute;
+  box-sizing: border-box;
+  width: 8px;
+  background-color: var(--panel-foreground);
+  height: 3px;
+}
+
+.cihuy-term > .term-body > input:focus ~ .input-command > .carret {
+  opacity: 1;
+}
+.cihuy-term .hyperlink {
+  text-decoration: none;
+  color: rgb(82, 143, 212);
+}
+.cihuy-term .hyperlink:hover {
+  color: rgb(136, 174, 218);
+  text-decoration: underline;
+}
+.cihuy-term .username {
+  color: rgb(72, 162, 173);
+}
+.cihuy-term .directory {
+  color: rgb(195, 183, 24);
+}
+/* dark */
+.dark .cihuy-term .hyperlink {
+  text-decoration: none;
+  color: rgb(100, 172, 255);
+}
+.dark .cihuy-term .hyperlink:hover {
+  color: rgb(160, 204, 255);
+  text-decoration: underline;
+}
+.dark .cihuy-term .username {
+  color: rgb(91, 202, 217);
+}
+.dark .cihuy-term .directory {
+  color: rgb(240, 226, 27);
+}
+.cihuy-term > .term-body > input:focus ~ .input-command.idle > .carret {
+  animation: carretLoop 1.2s infinite steps(1);
+}
+@keyframes carretLoop {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
