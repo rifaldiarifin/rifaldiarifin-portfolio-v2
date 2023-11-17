@@ -1,0 +1,52 @@
+.markdown {
+  line-height: 30px;
+}
+
+/* heading */
+.markdown.heading {
+  font-weight: 500;
+  line-height: normal;
+}
+
+h1.markdown.heading {
+  border-bottom: 1px solid var(--separator);
+  padding-bottom: 10px;
+}
+
+/* star */
+.markdown.star {
+  position: relative;
+  padding: 0 0 0 40px;
+}
+
+.markdown.star::before {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-right: 8px;
+  top: 14px;
+  transform: translateX(-14px);
+  background-color: var(--foreground);
+}
+
+/* keycode */
+.markdown.keycode {
+  color: #caaf77;
+}
+
+/* hyperlink */
+.markdown.hyperlink {
+  text-decoration: none;
+  color: var(--accent-color1);
+}
+
+.markdown.hyperlink:hover {
+  text-decoration: underline;
+}
+
+/* strong */
+.markdown.strong {
+  font-weight: bold;
+}
