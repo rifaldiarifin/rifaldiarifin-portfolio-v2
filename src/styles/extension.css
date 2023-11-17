@@ -1,0 +1,276 @@
+/* pages */
+#ci-editorlayout .extension-page {
+  --pad-horiz: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+  max-width: calc(100% - 150px);
+  min-width: 300px;
+  box-sizing: border-box;
+  padding-top: 16px;
+  margin: 0 auto;
+}
+
+#ci-editorlayout .extension-page > .ext-header {
+  display: flex;
+  gap: 20px;
+  height: 164px;
+  min-height: 164px;
+  padding: 0 var(--pad-horiz);
+  color: var(--foreground);
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-icon {
+  width: 140px;
+  min-width: 140px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 10px;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .name > h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .name > span {
+  background-color: var(--list-hoverBackground);
+  padding: 2px var(--base-padding);
+  font-family: consolas, 'sans-serif';
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .publisher {
+  font-size: 15px;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .description {
+  font-size: 15px;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .options .btn {
+  min-height: 26px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+#ci-editorlayout .extension-page > .ext-header > .ext-optionview .options .btn > span {
+  font-size: 13px;
+  letter-spacing: normal;
+}
+
+#ci-editorlayout .extension-page > .ext-body {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .nav {
+  height: 40px;
+  display: flex;
+  padding: 0 var(--pad-horiz);
+  width: 100%;
+  /* gap: 24px; */
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+#ci-editorlayout .extension-page > .ext-body > .nav > li {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: var(--panel-inactiveForeground);
+  padding: 0 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--trns-02) ease;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .nav > li.active {
+  border-color: var(----panelTitle-activeBorder);
+  color: var(--panel-activeForeground);
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages {
+  display: grid;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page {
+  display: none;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page.active {
+  display: block;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page .details {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 1fr minmax(100px, 0.4fr);
+  /* gap: var(--pad-horiz); */
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page .details > .readme {
+  height: calc(
+    100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) -
+      var(--statusbar)
+  );
+  padding: var(--pad-horiz);
+  padding-bottom: 50px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page .changelog .markdown.star::before,
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page .details .markdown.star::before {
+  background-color: var(--editor-foreground);
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page .details > .info {
+  height: calc(
+    100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) -
+      var(--statusbar)
+  );
+  box-sizing: border-box;
+  padding: var(--pad-horiz);
+  padding-bottom: 0;
+  color: var(--foreground);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .label-info {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--button-separator);
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .label-info:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .label-info > p:nth-child(1) {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .label-info > .btn {
+  min-height: 26px;
+  height: 26px;
+  letter-spacing: normal;
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .label-info > .btn > span {
+  font-size: 12px;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .list-info {
+  display: grid;
+  font-size: 13px;
+  grid-template-columns: minmax(40px, 0.8fr) 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#ci-editorlayout .extension-page > .ext-body > .navpages .list-info:last-child {
+  margin-bottom: 0;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page.contributions,
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page.changelog,
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page.status {
+  height: calc(
+    100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) -
+      var(--statusbar)
+  );
+  padding: var(--pad-horiz);
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: var(--foreground);
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-header {
+  border: 1px solid transparent;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 6px 10px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-body {
+  display: none;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list.active > .dl-body {
+  display: block;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-header::before {
+  content: '▶';
+  width: 12px;
+  font-size: 12px;
+  margin-right: 10px;
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list.active > .dl-header {
+  border-bottom-color: var(--button-separator);
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list.active > .dl-header::before {
+  content: '▼';
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-header:active {
+  border: 1px solid var(--accent-color1);
+}
+#ci-editorlayout .extension-page > .ext-body > .navpages > .page.changelog {
+  color: var(--editor-foreground);
+}
