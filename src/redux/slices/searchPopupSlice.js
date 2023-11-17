@@ -21,15 +21,15 @@ const searchPopupSlice = createSlice({
     },
     openOpenView: (state) => {
       state.data.actionName = 'OPEN_VIEW'
-      state.data.allowLabel = false
-      state.data.allowSearch = true
+      state.data.allowLabel = true
+      state.data.allowSearch = false
       state.data.isActive = true
       state.data.label = 'Open View'
     },
     openCommandPallete: (state) => {
       state.data.actionName = 'COMMAND_PALLETE'
-      state.data.allowLabel = false
-      state.data.allowSearch = true
+      state.data.allowLabel = true
+      state.data.allowSearch = false
       state.data.isActive = true
       state.data.label = 'Command Pallete'
     },
@@ -40,12 +40,33 @@ const searchPopupSlice = createSlice({
       state.data.isActive = true
       state.data.label = 'Search File'
     },
+    openColorTheme: (state) => {
+      state.data.actionName = 'COLOR_THEME'
+      state.data.allowLabel = true
+      state.data.allowSearch = false
+      state.data.isActive = true
+      state.data.label = 'Color Theme'
+    },
+    openOpenedEditor: (state) => {
+      state.data.actionName = 'OPENED_EDITOR'
+      state.data.allowLabel = true
+      state.data.allowSearch = false
+      state.data.isActive = true
+      state.data.label = 'Opened Editor'
+    },
     closeSearchPopup: (state) => {
       state.data.isActive = false
     }
   }
 })
 
-export const { closeSearchPopup, openCustomizeLayout, openCommandPallete, openOpenView, openSearchFile } =
-  searchPopupSlice.actions
+export const {
+  closeSearchPopup,
+  openCustomizeLayout,
+  openOpenedEditor,
+  openCommandPallete,
+  openOpenView,
+  openSearchFile,
+  openColorTheme
+} = searchPopupSlice.actions
 export default searchPopupSlice.reducer

@@ -30,6 +30,7 @@ const CustomizeLayoutList = ({
       <CiSearchPopup.Li
         name={'Activity Bar'}
         callback={toggleActivityBar}
+        moreClass="prim-click"
         leftIcon={'show-left-side-panel'}
         rightIcon={primarySidebar.activityBar ? 'eye' : 'hide'}
       />
@@ -37,11 +38,13 @@ const CustomizeLayoutList = ({
         name={'Primary Side Bar'}
         callback={togglePrimarySidebar}
         leftIcon={'show-left-side-panel'}
+        moreClass="prim-click"
         rightIcon={primarySidebar.primaryBar ? 'eye' : 'hide'}
       />
       <CiSearchPopup.Li
         name={'Secondary Side Bar'}
         callback={toggleSecondarySidebar}
+        moreClass="secn-click"
         leftIcon={'show-right-side-panel'}
         rightIcon={secondarySidebar ? 'eye' : 'hide'}
       />
