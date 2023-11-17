@@ -1,4 +1,5 @@
 .btn {
+  position: relative;
   border: none;
   display: flex;
   justify-content: center;
@@ -14,63 +15,81 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--text2);
-  letter-spacing: 0.8px;
+  /* letter-spacing: 0.8px; */
   cursor: pointer;
   transition: var(--trns-02) ease;
 }
+
 .btn.disabled {
   opacity: 0.3;
   pointer-events: none;
 }
+
 .btn span.icons8-filled,
 .btn span.icons8-regular {
   --i8-gradient: var(--accent-color3);
   --i8-ratio: 24px;
   pointer-events: none;
 }
+
+.btn span {
+  transition: var(--trns-02) ease;
+}
+
 .btn.classic {
   --BColor: var(--main-color);
   --BColorHover: var(--hover-color1);
   --BColorActive: var(--hover-color1-hover2);
   --TXTColor: var(--text2);
 }
+
 .btn.default {
   --BColor: var(--accent-color1);
   --BColorHover: var(--accent-color1-hover);
   --BColorActive: var(--accent-color1-hover2);
   --TXTColor: whitesmoke;
 }
+
 .btn.second {
   --BColor: var(--accent-color2);
   --BColorHover: var(--accent-color2-hover);
   --BColorActive: var(--accent-color2-hover2);
   --TXTColor: whitesmoke;
 }
+
 .btn.third {
   --BColor: var(--accent-color3);
   --BColorHover: var(--accent-color3-hover);
   --BColorActive: var(--accent-color3-hover2);
   --TXTColor: whitesmoke;
 }
+
 /* ----- */
 .btn.success {
   --BColor: var(--success-color);
   --BColorHover: var(--success-color-hover);
+  --BColorActive: var(--success-color-hover2);
   --TXTColor: whitesmoke;
 }
+
 .btn.warning {
   --BColor: var(--warning-color);
   --BColorHover: var(--warning-color-hover);
+  --BColorActive: var(--warning-color-hover2);
   --TXTColor: whitesmoke;
 }
+
 .btn.danger {
   --BColor: var(--danger-color);
   --BColorHover: var(--danger-color-hover);
+  --BColorActive: var(--danger-color-hover2);
   --TXTColor: whitesmoke;
 }
+
 .btn.info {
   --BColor: var(--info-color);
   --BColorHover: var(--info-color-hover);
+  --BColorActive: var(--info-color-hover2);
   --TXTColor: whitesmoke;
 }
 
@@ -80,12 +99,18 @@
   padding: 0 20px;
   border-radius: var(--rounded1);
 }
+
+.btn.btn-regular.rounded10,
 .btn.btn-fill.rounded10 {
-  border-radius: var(--rounded1);
+  border-radius: 4px;
 }
+
+.btn.btn-regular.rounded20,
 .btn.btn-fill.rounded20 {
   border-radius: var(--rounded2);
 }
+
+.btn.btn-regular.rounded30,
 .btn.btn-fill.rounded30 {
   border-radius: var(--rounded3);
 }
@@ -103,14 +128,10 @@
 .btn.btn-fill:hover {
   background-color: var(--BColorHover);
 }
+
 .btn.btn-fill:active {
   background-color: var(--BColorActive);
-}
-
-.btn.icon {
-  aspect-ratio: 1;
-  padding: 0;
-  gap: 0;
+  transition: 0s;
 }
 
 /* Regular */
@@ -121,8 +142,39 @@
   color: var(--BColor);
   padding: 0 20px;
   border-radius: var(--rounded3);
+  overflow: hidden;
+}
+.btn.btn-regular::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--BColor);
+  transition: var(--trns-02) ease;
 }
 
 .btn.btn-regular:hover {
+  color: var(--BColorHover);
   border-color: var(--BColorHover);
+}
+.btn.btn-regular:hover::after {
+  opacity: 0.1;
+}
+
+.btn.btn-regular:active {
+  color: var(--BColorActive);
+  border-color: var(--BColorActive);
+  transition: 0s;
+}
+
+.btn.icon {
+  aspect-ratio: 1;
+  padding: 0;
+  gap: 0;
 }

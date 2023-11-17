@@ -16,7 +16,8 @@ const Button = ({
   brightness = undefined,
   width = undefined,
   height = undefined,
-  moreClass = undefined
+  moreClass = undefined,
+  allowNewTab = false
 }) => {
   switch (type) {
     case 'hyperlink':
@@ -46,9 +47,11 @@ const Button = ({
           className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
             disabled ? ' disabled' : ''
           }`}
+          target={allowNewTab ? '_blank' : null}
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}
+          rel="noreferrer"
         >
           {icon && (
             <span
