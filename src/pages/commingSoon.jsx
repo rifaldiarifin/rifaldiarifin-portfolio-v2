@@ -1,5 +1,15 @@
+import { Comment } from '../components/fragments/Codes'
+
 const CommingSoon = () => {
-  return <h1>Comming Soon</h1>
+  return (
+    <>
+      <div className="codes">
+        <div className="write-code" data-numberline="1">
+          <Comment val={'// Comming Soon!'} />
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default CommingSoon

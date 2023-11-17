@@ -11,23 +11,23 @@ import {
   ControlName
 } from '../components/fragments/Codes'
 import Button from '../components/Elements/Button'
-import useScrollTo from '../hooks/useLandingScrollTo'
+import useScrollTo from '../hooks/useMainScroll'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { predictClass } from '../utils/predictClass'
 import ShowcaseGroup from '../components/fragments/ShowcaseGroup'
 import ShowcaseListGroup from '../components/fragments/ShowcaseListGroup'
 import useGetProjects from '../hooks/useGetProjects'
 
-const Welcome = () => {
+const MainFile = () => {
   const { bestProjects, otherProjects } = useGetProjects()
-  const [moreSkills, setMoreSkills] = useState(false)
-  const [moreShowcase, setMoreShowcase] = useState(false)
-  const toggleMoreSkills = () => setMoreSkills(!moreSkills)
-  const toggleMoreShowcase = () => setMoreShowcase(!moreShowcase)
   const about = useRef(null)
   const myskills = useRef(null)
   const projects = useRef(null)
   const contact = useRef(null)
+  const [moreSkills, setMoreSkills] = useState(false)
+  const [moreShowcase, setMoreShowcase] = useState(false)
+  const toggleMoreSkills = () => setMoreSkills(!moreSkills)
+  const toggleMoreShowcase = () => setMoreShowcase(!moreShowcase)
   useScrollTo({
     about,
     contact,
@@ -40,57 +40,76 @@ const Welcome = () => {
         <div className="write-code" data-numberline="1">
           <Control val={'import'} />
           <Space />
-          <ControlName val={'Welcome'} />
+          <ControlName val={'React'} />
           <Space />
           <Control val={'from'} />
           <Space />
-          <String val={"'rifaldiarifin/Welcome'"} />
+          <String val={"'react'"} />
         </div>
       </div>
       <div className="codes">
-        <div className="write-code" data-numberline="2"></div>
-      </div>
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="3">
-          <Variable val={'const'} />
+        <div className="write-code" data-numberline="2">
+          <Control val={'import'} />
           <Space />
-          <VariableName val={'App'} />
+          <ControlName val={'ReactDOM'} />
           <Space />
-          <KeywordOperator val={'='} />
+          <Control val={'from'} />
           <Space />
-          <Bracket val={'()'} vart="1" />
-          <Space />
-          <Variable val={'=>'} />
-          <Space />
-          <Bracket val={'{'} vart="1" />
+          <String val={"'react-dom/client'"} />
         </div>
       </div>
-
       <div className="codes">
-        <div className="write-code disabled" data-numberline="4">
-          <Space x="2" />
-          <Control val={'return'} />
+        <div className="write-code" data-numberline="3">
+          <Control val={'import'} />
           <Space />
-          <Bracket val={'('} vart="2" />
+          <ControlName val={'App'} />
+          <Space />
+          <Control val={'from'} />
+          <Space />
+          <String val={"'/pages/App.jsx'"} />
         </div>
       </div>
-      {/* body */}
+      <div className="codes">
+        <div className="write-code" data-numberline="4"></div>
+      </div>
       <div className="codes">
         <div className="write-code disabled" data-numberline="5">
-          <Space x="4" />
+          <Control val={'ReactDOM'} />
+          <KeywordOperator val={'.'} />
+          <VariableName val={'createRoot'} />
+          <Bracket val={'('} />
+          <Variable val={'document'} />
+          <KeywordOperator val={'.'} />
+          <VariableName val={'getElementByID'} />
+          <Bracket val={'('} vart={2} />
+          <String val={`'root'`} />
+          <Bracket val={')'} vart={2} />
+          <Bracket val={')'} />
+          <KeywordOperator val={'.'} />
+          <VariableName val={'render'} />
+          <Bracket val={'('} />
+        </div>
+      </div>
+
+      {/* body */}
+
+      <div className="codes">
+        <div className="write-code disabled" data-numberline="6">
+          <Space x="2" />
           <BracketXml val={'<'} />
-          <Variable val={'Welcome'} />
+          <Variable val={'React'} />
+          <KeywordOperator val={'.'} />
+          <Variable val={'StrictMode'} />
           <BracketXml val={'>'} />
         </div>
       </div>
 
-      {/* HERO SECTION ####################### */}
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="6">
-          <Space x="6" />
+      <div className="codes app">
+        <div className="write-code disabled" data-numberline="7">
+          <Space x="4" />
           <BracketXml val={'<'} />
-          <Variable val={'Welcome.HeroSection'} />
-          <BracketXml val={'>'} />
+          <Variable val={'App'} />
+          <BracketXml val={'/>'} />
         </div>
         <div className="display-frame">
           <div id="herosection" className="render">
@@ -111,38 +130,14 @@ const Welcome = () => {
                   color="default"
                   style={'regular'}
                   moreClass={'rounded10'}
-                  width={'200px'}
                 >
                   Contact
                 </Button>
-                {/* <Button color="default" style={'regular'} moreClass={'rounded10'} width={'200px'}>Download CV</Button> */}
+                {/* <Button color="default" style={'regular'} moreClass={'rounded10'}>Download CV</Button> */}
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="7">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.HeroSection'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="8"></div>
-      </div>
-      {/* ABOUT ####################### */}
-      <div className="codes" ref={about}>
-        <div className="write-code disabled" data-numberline="9">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.About'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
-          <div id="about" className="render dual-content">
+          <div id="about" className="render dual-content" ref={about}>
             <div className="box content1">
               <h2>About Me</h2>
               <p>
@@ -171,30 +166,7 @@ const Welcome = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="10">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.About'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="11"></div>
-      </div>
-      {/* MY SKILLS ####################### */}
-      <div className="codes" ref={myskills}>
-        <div className="write-code disabled" data-numberline="12">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.MySkills'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
-          <div id="myskills" className="render">
+          <div id="myskills" className="render" ref={myskills}>
             <div className="listboard">
               <h2>My skills in developing</h2>
               <div className="box">
@@ -239,30 +211,7 @@ const Welcome = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="13">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.MySkills'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="14"></div>
-      </div>
-      {/* PROJECTS ####################### */}
-      <div className="codes" ref={projects}>
-        <div className="write-code disabled" data-numberline="16">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.Projects'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
-          <div id="projects" className="render">
+          <div id="projects" className="render" ref={projects}>
             <h2>Projects i&apos;ve worked on </h2>
             <div className="box dsp-flex fl-colm gap-50">
               {typeof bestProjects !== 'string' && bestProjects?.length > 0 ? (
@@ -320,30 +269,7 @@ const Welcome = () => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="17">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.Projects'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="18"></div>
-      </div>
-      {/* CONTACT ####################### */}
-      <div className="codes" ref={contact}>
-        <div className="write-code disabled" data-numberline="19">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.Contact'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
-          <div id="contact" className="render">
+          <div id="contact" className="render" ref={contact}>
             <div className="box">
               <h2>Get In Touch</h2>
               <p>
@@ -366,50 +292,25 @@ const Welcome = () => {
       </div>
 
       <div className="codes">
-        <div className="write-code disabled" data-numberline="20">
-          <Space x="6" />
+        <div className="write-code disabled" data-numberline="8">
+          <Space x="2" />
           <BracketXml val={'</'} />
-          <Variable val={'Welcome.Contact'} />
+          <Variable val={'React'} />
+          <KeywordOperator val={'.'} />
+          <Variable val={'StrictMode'} />
           <BracketXml val={'>'} />
         </div>
       </div>
 
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="21">
-          <Space x="4" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
       {/* ---- */}
 
       <div className="codes">
-        <div className="write-code disabled" data-numberline="22">
-          <Space x="2" />
-          <Bracket val={')'} vart="2" />
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="23">
-          <Bracket val={'}'} vart="1" />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="24"></div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="25">
-          <Control val={'export'} />
-          <Space />
-          <ControlName val={'default'} />
-          <Space />
-          <VariableName val={'App'} />
+        <div className="write-code disabled" data-numberline="9">
+          <Bracket val={')'} />
         </div>
       </div>
     </>
   )
 }
 
-export default Welcome
+export default MainFile
