@@ -1,0 +1,14 @@
+.page404 {
+  height: 100%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.page404 > .icons8-regular,
+.page404 > .icons8-filled {
+  --i8-ratio: 64px;
+  --i8-gradient: var(--danger-color);
+}
