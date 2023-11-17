@@ -123,6 +123,9 @@
 .icons8-regular.cloud-mail {
   --i8-icon-img: url('system_regular/icons8_cloud_mail.ico');
 }
+.icons8-regular.code {
+  --i8-icon-img: url('system_regular/icons8_code.ico');
+}
 .icons8-regular.code-fork {
   --i8-icon-img: url('system_regular/icons8_code_fork.ico');
 }
@@ -168,6 +171,9 @@
 .icons8-regular.delete {
   --i8-icon-img: url('system_regular/icons8_delete.ico');
 }
+.icons8-regular.delete-list {
+  --i8-icon-img: url('system_regular/icons8_delete_list.ico');
+}
 .icons8-regular.delete-row {
   --i8-icon-img: url('system_regular/icons8_delete_row.ico');
 }
@@ -201,11 +207,17 @@
 .icons8-regular.exit {
   --i8-icon-img: url('system_regular/icons8_exit.ico');
 }
+.icons8-regular.external-link {
+  --i8-icon-img: url('system_regular/icons8_external_link.ico');
+}
 .icons8-regular.eye {
   --i8-icon-img: url('system_regular/icons8_eye.ico');
 }
 .icons8-regular.fire {
   --i8-icon-img: url('system_regular/icons8_fire.ico');
+}
+.icons8-regular.fiverr {
+  --i8-icon-img: url('system_regular/icons8_fiverr.ico');
 }
 .icons8-regular.forward {
   --i8-icon-img: url('system_regular/icons8_forward.ico');
@@ -396,8 +408,14 @@
 .icons8-regular.user {
   --i8-icon-img: url('system_regular/icons8_user.ico');
 }
+.icons8-regular.verified-badge {
+  --i8-icon-img: url('system_regular/icons8_verified_badge.ico');
+}
 .icons8-regular.wallet {
   --i8-icon-img: url('system_regular/icons8_wallet.ico');
+}
+.icons8-regular.web {
+  --i8-icon-img: url('system_regular/icons8_web.ico');
 }
 .icons8-regular.whatsapp {
   --i8-icon-img: url('system_regular/icons8_whatsapp.ico');
@@ -491,6 +509,9 @@
 .icons8-filled.cloud-mail {
   --i8-icon-img: url('system_filled/icons8_cloud_mail.ico');
 }
+.icons8-filled.code {
+  --i8-icon-img: url('system_filled/icons8_code.ico');
+}
 .icons8-filled.code-fork {
   --i8-icon-img: url('system_filled/icons8_code_fork.ico');
 }
@@ -536,6 +557,9 @@
 .icons8-filled.delete {
   --i8-icon-img: url('system_filled/icons8_delete.ico');
 }
+.icons8-filled.delete-list {
+  --i8-icon-img: url('system_filled/icons8_delete_list.ico');
+}
 .icons8-filled.delete-row {
   --i8-icon-img: url('system_filled/icons8_delete_row.ico');
 }
@@ -569,11 +593,17 @@
 .icons8-filled.exit {
   --i8-icon-img: url('system_filled/icons8_exit.ico');
 }
+.icons8-filled.external-link {
+  --i8-icon-img: url('system_filled/icons8_external_link.ico');
+}
 .icons8-filled.eye {
   --i8-icon-img: url('system_filled/icons8_eye.ico');
 }
 .icons8-filled.fire {
   --i8-icon-img: url('system_filled/icons8_fire.ico');
+}
+.icons8-filled.fiverr {
+  --i8-icon-img: url('system_filled/icons8_fiverr.ico');
 }
 .icons8-filled.forward {
   --i8-icon-img: url('system_filled/icons8_forward.ico');
@@ -764,8 +794,14 @@
 .icons8-filled.user {
   --i8-icon-img: url('system_filled/icons8_user.ico');
 }
+.icons8-filled.verified-badge {
+  --i8-icon-img: url('system_filled/icons8_verified_badge.ico');
+}
 .icons8-filled.wallet {
   --i8-icon-img: url('system_filled/icons8_wallet.ico');
+}
+.icons8-filled.web {
+  --i8-icon-img: url('system_filled/icons8_web.ico');
 }
 .icons8-filled.whatsapp {
   --i8-icon-img: url('system_filled/icons8_whatsapp.ico');
