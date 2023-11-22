@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom'
 import Button from '../components/Elements/Button'
 import { predictClass } from '../utils/predictClass'
 import { useState } from 'react'
-import { Enter, Heading, HyperLink, KeyCode, Paragraph, Star, Strong } from '../components/fragments/Markdown'
+import { Paragraph, Star } from '../components/fragments/Markdown'
 import capitalize from '../utils/capitalize'
 import DropdownList from '../components/fragments/DropdownList'
+import Extension404 from './extension404'
 
-const Extension = ({ extensions }) => {
+const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
   const params = useParams()
   const [navPages, setNavPages] = useState([true, false, false, false])
   const find = extensions.find((find) => find.publisher === params.publisher && find.name === params.extensionName)
@@ -19,6 +20,23 @@ const Extension = ({ extensions }) => {
       }
       newState[index] = true
       return newState
+    })
+  }
+  const checkCategory = (category = '', arr) => {
+    return arr.find(find => find === category)
+  }
+  const disableExt = () => {
+    toast({
+      title: `Can't disable this extension, for now`,
+      source: 'Extensions',
+      type: 'error'
+    })
+  }
+  const uninstallExt = () => {
+    toast({
+      title: `Can't uninstall this extension, for now`,
+      source: 'Extensions',
+      type: 'error'
     })
   }
   return (
@@ -37,13 +55,13 @@ const Extension = ({ extensions }) => {
               <p className="publisher">{find.publisher}</p>
               <p className="description">{find.description}</p>
               <div className="options">
-                <Button style={'fill'} color="default" moreClass={'rounded10'}>
+                {checkCategory('Themes', find.categories) && <Button style={'fill'} color="default" ariaLabel={'Set Color Theme'} moreClass={'rounded10 btn-searchpopup'} onClick={() => toggleListOfColorTheme(find.displayName)}>
                   Set Color Theme
-                </Button>
-                <Button style={'fill'} color="default" moreClass={'rounded10'}>
+                </Button>}
+                <Button style={'fill'} color="default" moreClass={'rounded10'} onClick={disableExt} ariaLabel={'Disable Extension'}>
                   Disable
                 </Button>
-                <Button style={'fill'} color="default" moreClass={'rounded10'}>
+                <Button style={'fill'} color="default" moreClass={'rounded10'} onClick={uninstallExt} ariaLabel={'Uninstall Extension'}>
                   Uninstall
                 </Button>
               </div>
@@ -72,8 +90,8 @@ const Extension = ({ extensions }) => {
                   <div className="info">
                     <div className="label-info">
                       <p>Categories</p>
-                      {Object.keys(find.contributes).map((key, index) => (
-                        <Button key={index} style={'regular'} moreClass={'rounded10'} color="default">
+                      {find.categories.map((key, index) => (
+                        <Button key={index} style={'regular'} moreClass={'rounded10'} color="default" ariaLabel={capitalize(key)}>
                           {capitalize(key)}
                         </Button>
                       ))}
@@ -95,20 +113,26 @@ const Extension = ({ extensions }) => {
                 </div>
               </div>
               <div className={`page contributions${predictClass(() => navPages[1])}`}>
-                {Object.keys(find.contributes).map((key, index) => (
-                  <DropdownList
-                    key={`${key}${index}`}
-                    name={
-                      key === 'themes'
-                        ? capitalize(`Color Themes (${find.contributes[key].length})`)
-                        : capitalize(`${key} (${find.contributes[key].length}})`)
-                    }
-                  >
-                    {find.contributes[key].map((name) => (
-                      <Star key={name.label} val={name.label} />
+                {find.contributes.length > 0 ? (
+                  <>
+                    {Object.keys(find.contributes).map((key, index) => (
+                      <DropdownList
+                        key={`${key}${index}`}
+                        name={
+                          key === 'themes'
+                            ? capitalize(`Color Themes (${find.contributes[key].length})`)
+                            : capitalize(`${key} (${find.contributes[key].length}})`)
+                        }
+                      >
+                        {find.contributes[key].map((name) => (
+                          <Star key={name.label} val={name.label} />
+                        ))}
+                      </DropdownList>
                     ))}
-                  </DropdownList>
-                ))}
+                  </>
+                ) : (
+                  <Paragraph>No contributes.</Paragraph>
+                )}
               </div>
               <div className={`page changelog${predictClass(() => navPages[2])}`}>{<find.changelog />}</div>
               <div className={`page status${predictClass(() => navPages[3])}`}>
@@ -118,7 +142,7 @@ const Extension = ({ extensions }) => {
           </div>
         </div>
       ) : (
-        <p>{"Can't find your extension looking for... :("}</p>
+        <Extension404/>
       )}
     </>
   )

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { Enter, Heading, HyperLink, KeyCode, Paragraph, Star, Strong } from '../components/fragments/Markdown'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 export default function getExtensionPages() {
   const extensionPages = [
     {
@@ -9,7 +10,7 @@ export default function getExtensionPages() {
       description: 'Cihuyy... Uhuyy.... XD, my own theme extension',
       publisher: 'Cihuy',
       version: '2.0.0',
-      icon: '/img/extensions/cihuy_theme/circle_cute_cat_mobile_phone.png',
+      icon: '/img/extensions/cihuy_theme/icon.png',
       author: {
         name: 'Rifaldi Arifin',
         email: 'adirifaldiarifin@gmail.com',
@@ -35,55 +36,22 @@ export default function getExtensionPages() {
       readme: () => {
         return (
           <>
-            <Heading val={'cihuy-theme README'} />
+            <div className="box text-center">
+              <LazyLoadImage
+                src='/img/extensions/cihuy_theme/icon.png'
+                effect='opacity'
+                alt='React Code Render'
+                style={{ width: '110px' }}
+              />
+            </div>
             <Enter />
-            <Heading lvl={2} val={'Working with Markdown'} />
+            <Heading moreClass={'text-center'} val={'Cihuy Theme'} lvl={1} />
             <Enter />
-            <Paragraph>
-              You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+            <Paragraph moreClass={'text-center'}>
+              Extension of the Cihuy Code Theme, depiciting a happy, and fresh theme
             </Paragraph>
             <Enter />
-            <Star
-              val={
-                <>
-                  Split the editor (<KeyCode val="Cmd+&#92;" /> on macOS or <KeyCode val="Ctrl+&#92;" /> on Windows and
-                  Linux).
-                </>
-              }
-            />
-            <Star
-              val={
-                <>
-                  Toggle preview (<KeyCode val={'Shift+Cmd+V'} /> on macOS or <KeyCode val={'Shift+Ctrl+V'} /> on
-                  Windows and Linux).
-                </>
-              }
-            />
-            <Star
-              val={
-                <>
-                  Press <KeyCode val={'Ctrl+Space'} /> (Windows, Linux, macOS) to see a list of Markdown snippets.
-                </>
-              }
-            />
-            <Enter />
-            <Heading lvl={2} val={'For more information'} />
-            <Enter />
-            <Star
-              val={
-                <HyperLink
-                  val="Visual Studio Code's Markdown Support"
-                  to={'http://code.visualstudio.com/docs/languages/markdown'}
-                />
-              }
-            />
-            <Star
-              val={
-                <HyperLink val="Markdown Syntax Reference" to={'https://help.github.com/articles/markdown-basics/'} />
-              }
-            />
-            <Enter />
-            <Strong val={'Enjoy!'} />
+            <Strong val={`That's it`} />
           </>
         )
       },
@@ -95,15 +63,67 @@ export default function getExtensionPages() {
             <Paragraph>
               All notable changes to the &quot;cihuy-theme&quot; extension will be documented in this file.
             </Paragraph>
+          </>
+        )
+      }
+    },
+    {
+      uuid: uuidv4(),
+      name: 'react-code-render',
+      displayName: 'React Code Render',
+      description: 'Extension that allows you to render react component code directly in a text editor.',
+      publisher: 'Cihuy',
+      version: '1.0.0',
+      icon: '/img/extensions/react_code_render/icon.png',
+      author: {
+        name: 'Rifaldi Arifin',
+        email: 'adirifaldiarifin@gmail.com',
+        url: 'https://rifaldiarifin.netlify.app'
+      },
+      categories: ['Other'],
+      contributes: {},
+      readme: () => {
+        return (
+          <>
+            <div className="box text-center">
+              <LazyLoadImage
+                src='/img/extensions/react_code_render/icon.png'
+                effect='opacity'
+                alt='React Code Render'
+                style={{ width: '110px' }}
+              />
+            </div>
+            <Enter />
+            <Heading moreClass={'text-center'} val={'React Code Render'} lvl={1} />
             <Enter />
             <Paragraph>
-              Check <HyperLink to={'http://keepachangelog.com/'} val={'Keep a Changelog'} /> for recommendations on how
-              to structure this file.
+              An easy way to render react components directly in the code editor.
             </Paragraph>
             <Enter />
-            <Heading lvl={2} val={'[Unreleased]'} />
+            <Paragraph>
+              With this extension, it allows you to render the component code directly and it will be displayed below the written code.
+            </Paragraph>
             <Enter />
-            <Star val={'Initial release'} />
+            <div className="box dsp-grid">
+              <LazyLoadImage
+                src='/img/extensions/react_code_render/preview.gif'
+                alt='React Code Render Preview'
+                effect='opacity'
+                style={{ width: '100%', height: 'calc(100% - 18%)', objectFit: 'cover', objectPosition: 'center' }}
+              />
+            </div>
+            <Strong val={`That's it.`} />
+          </>
+        )
+      },
+      changelog: () => {
+        return (
+          <>
+            <Heading val={'Change Log'} />
+            <Enter />
+            <Paragraph>
+              All notable changes to the &quot;cihuy-theme&quot; extension will be documented in this file.
+            </Paragraph>
           </>
         )
       }
@@ -120,7 +140,7 @@ export default function getExtensionPages() {
         type: 'git',
         url: 'https://github.com/endormi/vscode-2077-theme'
       },
-      icon: '/img/extensions/2077/icon.PNG',
+      icon: '/img/extensions/2077/icon.png',
       contributes: {
         themes: [
           {
@@ -161,6 +181,17 @@ export default function getExtensionPages() {
             <Star
               val={<HyperLink to={'https://open-vsx.org/extension/Endormi/2077-theme'} val={'Open VSX Registry'} />}
             />
+            <Enter />
+            <Heading val={'Preview Image'} moreClass={'text-center'} lvl={2} />
+            <Enter />
+            <div className="box dsp-grid">
+              <LazyLoadImage
+                src='/img/extensions/2077/preview.png'
+                alt='2077'
+                effect='opacity'
+                style={{ width: '100%' }}
+              />
+            </div>
             <Enter />
             <Heading val={'Credit'} lvl={2} />
             <Enter />
