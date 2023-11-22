@@ -18,7 +18,8 @@ import {
   resetEditorView,
   tgglSettingSync,
   setColorTheme,
-  closeAll
+  closeAll,
+  tgglWordWrap
 } from '../redux/slices/cihuyCodeSlice'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -27,6 +28,7 @@ import {
   openColorTheme,
   openCommandPallete,
   openCustomizeLayout,
+  openListOfColorTheme,
   openOpenView,
   openOpenedEditor,
   openSearchFile
@@ -42,13 +44,19 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
   const pathname = usePathName()
   const [fullPanel, setFullPanel] = useState(false)
   const [loadDataStatus, setLoadDataStatus] = useState(false)
+  const [prepare, setPrepare] = useState(true)
   const refOnceLoad = useRef(false)
+  const editorBody = useRef(null)
 
   // Custom Toast Notification
   const toast = useToastNotification()
 
   const toggleSettingSync = () => {
     dispatch(tgglSettingSync())
+  }
+  const toggleWordWrap = () => {
+    console.log('hahahah')
+    dispatch(tgglWordWrap())
   }
   const closeSearch = () => {
     dispatch(closeSearchPopup())
@@ -76,6 +84,9 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
   const toggleColorTheme = () => {
     if (searchPopup.isActive && searchPopup.actionName === 'COLOR_THEME') return dispatch(closeSearchPopup())
     dispatch(openColorTheme())
+  }
+  const toggleListOfColorTheme = (nameTheme = '') => {
+    dispatch(openListOfColorTheme(nameTheme))
   }
   const setTheme = (payload) => {
     dispatch(setColorTheme(payload))
@@ -271,7 +282,10 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
       }
       loadData()
       setLoadDataStatus(true)
-      if (window.screen.width < 520) {
+      setTimeout(() => {
+        setPrepare(false)
+      }, 2300);
+      if (window.innerWidth < 520) {
         toast({
           title: 'We recomended open this on Desktop :D',
           source: 'For Experience',
@@ -283,7 +297,7 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
 
   useEffect(() => {
     const checkScreen = () => {
-      if (window.screen.width > 520) return
+      if (window.innerWidth > 520) return
       if (codeData.primarySidebar.primaryBar) togglePrimarySidebar()
       if (codeData.primarySidebar.activityBar) toggleActivityBar()
     }
@@ -355,6 +369,8 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
     colorTheme: codeData.colorTheme,
     fullPanel,
     loadDataStatus,
+    prepare,
+    setPrepare,
     toast,
     findIndexActive,
     handleSelected,
@@ -379,13 +395,16 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
     toggleOpenView,
     toggleSearchFile,
     toggleFullPanel,
+    toggleWordWrap,
+    toggleListOfColorTheme,
     searchPopup,
     closeSearch,
     closeAllFile,
     closeCihuyCode,
     openNewWindow,
     toggleColorTheme,
-    setTheme
+    setTheme,
+    editorBody
   }
 }
 
