@@ -2482,3 +2482,9 @@
     transition: var(--trns-04) var(--Cubic-Bezier1);
   }
 }
+
+@media (max-height: 690px) {
+  #ci-editorlayout .blank-editor-page > .box {
+    display: none;
+  }
+}

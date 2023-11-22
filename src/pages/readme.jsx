@@ -47,10 +47,14 @@ const Readme = () => {
       </Codes>
       <Codes line={'18'} />
       <Codes line={'19'}>
-        <Colors val={'- Javascript (ES6+)'} />      <Colors val={'- Typescript'} />{'\n'}
-        <Colors val={'- React'} />                  <Colors val={'- Node.js'} />{'\n'}
-        <Colors val={'- Express'} />                <Colors val={'- MongoDB'} />{'\n'}
-        <Colors val={'- Redux'} />                  <Colors val={'- Jest'} />{'\n'}
+        <Colors val={'- Javascript (ES6+)'} />{'\n'}
+        <Colors val={'- Typescript'} />{'\n'}
+        <Colors val={'- React'} />{'\n'}            
+        <Colors val={'- Node.js'} />{'\n'}
+        <Colors val={'- Express'} />{'\n'}          
+        <Colors val={'- MongoDB'} />{'\n'}
+        <Colors val={'- Redux'} />{'\n'}            
+        <Colors val={'- Jest'} />{'\n'}
       </Codes>
       <Codes line={'20'} />
       <Codes line={'21'} />

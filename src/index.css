@@ -3949,6 +3949,11 @@ li {
         transition: var(--trns-04) var(--Cubic-Bezier1);
     }
 }
+@media (max-height: 690px){
+    #ci-editorlayout .blank-editor-page>.box {
+        display: none;
+    }
+}
 
 /* DYNAMIC DROPDOWN */
 
@@ -4188,7 +4193,7 @@ li {
     width: 100%;
     height: 100%;
     max-width: calc(100% - 150px);
-    min-width: 300px;
+    min-width: 500px;
     box-sizing: border-box;
     padding-top: 16px;
     margin: 0 auto;
@@ -4197,8 +4202,7 @@ li {
 #ci-editorlayout .extension-page>.ext-header {
     display: flex;
     gap: 20px;
-    height: 164px;
-    min-height: 164px;
+    min-height: 160px;
     padding: 0 var(--pad-horiz);
     color: var(--foreground);
 }
@@ -4230,6 +4234,7 @@ li {
 
 #ci-editorlayout .extension-page>.ext-header>.ext-optionview .name {
     display: flex;
+    white-space: nowrap;
     align-items: center;
     gap: 10px;
 }
@@ -4349,6 +4354,7 @@ li {
 }
 
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page .details>.info {
+    min-width: 250px;
     height: calc(100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
     box-sizing: border-box;
     padding: var(--pad-horiz);
@@ -4456,6 +4462,13 @@ li {
 
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page.changelog {
     color: var(--editor-foreground);
+}
+
+@media (max-width: 900px){
+    #ci-editorlayout .extension-page{
+        margin: 0;
+        max-width: 100%;
+    }
 }
 
 /* LANDING */

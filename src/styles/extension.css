@@ -1,4 +1,3 @@
-/* pages */
 #ci-editorlayout .extension-page {
   --pad-horiz: 24px;
   display: flex;
@@ -7,7 +6,7 @@
   width: 100%;
   height: 100%;
   max-width: calc(100% - 150px);
-  min-width: 300px;
+  min-width: 500px;
   box-sizing: border-box;
   padding-top: 16px;
   margin: 0 auto;
@@ -16,8 +15,7 @@
 #ci-editorlayout .extension-page > .ext-header {
   display: flex;
   gap: 20px;
-  height: 164px;
-  min-height: 164px;
+  min-height: 160px;
   padding: 0 var(--pad-horiz);
   color: var(--foreground);
 }
@@ -49,6 +47,7 @@
 
 #ci-editorlayout .extension-page > .ext-header > .ext-optionview .name {
   display: flex;
+  white-space: nowrap;
   align-items: center;
   gap: 10px;
 }
@@ -164,12 +163,14 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page .changelog .markdown.star::before,
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page .details .markdown.star::before {
   background-color: var(--editor-foreground);
 }
 
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page .details > .info {
+  min-width: 250px;
   height: calc(
     100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) -
       var(--statusbar)
@@ -221,6 +222,7 @@
 #ci-editorlayout .extension-page > .ext-body > .navpages .list-info:last-child {
   margin-bottom: 0;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page.contributions,
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page.changelog,
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page.status {
@@ -235,11 +237,13 @@
   overflow-x: hidden;
   color: var(--foreground);
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-header {
   border: 1px solid transparent;
   font-size: 20px;
@@ -250,27 +254,41 @@
   align-items: center;
   cursor: pointer;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-body {
   display: none;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list.active > .dl-body {
   display: block;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-header::before {
   content: '▶';
   width: 12px;
   font-size: 12px;
   margin-right: 10px;
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list.active > .dl-header {
   border-bottom-color: var(--button-separator);
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list.active > .dl-header::before {
   content: '▼';
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages .dropdown-list > .dl-header:active {
   border: 1px solid var(--accent-color1);
 }
+
 #ci-editorlayout .extension-page > .ext-body > .navpages > .page.changelog {
   color: var(--editor-foreground);
+}
+
+@media (max-width: 900px) {
+  #ci-editorlayout .extension-page {
+    margin: 0;
+    max-width: 100%;
+  }
 }
