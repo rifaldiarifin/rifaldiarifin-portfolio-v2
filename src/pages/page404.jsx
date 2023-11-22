@@ -1,4 +1,4 @@
-import Button from '../components/Elements/Button'
+import Button from '../components/elements/Button'
 import Icons8 from '../components/elements/Icons8'
 
 const Page404 = ({ onOpenShortcut }) => {

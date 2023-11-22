@@ -17,7 +17,6 @@ import { fileObject } from '../utils/fileObject'
 import useSearchFilter from '../hooks/useSearchFilter'
 import ResultFile from '../components/fragments/ResultFile'
 import { predictClass } from '../utils/predictClass'
-import Button from '../components/Elements/Button'
 import CihuyTerm from '../components/fragments/CihuyTerm'
 import '../assets/icons8/fluent/main.css'
 import '../assets/fonts/Fira_Code_v6.2/fira_code.css'
@@ -35,6 +34,7 @@ import CihuyCodeLayout, {
   CiToastNotification
 } from '../components/layouts/CihuyCodeLayout'
 import Prepare from '../components/fragments/Prepare.jsx'
+import Button from '../components/elements/Button'
 const MainFile = React.lazy(() => import('./mainfile.jsx'))
 const Welcome = React.lazy(() => import('./welcome.jsx'))
 const Readme = React.lazy(() => import('./readme.jsx'))

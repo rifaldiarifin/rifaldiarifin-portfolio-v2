@@ -1,5 +1,5 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import Button from '../Elements/Button'
+import Button from '../elements/Button'
 import { predictClass } from '../../utils/predictClass'
 
 const ShowcaseGroup = ({ children }) => {

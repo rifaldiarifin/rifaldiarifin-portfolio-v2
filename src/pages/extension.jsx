@@ -1,6 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useParams } from 'react-router-dom'
-import Button from '../components/Elements/Button'
+import Button from '../components/elements/Button'
 import { predictClass } from '../utils/predictClass'
 import { useState } from 'react'
 import { Paragraph, Star } from '../components/fragments/Markdown'

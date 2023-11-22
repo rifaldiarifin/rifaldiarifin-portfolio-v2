@@ -11,7 +11,7 @@ import {
   Codes,
   Bl
 } from '../components/fragments/Codes'
-import Button from '../components/Elements/Button'
+import Button from '../components/elements/Button'
 import useScrollTo from '../hooks/useMainScroll'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { predictClass } from '../utils/predictClass'

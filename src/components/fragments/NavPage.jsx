@@ -1,5 +1,5 @@
 import { predictClass } from '../../utils/predictClass'
-import Button from '../Elements/Button'
+import Button from '../elements/Button'
 
 const NavPage = ({
   children,

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { predictClass } from '../../utils/predictClass'
-import Button from '../Elements/Button'
+import Button from '../elements/Button'
 import Icons8 from '../elements/Icons8'
 import DynamicDropdown from '../fragments/DynamicDropdown'
 import { forwardRef } from 'react'

@@ -1,4 +1,4 @@
-import Button from '../Elements/Button'
+import Button from '../elements/Button'
 import Icons8 from '../elements/Icons8'
 
 const ResultFile = ({ name, onClickFile = () => {}, index, onDismisFile = () => {} }) => {

@@ -1,4 +1,4 @@
-import Button from '../Elements/Button'
+import Button from '../elements/Button'
 
 const AlertWindow = ({
   titleBar = 'Hello World',

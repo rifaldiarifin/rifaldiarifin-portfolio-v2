@@ -1,6 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Icons8 from '../elements/Icons8'
-import Button from '../Elements/Button'
+import Button from '../elements/Button'
 
 const ExtensionLi = ({ icon, displayName, description, publisher, onClick }) => {
   return (
