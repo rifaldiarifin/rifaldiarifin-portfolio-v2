@@ -47,14 +47,10 @@ const Readme = () => {
       </Codes>
       <Codes line={'18'} />
       <Codes line={'19'}>
-        <Colors val={'- Javascript (ES6+)'} /> <Colors val={'- Typescript'} />
-        {'\n'}
-        <Colors val={'- React'} /> <Colors val={'- Node.js'} />
-        {'\n'}
-        <Colors val={'- Express'} /> <Colors val={'- MongoDB'} />
-        {'\n'}
-        <Colors val={'- Redux'} /> <Colors val={'- Jest'} />
-        {'\n'}
+        <Colors val={'- Javascript (ES6+)'} />      <Colors val={'- Typescript'} />{'\n'}
+        <Colors val={'- React'} />                  <Colors val={'- Node.js'} />{'\n'}
+        <Colors val={'- Express'} />                <Colors val={'- MongoDB'} />{'\n'}
+        <Colors val={'- Redux'} />                  <Colors val={'- Jest'} />{'\n'}
       </Codes>
       <Codes line={'20'} />
       <Codes line={'21'} />
@@ -62,13 +58,7 @@ const Readme = () => {
         <Colors val={'###'} /> <Variable val={'Wanna see more?'} />
       </Codes>
       <Codes line={'23'} />
-      <Codes line={'24'}>
-        <Variable val={'['} />
-        <Control val={'rifaldiarifin.github.com'} />
-        <Variable val={']'} />
-        <Variable val={'('} />
-        <String val={'"https://rifaldiarifin.github.com"'} />
-        <Variable val={')'} />
+      <Codes line={'24'}><Variable val={'['} /><Control val={'rifaldiarifin.github.com'} /><Variable val={']'} /><Variable val={'('} /><String val={'"https://rifaldiarifin.github.com"'} /><Variable val={')'} />
       </Codes>
       <Codes line={'25'} />
       <Codes line={'26'} />
@@ -77,9 +67,7 @@ const Readme = () => {
       </Codes>
       <Codes line={'28'} />
       <Codes line={'29'}>
-        <Colors
-          val={`The concept of this portfolio depicts the screen contents of a developer's work, what it looks like on their screen at work.`}
-        />
+        <Colors val={`The concept of this portfolio depicts the screen contents of a developer's work, what it looks like on their screen at work.`}/>
       </Codes>
       <Codes line={'30'} />
       <Codes line={'31'}>

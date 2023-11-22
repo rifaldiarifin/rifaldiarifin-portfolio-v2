@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
-import cihuyCommands from '../cihuycommands'
+import cihuyCommands from '../commands'
 
 const useCihuyTerm = ({ cihuyTermRef }) => {
   const username = 'User'

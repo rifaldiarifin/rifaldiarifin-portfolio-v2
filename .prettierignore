@@ -17,5 +17,9 @@ node_modules
 # Ignore CSS files:
 index.css
 
-# Ignore Cihuy Commands
-cihuycommands
+# Ignore Cihuy Commands && editor pages
+commands
+mainfile.jsx
+readme.jsx
+welcome.jsx
+testPage.jsx

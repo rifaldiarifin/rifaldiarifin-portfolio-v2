@@ -1061,7 +1061,7 @@
 }
 
 .codes span.rendercode-progress {
-  margin: 10px 0 10px calc(var(--space-width) * 6);
+  margin: 10px 0 10px 70px;
   display: flex;
   align-items: center;
   opacity: 1 !important;

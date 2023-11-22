@@ -34,7 +34,7 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
     },
     {
       name: 'about',
-      renderTime: 2200,
+      renderTime: 1200,
       ref: about
     },
     {
@@ -61,18 +61,13 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
   return (
     <>
       <Codes>
-        {''}
         <Control val={'import'} /> <ControlName val={'React'} /> <Control val={'from'} /> <String val={"'react'"} />
       </Codes>
       <Codes line={'2'}>
-        {''}
-        <Control val={'import'} /> <ControlName val={'ReactDOM'} /> <Control val={'from'} />{' '}
-        <String val={"'react-dom/client'"} />
+        <Control val={'import'} /> <ControlName val={'ReactDOM'} /> <Control val={'from'} /> <String val={"'react-dom/client'"} />
       </Codes>
       <Codes line={'3'}>
-        {''}
-        <Control val={'import'} /> <ControlName val={'App'} /> <Control val={'from'} />{' '}
-        <String val={"'./pages/App.jsx'"} />
+        <Control val={'import'} /> <ControlName val={'App'} /> <Control val={'from'} /> <String val={"'./pages/App.jsx'"} />
       </Codes>
       <Codes line={'4'} />
       <Codes line={'5'} disabled>
@@ -95,17 +90,12 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
       {/* body */}
 
       <Codes line={'7'} disabled>
-        {''} <BracketXml val={'<'} />
-        <Variable val={'React.StrictMode'} />
-        <BracketXml val={'>'} />
+        {'  '}<BracketXml val={'<'} /><Variable val={'React.StrictMode'} /><BracketXml val={'>'} />
       </Codes>
 
       <div className="codes app">
         <div className="write-code" data-numberline="8">
-          {'    '}
-          <BracketXml val={'<'} />
-          <Variable val={'App'} />
-          <BracketXml val={'/>'} />
+          {'    '}<BracketXml val={'<'} /><Variable val={'App'} /><BracketXml val={'/>'} />
           {renderStatus.status && <span className="rendercode-notif">Rendered time: {renderStatus.time}ms</span>}
         </div>
         <div className="display-frame wait">
@@ -296,13 +286,12 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
       </div>
 
       <Codes line={'9'} disabled>
-        {''} <BracketXml val={'</'} />
+        {'  '}<BracketXml val={'</'} />
         <Variable val={'React.StrictMode'} />
         <BracketXml val={'>'} />
       </Codes>
       {/* ---- */}
       <Codes line={'10'} disabled>
-        {''}
         <Bracket val={')'} />
       </Codes>
     </>
