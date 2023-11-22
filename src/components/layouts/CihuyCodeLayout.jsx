@@ -8,7 +8,6 @@ import { forwardRef } from 'react'
 import { useToastNotificationData } from '../../contexts/ToastNotificationContext'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 
-
 // Container Cihuy Code Layout ############################################
 const CihuyCodeLayout = ({
   children,
@@ -33,7 +32,10 @@ const CihuyCodeLayout = ({
       )}${predictClass(() => secondaryActive, 'secn-active')}${predictClass(
         () => statusbarActive,
         'stsbar-active'
-      )}${predictClass(() => panelActive, 'pnl-active')}${predictClass(() => isFullPanel, 'full-panel')}${predictClass(() => wordWrap, 'word-wrap')}`}
+      )}${predictClass(() => panelActive, 'pnl-active')}${predictClass(() => isFullPanel, 'full-panel')}${predictClass(
+        () => wordWrap,
+        'word-wrap'
+      )}`}
     >
       {children}
     </div>
@@ -127,7 +129,7 @@ export const CiSearchPopup = ({
   allowSearch = true,
   titleBarRef = null,
   onClose,
-  onOutsideClick = () => { },
+  onOutsideClick = () => {},
   toolButton,
   allowLabel = true,
   isActive = false,
@@ -226,9 +228,9 @@ const CiSearchPopup_Li = ({
   // keyCode = [],
   isActive = false,
   disabledAutoActive = false,
-  closeAfterClick = () => { },
+  closeAfterClick = () => {},
   isChecked = false,
-  callback = async () => { },
+  callback = async () => {},
   moreClass = ''
 }) => {
   const keyCode = []
@@ -374,7 +376,7 @@ CiTitleBar.Btnbar = CiTitlebar_Btnbar
 // Ci Primary Sidebar ############################################
 // eslint-disable-next-line react/display-name
 export const CiPrimarySidebar = forwardRef(
-  ({ findIndexActive = () => { }, activityActive = false, buttonNavPages, buttonOptions, navPages }, ref) => {
+  ({ findIndexActive = () => {}, activityActive = false, buttonNavPages, buttonOptions, navPages }, ref) => {
     return (
       <nav id="ci-primary-sidebar" ref={ref}>
         <div className={`activity-bar${predictClass(() => activityActive)}`}>
@@ -390,7 +392,7 @@ export const CiPrimarySidebar = forwardRef(
   }
 )
 
-const CiPrimSidebar_BtnNav = ({ icon, isActive, ariaLabel = null, onClick = () => { } }) => {
+const CiPrimSidebar_BtnNav = ({ icon, isActive, ariaLabel = null, onClick = () => {} }) => {
   return (
     <li>
       <Button
@@ -430,7 +432,7 @@ CiPrimarySidebar.BtnOption = CiPrimSidebar_BtnOption
 
 // Ci Secondary Sidebar ############################################
 // eslint-disable-next-line react/display-name
-export const CiSecondarySidebar = forwardRef(({ onClose = () => { } }, ref) => {
+export const CiSecondarySidebar = forwardRef(({ onClose = () => {} }, ref) => {
   return (
     <nav id="ci-secondary-sidebar" ref={ref}>
       <div className="close">
@@ -453,7 +455,7 @@ export const CiSecondarySidebar = forwardRef(({ onClose = () => { } }, ref) => {
 })
 
 // Ci Panel ############################################
-export const CiPanel = ({ menuBar, onFullPanel = () => { }, onClose = () => { }, children }) => {
+export const CiPanel = ({ menuBar, onFullPanel = () => {}, onClose = () => {}, children }) => {
   return (
     <div id="ci-panel">
       <div className="panel-header">
@@ -493,7 +495,12 @@ export const CiPanel = ({ menuBar, onFullPanel = () => { }, onClose = () => { },
 const CiPanel_Menubar = ({ name, isActive, onClick, ariaLabel }) => {
   return (
     <li>
-      <Button height={'100%'} moreClass={predictClass(() => isActive, 'active', false)} ariaLabel={ariaLabel} onClick={onClick}>
+      <Button
+        height={'100%'}
+        moreClass={predictClass(() => isActive, 'active', false)}
+        ariaLabel={ariaLabel}
+        onClick={onClick}
+      >
         {name}
       </Button>
     </li>
@@ -504,53 +511,64 @@ CiPanel.Menubar = CiPanel_Menubar
 
 // Ci Editor Layout ############################################
 // eslint-disable-next-line react/display-name
-export const CiEditorLayout = forwardRef(({
-  editorStatus,
-  onOpenShortcut,
-  isActiveDirectory,
-  menuBar,
-  btnOptions,
-  directory,
-  children
-}, ref) => {
-  return (
-    <div
-      id="ci-editorlayout"
-      className={`${predictClass(() => editorStatus === false, 'loading')}${predictClass(
-        () => isActiveDirectory, 'read-directory'
-      )}`}
-    >
-      {editorStatus > 0 ? (
-        <>
-          <div className="editorlayout-header">
-            <div className="editor-menubar">
-              <ul>{menuBar}</ul>
+export const CiEditorLayout = forwardRef(
+  ({ editorStatus, onOpenShortcut, isActiveDirectory, menuBar, btnOptions, directory, children }, ref) => {
+    return (
+      <div
+        id="ci-editorlayout"
+        className={`${predictClass(() => editorStatus === false, 'loading')}${predictClass(
+          () => isActiveDirectory,
+          'read-directory'
+        )}`}
+      >
+        {editorStatus > 0 ? (
+          <>
+            <div className="editorlayout-header">
+              <div className="editor-menubar">
+                <ul>{menuBar}</ul>
+              </div>
+              <div className="editor-options">{btnOptions}</div>
+              <div className="editor-directory">{isActiveDirectory && directory}</div>
             </div>
-            <div className="editor-options">{btnOptions}</div>
-            <div className="editor-directory">{isActiveDirectory && directory}</div>
+            <div className="editorlayout-body" ref={ref}>
+              {children}
+            </div>
+          </>
+        ) : editorStatus === 0 ? (
+          <div className="blank-editor-page">
+            <div className="blank-logo">
+              <LazyLoadImage src="/img/logos/rifaldi_logo_black.png" effect="opacity" />
+            </div>
+            <div className="box">
+              <h2>Nothing to View</h2>
+              <p>Click something on explorer, left primary sidebar</p>
+              <span>OR</span>
+              <Button
+                color="default"
+                style={'fill'}
+                moreClass={'rounded10'}
+                onClick={onOpenShortcut}
+                ariaLabel={'Back to Main'}
+              >
+                Open main
+              </Button>
+            </div>
           </div>
-          <div className="editorlayout-body" ref={ref}>{children}</div>
-        </>
-      ) : editorStatus === 0 ? (
-        <div className="blank-editor-page">
-          <div className="blank-logo">
-            <LazyLoadImage src="/img/logos/rifaldi_logo_black.png" effect="opacity" />
-          </div>
-          <div className="box">
-            <h2>Nothing to View</h2>
-            <p>Click something on explorer, left primary sidebar</p>
-            <span>OR</span>
-            <Button color="default" style={'fill'} moreClass={'rounded10'} onClick={onOpenShortcut} ariaLabel={'Back to Main'}>
-              Open main
-            </Button>
-          </div>
-        </div>
-      ) : null}
-    </div>
-  )
-})
+        ) : null}
+      </div>
+    )
+  }
+)
 
-const CiEditorLayout_Menubar = ({ name, currentlyOpen, directory, to, ariaLabel = null, onClick = () => { }, onClose = () => { } }) => {
+const CiEditorLayout_Menubar = ({
+  name,
+  currentlyOpen,
+  directory,
+  to,
+  ariaLabel = null,
+  onClick = () => {},
+  onClose = () => {}
+}) => {
   const onClickMenubar = (event) => {
     if (event.target.classList.contains('menubar')) onClick(event)
   }
@@ -598,11 +616,11 @@ CiEditorLayout.Menubar = CiEditorLayout_Menubar
 CiEditorLayout.Directory = CiEditorLayout_Directory
 
 // Ci Statusbar ############################################
-export const CiStatusbar = ({ children, onClickPorts = () => { }, onClickProblems = () => { } }) => {
+export const CiStatusbar = ({ children, onClickPorts = () => {}, onClickProblems = () => {} }) => {
   return (
     <footer id="ci-statusbar">
       <div className="box">
-        <button className="remote" aria-label='remote'>
+        <button className="remote" aria-label="remote">
           <Icons8 icon="remote-desktop" gradient />
         </button>
         {children}
@@ -638,7 +656,7 @@ export const BtnIcon = ({
   iconSize = '20px',
   brightness = 'var(--icon1)',
   ariaLabel = null,
-  onClick = () => { }
+  onClick = () => {}
 }) => {
   return (
     <Button

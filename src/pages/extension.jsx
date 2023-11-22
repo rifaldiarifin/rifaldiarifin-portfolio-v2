@@ -23,7 +23,7 @@ const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
     })
   }
   const checkCategory = (category = '', arr) => {
-    return arr.find(find => find === category)
+    return arr.find((find) => find === category)
   }
   const disableExt = () => {
     toast({
@@ -55,13 +55,33 @@ const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
               <p className="publisher">{find.publisher}</p>
               <p className="description">{find.description}</p>
               <div className="options">
-                {checkCategory('Themes', find.categories) && <Button style={'fill'} color="default" ariaLabel={'Set Color Theme'} moreClass={'rounded10 btn-searchpopup'} onClick={() => toggleListOfColorTheme(find.displayName)}>
-                  Set Color Theme
-                </Button>}
-                <Button style={'fill'} color="default" moreClass={'rounded10'} onClick={disableExt} ariaLabel={'Disable Extension'}>
+                {checkCategory('Themes', find.categories) && (
+                  <Button
+                    style={'fill'}
+                    color="default"
+                    ariaLabel={'Set Color Theme'}
+                    moreClass={'rounded10 btn-searchpopup'}
+                    onClick={() => toggleListOfColorTheme(find.displayName)}
+                  >
+                    Set Color Theme
+                  </Button>
+                )}
+                <Button
+                  style={'fill'}
+                  color="default"
+                  moreClass={'rounded10'}
+                  onClick={disableExt}
+                  ariaLabel={'Disable Extension'}
+                >
                   Disable
                 </Button>
-                <Button style={'fill'} color="default" moreClass={'rounded10'} onClick={uninstallExt} ariaLabel={'Uninstall Extension'}>
+                <Button
+                  style={'fill'}
+                  color="default"
+                  moreClass={'rounded10'}
+                  onClick={uninstallExt}
+                  ariaLabel={'Uninstall Extension'}
+                >
                   Uninstall
                 </Button>
               </div>
@@ -91,7 +111,13 @@ const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
                     <div className="label-info">
                       <p>Categories</p>
                       {find.categories.map((key, index) => (
-                        <Button key={index} style={'regular'} moreClass={'rounded10'} color="default" ariaLabel={capitalize(key)}>
+                        <Button
+                          key={index}
+                          style={'regular'}
+                          moreClass={'rounded10'}
+                          color="default"
+                          ariaLabel={capitalize(key)}
+                        >
                           {capitalize(key)}
                         </Button>
                       ))}
@@ -142,7 +168,7 @@ const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
           </div>
         </div>
       ) : (
-        <Extension404/>
+        <Extension404 />
       )}
     </>
   )

@@ -38,9 +38,9 @@ export default function getExtensionPages() {
           <>
             <div className="box text-center">
               <LazyLoadImage
-                src='/img/extensions/cihuy_theme/icon.png'
-                effect='opacity'
-                alt='React Code Render'
+                src="/img/extensions/cihuy_theme/icon.png"
+                effect="opacity"
+                alt="React Code Render"
                 style={{ width: '110px' }}
               />
             </div>
@@ -87,28 +87,27 @@ export default function getExtensionPages() {
           <>
             <div className="box text-center">
               <LazyLoadImage
-                src='/img/extensions/react_code_render/icon.png'
-                effect='opacity'
-                alt='React Code Render'
+                src="/img/extensions/react_code_render/icon.png"
+                effect="opacity"
+                alt="React Code Render"
                 style={{ width: '110px' }}
               />
             </div>
             <Enter />
             <Heading moreClass={'text-center'} val={'React Code Render'} lvl={1} />
             <Enter />
-            <Paragraph>
-              An easy way to render react components directly in the code editor.
-            </Paragraph>
+            <Paragraph>An easy way to render react components directly in the code editor.</Paragraph>
             <Enter />
             <Paragraph>
-              With this extension, it allows you to render the component code directly and it will be displayed below the written code.
+              With this extension, it allows you to render the component code directly and it will be displayed below
+              the written code.
             </Paragraph>
             <Enter />
             <div className="box dsp-grid">
               <LazyLoadImage
-                src='/img/extensions/react_code_render/preview.gif'
-                alt='React Code Render Preview'
-                effect='opacity'
+                src="/img/extensions/react_code_render/preview.gif"
+                alt="React Code Render Preview"
+                effect="opacity"
                 style={{ width: '100%', height: 'calc(100% - 18%)', objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>
@@ -186,9 +185,9 @@ export default function getExtensionPages() {
             <Enter />
             <div className="box dsp-grid">
               <LazyLoadImage
-                src='/img/extensions/2077/preview.png'
-                alt='2077'
-                effect='opacity'
+                src="/img/extensions/2077/preview.png"
+                alt="2077"
+                effect="opacity"
                 style={{ width: '100%' }}
               />
             </div>

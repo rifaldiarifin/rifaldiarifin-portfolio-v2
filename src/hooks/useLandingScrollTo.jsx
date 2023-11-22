@@ -5,13 +5,23 @@ import { useLocation } from 'react-router-dom'
 
 const useLandingScrollTo = ({ refs, currentlyOpen, editorBody }) => {
   const ref = useRef(false)
-  const [renderStatus, setRenderStatus] = useState({ heroSection: false, about: false, myskills: false, projects: false, contact: false })
+  const [renderStatus, setRenderStatus] = useState({
+    heroSection: false,
+    about: false,
+    myskills: false,
+    projects: false,
+    contact: false
+  })
   const location = useLocation()
   const checkRenderStatus = () => {
-    return Object.keys(renderStatus).map((status) => {
-      if (renderStatus[status] === false) return false
-      return true
-    }).find(find => find === false) ?? true
+    return (
+      Object.keys(renderStatus)
+        .map((status) => {
+          if (renderStatus[status] === false) return false
+          return true
+        })
+        .find((find) => find === false) ?? true
+    )
   }
   useEffect(() => {
     for (let x = 0; x < refs.length; x++) if (!refs[x]?.ref.current && !checkRenderStatus()) return
@@ -32,7 +42,7 @@ const useLandingScrollTo = ({ refs, currentlyOpen, editorBody }) => {
       refs[3].ref.current.children[1].children[0].children[1].children[0].children[2],
       refs[3].ref.current.children[1].children[0].children[1].children[1].children[0],
       refs[3].ref.current.children[1].children[0].children[1].children[1].children[1],
-      refs[4].ref.current.children[1].children[0].children[0],
+      refs[4].ref.current.children[1].children[0].children[0]
     ]
     const getOffsetTop = (component) => {
       let offsetTop = 0
@@ -48,7 +58,7 @@ const useLandingScrollTo = ({ refs, currentlyOpen, editorBody }) => {
     }
     const scrollLandingHandler = () => {
       if (currentlyOpen.name !== 'App.jsx' && checkRenderStatus()) return
-      revealComponents.map(component => {
+      revealComponents.map((component) => {
         const scrollScreen = editorLayoutBody.scrollTop + editorLayoutBody.clientHeight
         if (scrollScreen > getOffsetTop(component) + 200) {
           if (!component.classList.contains('reveal')) component.classList.add('reveal')
@@ -58,7 +68,7 @@ const useLandingScrollTo = ({ refs, currentlyOpen, editorBody }) => {
     if (editorLayoutBody) {
       setTimeout(() => {
         scrollLandingHandler()
-      }, 20);
+      }, 20)
       editorLayoutBody.addEventListener('scroll', scrollLandingHandler)
       return () => editorLayoutBody.removeEventListener('scroll', scrollLandingHandler)
     }
@@ -69,16 +79,16 @@ const useLandingScrollTo = ({ refs, currentlyOpen, editorBody }) => {
       for (let x = 0; x < refs.length; x++) if (!refs[x]?.renderTime) return
 
       for (let x = 0; x < refs.length; x++) {
-        const refCode = refs[x];
+        const refCode = refs[x]
         setTimeout(() => {
           setRenderStatus((prevState) => {
             const newState = { ...prevState }
             newState[refCode.name] = true
             return newState
           })
-        }, refCode.renderTime);
+        }, refCode.renderTime)
       }
-      return () => ref.current = true
+      return () => (ref.current = true)
     }
   }, [refs])
   useEffect(() => {

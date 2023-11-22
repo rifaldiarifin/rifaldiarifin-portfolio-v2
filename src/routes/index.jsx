@@ -19,13 +19,15 @@ const router = createBrowserRouter([
   {
     path: '/*',
     errorElement: <ErrorElement />,
-    element: <Suspense fallback={<LoadingResource />}>
-      <PopupAlertContextProvider>
-        <ToastNotificationProvider>
-          <CihuyCode />
-        </ToastNotificationProvider>
-      </PopupAlertContextProvider>
-    </Suspense>
+    element: (
+      <Suspense fallback={<LoadingResource />}>
+        <PopupAlertContextProvider>
+          <ToastNotificationProvider>
+            <CihuyCode />
+          </ToastNotificationProvider>
+        </PopupAlertContextProvider>
+      </Suspense>
+    )
   }
 ])
 

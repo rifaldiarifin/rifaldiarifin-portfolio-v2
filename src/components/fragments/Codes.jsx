@@ -1,22 +1,24 @@
-import { forwardRef } from "react"
-import { predictClass } from "../../utils/predictClass"
+import { forwardRef } from 'react'
+import { predictClass } from '../../utils/predictClass'
 
 // eslint-disable-next-line react/display-name
-export const Codes = forwardRef(({ children, disabled = false, line = '1', frame = null, renderStatus = false, renderTime = 0 }, ref) => {
-  return (
-    <div className='codes' ref={ref}>
-      <div className={`write-code${predictClass(() => disabled, 'disabled')}`} data-numberline={line}>
-        {children}
-        {frame && renderStatus && <span className="rendercode-notif">Rendered time: {renderTime}ms</span>}
+export const Codes = forwardRef(
+  ({ children, disabled = false, line = '1', frame = null, renderStatus = false, renderTime = 0 }, ref) => {
+    return (
+      <div className="codes" ref={ref}>
+        <div className={`write-code${predictClass(() => disabled, 'disabled')}`} data-numberline={line}>
+          {children}
+          {frame && renderStatus && <span className="rendercode-notif">Rendered time: {renderTime}ms</span>}
+        </div>
+        {frame && (
+          <div className="display-frame wait">
+            {renderStatus ? <>{frame}</> : <span className="rendercode-progress">Render Component</span>}
+          </div>
+        )}
       </div>
-      {frame && <div className="display-frame wait">
-        {renderStatus ?
-          <>{frame}</>
-          : <span className="rendercode-progress">Render Component</span>}
-      </div>}
-    </div>
-  )
-})
+    )
+  }
+)
 export const Space = ({ x = '' }) => {
   return <span className={`spacing${x}`}></span>
 }

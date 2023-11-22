@@ -25,7 +25,6 @@ const useCihuyTerm = ({ cihuyTermRef }) => {
   const [inputCarretPosition, setInputCarretPosition] = useState(inputCommand.length)
   const timeIdleTerminal = useRef(null)
 
-
   const onChange = (event) => {
     setInputCommand(`${event.target.value}`)
     setInputCarretPosition(event.target.selectionStart)
@@ -115,9 +114,7 @@ const useCihuyTerm = ({ cihuyTermRef }) => {
           command: 'help',
           func: () => {
             state.splice(findExecute + 1, 0, {
-              command: (
-                cihuyCommands.help()
-              ),
+              command: cihuyCommands.help(),
               commandType: 'OUTPUT',
               execute: null,
               username,

@@ -284,7 +284,7 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
       setLoadDataStatus(true)
       setTimeout(() => {
         setPrepare(false)
-      }, 2300);
+      }, 2300)
       if (window.innerWidth < 520) {
         toast({
           title: 'We recomended open this on Desktop :D',

@@ -61,21 +61,28 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
   return (
     <>
       <Codes>
-        <Control val={'import'} /> <ControlName val={'Welcome'} /> <Control val={'from'} /> <String val={"'rifaldiarifin/Welcome'"} />
+        <Control val={'import'} /> <ControlName val={'Welcome'} /> <Control val={'from'} />{' '}
+        <String val={"'rifaldiarifin/Welcome'"} />
       </Codes>
-      <Codes line='2' />
-      <Codes line='3' disabled>
-        <Variable val={'const'} /> <VariableName val={'App'} /> <KeywordOperator val={'='} /> <Bracket val={'()'} vart="1" /> <Variable val={'=>'} /> <Bracket val={'{'} vart="1" />
+      <Codes line="2" />
+      <Codes line="3" disabled>
+        <Variable val={'const'} /> <VariableName val={'App'} /> <KeywordOperator val={'='} />{' '}
+        <Bracket val={'()'} vart="1" /> <Variable val={'=>'} /> <Bracket val={'{'} vart="1" />
       </Codes>
-      <Codes line='4' disabled>
-        {''}  <Control val={'return'} /> <Bracket val={'('} vart="2" />
+      <Codes line="4" disabled>
+        {''} <Control val={'return'} /> <Bracket val={'('} vart="2" />
       </Codes>
       {/* body */}
       <Codes line={'5'} disabled>
-        {''}    <BracketXml val={'<'} /><Variable val={'Welcome'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'Welcome'} />
+        <BracketXml val={'>'} />
       </Codes>
       {/* HERO SECTION ####################### */}
-      <Codes line={'6'} renderStatus={renderStatus.heroSection} renderTime={componentRenderData[0].renderTime}
+      <Codes
+        line={'6'}
+        renderStatus={renderStatus.heroSection}
+        renderTime={componentRenderData[0].renderTime}
         ref={heroSection}
         frame={
           <div id="herosection" className="render">
@@ -106,15 +113,22 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.HeroSection'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'Welcome.HeroSection'} />
+        <BracketXml val={'>'} />
       </Codes>
 
       <Codes line={'7'} disabled>
-        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.HeroSection'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'Welcome.HeroSection'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'8'} />
       {/* ABOUT ####################### */}
-      <Codes line={'9'} renderStatus={renderStatus.about} renderTime={componentRenderData[1].renderTime}
+      <Codes
+        line={'9'}
+        renderStatus={renderStatus.about}
+        renderTime={componentRenderData[1].renderTime}
         ref={about}
         frame={
           <div id="about" className="render dual-content">
@@ -148,14 +162,21 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.About'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'Welcome.About'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'10'} disabled>
-        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.About'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'Welcome.About'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'11'} />
       {/* MY SKILLS ####################### */}
-      <Codes line={'12'} renderStatus={renderStatus.myskills} renderTime={componentRenderData[2].renderTime}
+      <Codes
+        line={'12'}
+        renderStatus={renderStatus.myskills}
+        renderTime={componentRenderData[2].renderTime}
         ref={myskills}
         frame={
           <div id="myskills" className="render">
@@ -205,14 +226,21 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.MySkills'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'Welcome.MySkills'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'13'} disabled>
-        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.MySkills'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'Welcome.MySkills'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'14'} />
       {/* PROJECTS ####################### */}
-      <Codes line={'15'} renderStatus={renderStatus.projects} renderTime={componentRenderData[3].renderTime}
+      <Codes
+        line={'15'}
+        renderStatus={renderStatus.projects}
+        renderTime={componentRenderData[3].renderTime}
         ref={projects}
         frame={
           <div id="projects" className="render">
@@ -275,14 +303,21 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.Projects'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'Welcome.Projects'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'16'} disabled>
-        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.Projects'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'Welcome.Projects'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'17'} />
       {/* CONTACT ####################### */}
-      <Codes line={'18'} renderStatus={renderStatus.contact} renderTime={componentRenderData[4].renderTime}
+      <Codes
+        line={'18'}
+        renderStatus={renderStatus.contact}
+        renderTime={componentRenderData[4].renderTime}
         ref={contact}
         frame={
           <div id="contact" className="render">
@@ -307,17 +342,23 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.Contact'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'Welcome.Contact'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'19'} disabled>
-        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.Contact'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'Welcome.Contact'} />
+        <BracketXml val={'>'} />
       </Codes>
       <Codes line={'20'} disabled>
-        {''}    <BracketXml val={'</'} /><Variable val={'Welcome'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'Welcome'} />
+        <BracketXml val={'>'} />
       </Codes>
       {/* ---- */}
       <Codes line={'21'} disabled>
-        {''}  <Bracket val={')'} vart="2" />
+        {''} <Bracket val={')'} vart="2" />
       </Codes>
       <Codes line={'22'} disabled>
         <Bracket val={'}'} vart="1" />

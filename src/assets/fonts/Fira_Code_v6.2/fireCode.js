@@ -11,4 +11,4 @@ import('woff2/FiraCode-SemiBold.woff2')
 import('woff/FiraCode-SemiBold.woff')
 
 import('woff2/FiraCode-Bold.woff2')
-import('woff/FiraCode-Bold.woff')   
+import('woff/FiraCode-Bold.woff')

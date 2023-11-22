@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Fira Code';
   src:
-  local('Fira Code'),
-  url('woff2/FiraCode-Light.woff2') format('woff2');
+    local('Fira Code'),
+    url('woff2/FiraCode-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,8 @@
 @font-face {
   font-family: 'Fira Code';
   src:
-  local('Fira Code'),
-  url('woff2/FiraCode-Regular.woff2') format('woff2');
+    local('Fira Code'),
+    url('woff2/FiraCode-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,8 +21,8 @@
 @font-face {
   font-family: 'Fira Code';
   src:
-  local('Fira Code'),
-  url('woff2/FiraCode-Medium.woff2') format('woff2');
+    local('Fira Code'),
+    url('woff2/FiraCode-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -31,8 +31,8 @@
 @font-face {
   font-family: 'Fira Code';
   src:
-  local('Fira Code'),
-  url('woff2/FiraCode-SemiBold.woff2') format('woff2');
+    local('Fira Code'),
+    url('woff2/FiraCode-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -41,8 +41,8 @@
 @font-face {
   font-family: 'Fira Code';
   src:
-  local('Fira Code'),
-  url('woff2/FiraCode-Bold.woff2') format('woff2');
+    local('Fira Code'),
+    url('woff2/FiraCode-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

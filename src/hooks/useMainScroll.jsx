@@ -27,7 +27,7 @@ const useMainScrollTo = ({ refs, editorBody, currentlyOpen }) => {
       refs[3].ref.current.children[1].children[0].children[2],
       refs[3].ref.current.children[1].children[1].children[0],
       refs[3].ref.current.children[1].children[1].children[1],
-      refs[4].ref.current.children[0],
+      refs[4].ref.current.children[0]
     ]
     const getOffsetTop = (component) => {
       let offsetTop = 0
@@ -43,17 +43,17 @@ const useMainScrollTo = ({ refs, editorBody, currentlyOpen }) => {
     }
     const scrollMainHandler = () => {
       if (currentlyOpen.name !== 'main.jsx' && checkRenderStatus()) return
-      revealComponents.map(component => {
+      revealComponents.map((component) => {
         const scrollScreen = editorLayoutBody.scrollTop + editorLayoutBody.clientHeight
         if (scrollScreen > getOffsetTop(component) + 200) {
-          if(!component.classList.contains('reveal')) component.classList.add('reveal')
+          if (!component.classList.contains('reveal')) component.classList.add('reveal')
         }
       })
     }
     if (editorLayoutBody) {
       setTimeout(() => {
         scrollMainHandler()
-      }, 20);
+      }, 20)
       editorLayoutBody.addEventListener('scroll', scrollMainHandler)
       return () => editorLayoutBody.removeEventListener('scroll', scrollMainHandler)
     }
@@ -63,13 +63,13 @@ const useMainScrollTo = ({ refs, editorBody, currentlyOpen }) => {
     if (!ref.current) {
       for (let x = 0; x < refs.length; x++) if (!refs[x]?.renderTime) return
       const total = refs.reduce((prev, curr) => {
-        return prev = prev + curr.renderTime
+        return (prev = prev + curr.renderTime)
       }, 0)
 
       setTimeout(() => {
         setRenderStatus({ time: total / refs.length, status: true })
-      }, total / refs.length);
-      return () => ref.current = true
+      }, total / refs.length)
+      return () => (ref.current = true)
     }
   }, [refs])
 

@@ -6096,22 +6096,22 @@ h1.markdown.heading {
 }
 
 .alert-window.success {
-    --alert-icon: url('../assets/icons8/alert/success.png');
+    --alert-icon: url('./assets/icons8/alert/success.png');
     --alert-col: var(--success-color);
 }
 
 .alert-window.warning {
-    --alert-icon: url('../assets/icons8/alert/warning.png');
+    --alert-icon: url('./assets/icons8/alert/warning.png');
     --alert-col: var(--warning-color);
 }
 
 .alert-window.danger {
-    --alert-icon: url('../assets/icons8/alert/error.png');
+    --alert-icon: url('./assets/icons8/alert/error.png');
     --alert-col: var(--danger-color);
 }
 
 .alert-window.info {
-    --alert-icon: url('../assets/icons8/alert/info.png');
+    --alert-icon: url('./assets/icons8/alert/info.png');
     --alert-col: var(--info-color);
 }
 

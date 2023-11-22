@@ -61,13 +61,18 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
   return (
     <>
       <Codes>
-        {''}<Control val={'import'} /> <ControlName val={'React'} /> <Control val={'from'} /> <String val={"'react'"} />
+        {''}
+        <Control val={'import'} /> <ControlName val={'React'} /> <Control val={'from'} /> <String val={"'react'"} />
       </Codes>
       <Codes line={'2'}>
-        {''}<Control val={'import'} /> <ControlName val={'ReactDOM'} /> <Control val={'from'} /> <String val={"'react-dom/client'"} />
+        {''}
+        <Control val={'import'} /> <ControlName val={'ReactDOM'} /> <Control val={'from'} />{' '}
+        <String val={"'react-dom/client'"} />
       </Codes>
       <Codes line={'3'}>
-        {''}<Control val={'import'} /> <ControlName val={'App'} /> <Control val={'from'} /> <String val={"'./pages/App.jsx'"} />
+        {''}
+        <Control val={'import'} /> <ControlName val={'App'} /> <Control val={'from'} />{' '}
+        <String val={"'./pages/App.jsx'"} />
       </Codes>
       <Codes line={'4'} />
       <Codes line={'5'} disabled>
@@ -90,16 +95,21 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
       {/* body */}
 
       <Codes line={'7'} disabled>
-        {''}  <BracketXml val={'<'} /><Variable val={'React.StrictMode'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'<'} />
+        <Variable val={'React.StrictMode'} />
+        <BracketXml val={'>'} />
       </Codes>
 
       <div className="codes app">
         <div className="write-code" data-numberline="8">
-          {'    '}<BracketXml val={'<'} /><Variable val={'App'} /><BracketXml val={'/>'} />
+          {'    '}
+          <BracketXml val={'<'} />
+          <Variable val={'App'} />
+          <BracketXml val={'/>'} />
           {renderStatus.status && <span className="rendercode-notif">Rendered time: {renderStatus.time}ms</span>}
         </div>
         <div className="display-frame wait">
-          {renderStatus.status ?
+          {renderStatus.status ? (
             <>
               <div id="herosection" className="render" ref={heroSection}>
                 <div className="box">
@@ -133,8 +143,8 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
                     Hi there, My name is Rifaldi Arifin, I&apos;m a Web Developer with over 2 years of experience.
                     <br></br>
                     <br></br>I am very interested in the world of programming, starting with a simple website. and now
-                    creating user-friendly responsive websites, modern websites, single-page applications (SPA), animations,
-                    and more.
+                    creating user-friendly responsive websites, modern websites, single-page applications (SPA),
+                    animations, and more.
                     <br></br>
                     <br></br>I started learning programming starting in 2021, I learned programming on my own with the
                     intention and determination to be able to learn many things.
@@ -262,8 +272,8 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
                 <div className="box">
                   <h2>Get In Touch</h2>
                   <p>
-                    I am currently open for work, and my inbox is always open, whatever your question is, I will definitely
-                    respond as soon as possible for you.
+                    I am currently open for work, and my inbox is always open, whatever your question is, I will
+                    definitely respond as soon as possible for you.
                   </p>
                   <p className="mrgn-t-20">How about we start with...</p>
                   <Button
@@ -279,16 +289,21 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
                 </div>
               </div>
             </>
-            : <span className="rendercode-progress">Render Component</span>}
+          ) : (
+            <span className="rendercode-progress">Render Component</span>
+          )}
         </div>
       </div>
 
       <Codes line={'9'} disabled>
-        {''}  <BracketXml val={'</'} /><Variable val={'React.StrictMode'} /><BracketXml val={'>'} />
+        {''} <BracketXml val={'</'} />
+        <Variable val={'React.StrictMode'} />
+        <BracketXml val={'>'} />
       </Codes>
       {/* ---- */}
       <Codes line={'10'} disabled>
-        {''}<Bracket val={')'} />
+        {''}
+        <Bracket val={')'} />
       </Codes>
     </>
   )

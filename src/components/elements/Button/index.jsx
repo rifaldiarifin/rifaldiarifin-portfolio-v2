@@ -5,7 +5,7 @@ const Button = ({
   type = 'button',
   to = '/',
   id = undefined,
-  onClick = () => { },
+  onClick = () => {},
   style = undefined,
   color = 'default',
   disabled = false,
@@ -25,8 +25,9 @@ const Button = ({
       return (
         <Link
           to={to}
-          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${disabled ? ' disabled' : ''
-            }`}
+          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
+            disabled ? ' disabled' : ''
+          }`}
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}
@@ -45,8 +46,9 @@ const Button = ({
       return (
         <a
           href={to}
-          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${disabled ? ' disabled' : ''
-            }`}
+          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
+            disabled ? ' disabled' : ''
+          }`}
           target={allowNewTab ? '_blank' : null}
           id={id}
           onClick={(e) => onClick(e)}
@@ -68,8 +70,9 @@ const Button = ({
       return (
         <button
           type={type}
-          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${disabled ? ' disabled' : ''
-            }`}
+          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
+            disabled ? ' disabled' : ''
+          }`}
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}

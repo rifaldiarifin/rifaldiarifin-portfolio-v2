@@ -41,7 +41,6 @@ const Readme = React.lazy(() => import('./readme.jsx'))
 const Page404 = React.lazy(() => import('./page404.jsx'))
 const Extension = React.lazy(() => import('./extension.jsx'))
 
-
 const CihuyCode = () => {
   useDocumentTitle('Portfolio')
   const titleBarRef = useRef(null)
@@ -353,7 +352,11 @@ inspired by Visual Studio Code App`,
                 isActive={sidebarReverse ? primarySidebar.primaryBar : secondarySidebar}
                 onClick={sidebarReverse ? togglePrimarySidebar : toggleSecondarySidebar}
               />
-              <CiTitleBar.Btnbar icon={'dashboard-layout'} onClick={toggleCustomizeLayout} ariaLabel="Toggle customize layout" />
+              <CiTitleBar.Btnbar
+                icon={'dashboard-layout'}
+                onClick={toggleCustomizeLayout}
+                ariaLabel="Toggle customize layout"
+              />
             </>
           }
         />
@@ -408,7 +411,11 @@ inspired by Visual Studio Code App`,
                 ariaLabel="Toggle Settings"
                 dpList={
                   <>
-                    <DynamicDropdown.Li name={'Command Pallete...'} callback={toggleCommandPallete} moreClass={'btn-searchpopup'} />
+                    <DynamicDropdown.Li
+                      name={'Command Pallete...'}
+                      callback={toggleCommandPallete}
+                      moreClass={'btn-searchpopup'}
+                    />
                     <DynamicDropdown.Separator />
                     <DynamicDropdown
                       button={<DynamicDropdown.DyGroup name={'Profiles (Default)'} />}
@@ -500,8 +507,8 @@ inspired by Visual Studio Code App`,
                     {searchInput.length > 0 && searchResult.length > 0
                       ? `${searchResult.length} result`
                       : searchInput.length > 0 && searchResult.length === 0
-                        ? 'No result found.'
-                        : ''}
+                      ? 'No result found.'
+                      : ''}
                   </p>
                   {searchResult &&
                     searchResult.map((file, index) => (
@@ -566,7 +573,9 @@ inspired by Visual Studio Code App`,
           btnOptions={
             <>
               <DynamicDropdown
-                button={<BtnIcon icon="more" iconStyle={'filled'} iconSize="16px" ariaLabel={'Toggle options editor'} />}
+                button={
+                  <BtnIcon icon="more" iconStyle={'filled'} iconSize="16px" ariaLabel={'Toggle options editor'} />
+                }
                 position={'bottom-1'}
               >
                 <DynamicDropdown.Li
@@ -579,12 +588,17 @@ inspired by Visual Studio Code App`,
               </DynamicDropdown>
             </>
           }
-          directory={<>{!isLoading && <CiEditorLayout.Directory directory={editorLayout.currentlyOpen?.directory} />}</>}
+          directory={
+            <>{!isLoading && <CiEditorLayout.Directory directory={editorLayout.currentlyOpen?.directory} />}</>
+          }
         >
-          <Suspense fallback={<span className='loader'></span>}>
+          <Suspense fallback={<span className="loader"></span>}>
             <Routes>
               <Route path="/" element={<MainFile currentlyOpen={editorLayout.currentlyOpen} ref={editorBody} />} />
-              <Route path="/welcome" element={<Welcome currentlyOpen={editorLayout.currentlyOpen} ref={editorBody} />} />
+              <Route
+                path="/welcome"
+                element={<Welcome currentlyOpen={editorLayout.currentlyOpen} ref={editorBody} />}
+              />
               <Route path="/readme" element={<Readme />} />
               <Route
                 path="/extension/:publisher/:extensionName"
@@ -606,9 +620,24 @@ inspired by Visual Studio Code App`,
         <CiPanel
           menuBar={
             <>
-              <CiPanel.Menubar name={'PROBLEMS'} isActive={panel.navindex[0]} onClick={() => togglePanelNavPage(0)} ariaLabel={'Toggle Problems'} />
-              <CiPanel.Menubar name={'TERMINAL'} isActive={panel.navindex[1]} onClick={() => togglePanelNavPage(1)} ariaLabel={'Toggle Terminal'} />
-              <CiPanel.Menubar name={'PORTS'} isActive={panel.navindex[2]} onClick={() => togglePanelNavPage(2)} ariaLabel={'Toggle Ports'} />
+              <CiPanel.Menubar
+                name={'PROBLEMS'}
+                isActive={panel.navindex[0]}
+                onClick={() => togglePanelNavPage(0)}
+                ariaLabel={'Toggle Problems'}
+              />
+              <CiPanel.Menubar
+                name={'TERMINAL'}
+                isActive={panel.navindex[1]}
+                onClick={() => togglePanelNavPage(1)}
+                ariaLabel={'Toggle Terminal'}
+              />
+              <CiPanel.Menubar
+                name={'PORTS'}
+                isActive={panel.navindex[2]}
+                onClick={() => togglePanelNavPage(2)}
+                ariaLabel={'Toggle Ports'}
+              />
             </>
           }
           onClose={togglePanel}
@@ -624,7 +653,7 @@ inspired by Visual Studio Code App`,
           <div className={`panel-navpage ports${predictClass(() => panel.navindex[2])}`}>
             <div className="box dsp-flex fl-colm gap-14 mrgn-t-10">
               <p>No forwared ports. Forward a port to access your locally running services over internet.</p>
-              <Button style={'fill'} color="default" height={'32px'} onClick={forwardPort} ariaLabel='Forward Port'>
+              <Button style={'fill'} color="default" height={'32px'} onClick={forwardPort} ariaLabel="Forward Port">
                 Forward a Port
               </Button>
             </div>
@@ -639,7 +668,12 @@ inspired by Visual Studio Code App`,
           isActive={searchPopup.isActive}
           toolButton={
             searchPopup.actionName === 'CUSTOMIZE_LAYOUT' && (
-              <CiSearchPopup.btnTool icon={'reboot'} onClick={resetView} moreClass={'prim-click secn-click'} ariaLabel={'reset layout'} />
+              <CiSearchPopup.btnTool
+                icon={'reboot'}
+                onClick={resetView}
+                moreClass={'prim-click secn-click'}
+                ariaLabel={'reset layout'}
+              />
             )
           }
           onClose={closeSearch}
@@ -739,14 +773,14 @@ inspired by Visual Studio Code App`,
             <>
               {editorLayout.openedFiles
                 ? editorLayout.openedFiles.map((file) => (
-                  <CiSearchPopup.Li
-                    key={file.uuid}
-                    name={file.name}
-                    closeAfterClick={closeSearch}
-                    isChecked={editorLayout.currentlyOpen?.uuid === file.uuid}
-                    callback={() => handleSelected(file)}
-                  />
-                ))
+                    <CiSearchPopup.Li
+                      key={file.uuid}
+                      name={file.name}
+                      closeAfterClick={closeSearch}
+                      isChecked={editorLayout.currentlyOpen?.uuid === file.uuid}
+                      callback={() => handleSelected(file)}
+                    />
+                  ))
                 : null}
             </>
           ) : searchPopup.actionName === 'LIST_OF_COLOR_THEME' ? (

@@ -55,7 +55,7 @@ const searchPopupSlice = createSlice({
       state.data.label = 'Opened Editor'
     },
     openListOfColorTheme: (state, action) => {
-      if(typeof action.payload !== 'string') throw new Error('Menu label must be a string!')
+      if (typeof action.payload !== 'string') throw new Error('Menu label must be a string!')
       state.data.actionName = 'LIST_OF_COLOR_THEME'
       state.data.allowLabel = true
       state.data.allowSearch = false
