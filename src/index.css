@@ -4521,51 +4521,61 @@ li {
 }
 
 .codes .spacing {
+    display: inline-block;
     min-width: calc(var(--space-width) * 1);
     width: calc(var(--space-width) * 1);
 }
 
 .codes .spacing2 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 2);
     width: calc(var(--space-width) * 2);
 }
 
 .codes .spacing3 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 3);
     width: calc(var(--space-width) * 3);
 }
 
 .codes .spacing4 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 4);
     width: calc(var(--space-width) * 4);
 }
 
 .codes .spacing5 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 5);
     width: calc(var(--space-width) * 5);
 }
 
 .codes .spacing6 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 6);
     width: calc(var(--space-width) * 6);
 }
 
 .codes .spacing7 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 7);
     width: calc(var(--space-width) * 7);
 }
 
 .codes .spacing8 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 8);
     width: calc(var(--space-width) * 8);
 }
 
 .codes .spacing9 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 9);
     width: calc(var(--space-width) * 9);
 }
 
 .codes .spacing10 {
+    display: inline-block;
     min-width: calc(var(--space-width) * 10);
     width: calc(var(--space-width) * 10);
 }
@@ -4575,7 +4585,7 @@ li {
 }
 
 .codes {
-    --space-width: 8px;
+    --space-width: 9px;
     width: 100%;
     position: relative;
     font-family: var(--second-font);
@@ -4608,10 +4618,8 @@ li {
 }
 
 .codes .write-code::before {
-    content: '';
+    content: attr(data-spaceline);
     position: relative;
-    width: 1px;
-    display: inline-block;
 }
 
 .codes .write-code.disabled>span {
@@ -5525,7 +5533,7 @@ li {
 }
 
 .codes span.rendercode-progress {
-    margin: 10px 0 10px 70px;
+    margin: 10px 0 10px calc(var(--space-width) * 6);
     display: flex;
     align-items: center;
     opacity: 1 !important;

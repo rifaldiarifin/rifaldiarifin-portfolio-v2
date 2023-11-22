@@ -8,7 +8,8 @@ import {
   KeywordOperator,
   Bracket,
   ControlName,
-  Codes
+  Codes,
+  Bl
 } from '../components/fragments/Codes'
 import Button from '../components/Elements/Button'
 import useScrollTo from '../hooks/useMainScroll'
@@ -90,12 +91,14 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
       {/* body */}
 
       <Codes line={'7'} disabled>
-        {'  '}<BracketXml val={'<'} /><Variable val={'React.StrictMode'} /><BracketXml val={'>'} />
+        <Bl x='2' />
+        <BracketXml val={'<'} /><Variable val={'React.StrictMode'} /><BracketXml val={'>'} />
       </Codes>
 
       <div className="codes app">
         <div className="write-code" data-numberline="8">
-          {'    '}<BracketXml val={'<'} /><Variable val={'App'} /><BracketXml val={'/>'} />
+          <Bl x='4' />
+          <BracketXml val={'<'} /><Variable val={'App'} /><BracketXml val={'/>'} />
           {renderStatus.status && <span className="rendercode-notif">Rendered time: {renderStatus.time}ms</span>}
         </div>
         <div className="display-frame wait">
@@ -286,7 +289,8 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
       </div>
 
       <Codes line={'9'} disabled>
-        {'  '}<BracketXml val={'</'} />
+        <Bl x='2' />
+        <BracketXml val={'</'} />
         <Variable val={'React.StrictMode'} />
         <BracketXml val={'>'} />
       </Codes>

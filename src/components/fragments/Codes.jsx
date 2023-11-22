@@ -3,10 +3,14 @@ import { predictClass } from '../../utils/predictClass'
 
 // eslint-disable-next-line react/display-name
 export const Codes = forwardRef(
-  ({ children, disabled = false, line = '1', frame = null, renderStatus = false, renderTime = 0 }, ref) => {
+  ({ children, disabled = false, line = '1', space = '', frame = null, renderStatus = false, renderTime = 0 }, ref) => {
     return (
       <div className="codes" ref={ref}>
-        <div className={`write-code${predictClass(() => disabled, 'disabled')}`} data-numberline={line}>
+        <div
+          className={`write-code${predictClass(() => disabled, 'disabled')}`}
+          data-numberline={line}
+          data-spaceline={space}
+        >
           {children}
           {frame && renderStatus && <span className="rendercode-notif">Rendered time: {renderTime}ms</span>}
         </div>
@@ -19,7 +23,7 @@ export const Codes = forwardRef(
     )
   }
 )
-export const Space = ({ x = '' }) => {
+export const Bl = ({ x = '' }) => {
   return <span className={`spacing${x}`}></span>
 }
 export const Variable = ({ val }) => {
