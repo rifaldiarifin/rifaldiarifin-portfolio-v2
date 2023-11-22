@@ -47,34 +47,48 @@ const Readme = () => {
       </Codes>
       <Codes line={'18'} />
       <Codes line={'19'}>
-        <Colors val={'- Javascript (ES6+)'} />{'\n'}
-        <Colors val={'- Typescript'} />{'\n'}
-        <Colors val={'- React'} />{'\n'}            
-        <Colors val={'- Node.js'} />{'\n'}
-        <Colors val={'- Express'} />{'\n'}          
-        <Colors val={'- MongoDB'} />{'\n'}
-        <Colors val={'- Redux'} />{'\n'}            
-        <Colors val={'- Jest'} />{'\n'}
+        <Colors val={'- Javascript (ES6+)'} />
       </Codes>
-      <Codes line={'20'} />
-      <Codes line={'21'} />
+      <Codes line={'20'}>
+        <Colors val={'- Typescript'} />
+      </Codes>
+      <Codes line={'21'}>
+        <Colors val={'- React'} />
+      </Codes>
       <Codes line={'22'}>
-        <Colors val={'###'} /> <Variable val={'Wanna see more?'} />
+        <Colors val={'- Node.js'} />
       </Codes>
-      <Codes line={'23'} />
-      <Codes line={'24'}><Variable val={'['} /><Control val={'rifaldiarifin.github.com'} /><Variable val={']'} /><Variable val={'('} /><String val={'"https://rifaldiarifin.github.com"'} /><Variable val={')'} />
+      <Codes line={'23'}>
+        <Colors val={'- Express'} />
       </Codes>
-      <Codes line={'25'} />
-      <Codes line={'26'} />
-      <Codes line={'27'}>
-        <Colors val={'###'} /> <Variable val={'Credits'} />
+      <Codes line={'24'}>
+        <Colors val={'- MongoDB'} />
       </Codes>
+      <Codes line={'25'}>
+        <Colors val={'- Redux'} />
+      </Codes>
+      <Codes line={'26'}>
+        <Colors val={'- Jest'} />
+      </Codes>
+      <Codes line={'27'} />
       <Codes line={'28'} />
       <Codes line={'29'}>
-        <Colors val={`The concept of this portfolio depicts the screen contents of a developer's work, what it looks like on their screen at work.`}/>
+        <Colors val={'###'} /> <Variable val={'Wanna see more?'} />
       </Codes>
       <Codes line={'30'} />
-      <Codes line={'31'}>
+      <Codes line={'31'}><Variable val={'['} /><Control val={'rifaldiarifin.github.com'} /><Variable val={']'} /><Variable val={'('} /><String val={'"https://rifaldiarifin.github.com"'} /><Variable val={')'} />
+      </Codes>
+      <Codes line={'32'} />
+      <Codes line={'33'} />
+      <Codes line={'34'}>
+        <Colors val={'###'} /> <Variable val={'Credits'} />
+      </Codes>
+      <Codes line={'35'} />
+      <Codes line={'36'}>
+        <Colors val={`The concept of this portfolio depicts the screen contents of a developer's work, what it looks like on their screen at work.`} />
+      </Codes>
+      <Codes line={'37'} />
+      <Codes line={'38'}>
         <Colors val={'The portfolio UI is inspired by'} /> <Variable val={'['} />
         <Control val={'Visual Studio Code'} />
         <Variable val={']'} />
@@ -94,8 +108,8 @@ const Readme = () => {
         />
         <Variable val={')'} /> <Colors val={'app'} />
       </Codes>
-      <Codes line={'32'} />
-      <Codes line={'33'}>
+      <Codes line={'39'} />
+      <Codes line={'40'}>
         <Colors val={'Icon by'} /> <Variable val={'['} />
         <Control val={'Icons8'} />
         <Variable val={']'} />
@@ -109,8 +123,8 @@ const Readme = () => {
         />
         <Variable val={')'} />
       </Codes>
-      <Codes line={'34'} />
-      <Codes line={'35'}>
+      <Codes line={'41'} />
+      <Codes line={'42'}>
         <Colors val={'My favorite theme extensions, also applied in my portfolio'} /> <Variable val={'['} />
         <Control val={'2077 theme'} />
         <Variable val={']'} />
@@ -130,11 +144,11 @@ const Readme = () => {
         />
         <Variable val={')'} />
       </Codes>
-      <Codes line={'36'} />
-      <Codes line={'37'}>
+      <Codes line={'43'} />
+      <Codes line={'44'}>
         <Colors val={'**Enjoy! :D**'} />
       </Codes>
-      <Codes line={'38'} />
+      <Codes line={'45'} />
     </>
   )
 }
