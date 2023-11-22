@@ -24,16 +24,16 @@ I started learning programming starting in 2021, I learned programming on my own
 - Jest
 
 
-## > [rifaldiarifin.github.com]("https://rifaldiarifin.github.com")
+## > [rifaldiarifin.github.com](https://rifaldiarifin.github.com)
 
 ### Credits 📖
 
 The concept of this portfolio depicts the screen contents of a developer's work, what it looks like on their screen at work.
 
-The portfolio UI is inspired by [Visual Studio Code]("https://code.visualstudio.com") app
+The portfolio UI is inspired by [Visual Studio Code](https://code.visualstudio.com) app
 
-Icon by [Icons8]("https://icons8.com")
+Icon by [Icons8](https://icons8.com)
 
-My favorite theme extensions, also applied in my portfolio [2077 theme]("https://marketplace.visualstudio.com/items?itemName=Endormi.2077-theme")
+My favorite theme extensions, also applied in my portfolio [2077 theme](https://marketplace.visualstudio.com/items?itemName=Endormi.2077-theme)
 <br></br>
 **Enjoy! :D**
