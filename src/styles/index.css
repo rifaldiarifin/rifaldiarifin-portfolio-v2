@@ -1,8 +1,11 @@
+@import url('errorpage.css');
+@import url('loading-resource.css');
 @import url('cihuy-code.css');
 @import url('landing.css');
 @import url('page404.css');
 @import url('extension.css');
 @import url('terminal.css');
+@import url('testpage.css');
 @import url('markdown.css');
 @import url('dynamicDropdown.css');
 @import url('popupalert.css');
@@ -66,11 +69,10 @@
   --glassmorphism-top: 1px solid rgba(255, 255, 255, 0.8);
   --glassmorphism-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  --main-font: "Fira Code", sans-serif;
-  --second-font: "JetBrains Mono", sans-serif;
-  --third-font: "Poppins", sans-serif;
+  --main-font: "Fira Code", consolas, sans-serif;
+  --second-font: "JetBrains Mono", consolas, sans-serif;
   --fourth-font: "Segoe WPC","Segoe UI",SFUIText-Light,HelveticaNeue-Light,sans-serif,"Droid Sans Fallback";
-  --fifth-font: "Montserrat", sans-serif;
+  --third-font: "Montserrat", sans-serif;
 
   /* Letter spacing */
   --space-04: 0.4px;

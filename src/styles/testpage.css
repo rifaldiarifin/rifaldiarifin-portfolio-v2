@@ -1,0 +1,43 @@
+.testpage{
+    color: black;
+    font-family: var(--fourth-font);
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0 !important;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    animation: anim-testpage 1s var(--Cubic-Bezier1) both;
+    animation-delay: .4s;
+}
+@keyframes anim-testpage{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.testpage h1{
+    font-weight: 500;
+}
+.testpage p{
+    color: rgb(96, 96, 96);
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+.testpage button{
+    border: none;
+    background-color: #068AFC;
+    padding: 0 30px;
+    height: 40px;
+    color: whitesmoke;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    border-radius: 4px;
+}

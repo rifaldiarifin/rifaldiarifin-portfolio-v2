@@ -33,6 +33,7 @@
 }
 
 .btn span {
+  pointer-events: none;
   transition: var(--trns-02) ease;
 }
 
