@@ -1,0 +1,21 @@
+{
+  "name": "Rifaldi Arifin",
+  "short_name": "Rifaldi",
+  "icons": [
+    {
+      "src": "/img/logos/r/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/logos/r/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#8CA4F5",
+  "background_color": "#2D2D3C",
+  "display": "standalone"
+}
