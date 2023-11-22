@@ -73,22 +73,14 @@ const Readme = () => {
       <Codes line={'27'} />
       <Codes line={'28'} />
       <Codes line={'29'}>
-        <Colors val={'###'} /> <Variable val={'Wanna see more?'} />
-      </Codes>
-      <Codes line={'30'} />
-      <Codes line={'31'}><Variable val={'['} /><Control val={'rifaldiarifin.github.com'} /><Variable val={']'} /><Variable val={'('} /><String val={'"https://rifaldiarifin.github.com"'} /><Variable val={')'} />
-      </Codes>
-      <Codes line={'32'} />
-      <Codes line={'33'} />
-      <Codes line={'34'}>
         <Colors val={'###'} /> <Variable val={'Credits'} />
       </Codes>
-      <Codes line={'35'} />
-      <Codes line={'36'}>
+      <Codes line={'30'} />
+      <Codes line={'31'}>
         <Colors val={`The concept of this portfolio depicts the screen contents of a developer's work, what it looks like on their screen at work.`} />
       </Codes>
-      <Codes line={'37'} />
-      <Codes line={'38'}>
+      <Codes line={'32'} />
+      <Codes line={'33'}>
         <Colors val={'The portfolio UI is inspired by'} /> <Variable val={'['} />
         <Control val={'Visual Studio Code'} />
         <Variable val={']'} />
@@ -108,8 +100,8 @@ const Readme = () => {
         />
         <Variable val={')'} /> <Colors val={'app'} />
       </Codes>
-      <Codes line={'39'} />
-      <Codes line={'40'}>
+      <Codes line={'34'} />
+      <Codes line={'35'}>
         <Colors val={'Icon by'} /> <Variable val={'['} />
         <Control val={'Icons8'} />
         <Variable val={']'} />
@@ -123,8 +115,8 @@ const Readme = () => {
         />
         <Variable val={')'} />
       </Codes>
-      <Codes line={'41'} />
-      <Codes line={'42'}>
+      <Codes line={'36'} />
+      <Codes line={'37'}>
         <Colors val={'My favorite theme extensions, also applied in my portfolio'} /> <Variable val={'['} />
         <Control val={'2077 theme'} />
         <Variable val={']'} />
@@ -144,11 +136,11 @@ const Readme = () => {
         />
         <Variable val={')'} />
       </Codes>
-      <Codes line={'43'} />
-      <Codes line={'44'}>
+      <Codes line={'38'} />
+      <Codes line={'39'}>
         <Colors val={'**Enjoy! :D**'} />
       </Codes>
-      <Codes line={'45'} />
+      <Codes line={'40'} />
     </>
   )
 }
