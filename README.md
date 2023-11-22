@@ -24,7 +24,7 @@ I started learning programming starting in 2021, I learned programming on my own
 - Jest
 
 
-## > [rifaldiarifin.github.com](https://rifaldiarifin.github.com)
+## > [rifaldiarifin.netlify.app](https://rifaldiarifin.netlify.app)
 
 ### Credits 📖
 
