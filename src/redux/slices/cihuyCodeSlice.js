@@ -9,7 +9,7 @@ const cihuySlice = createSlice({
       primarySidebar: {
         activityBar: true,
         primaryBar: true,
-        navindex: [true, false, false, false]
+        navindex: [true, false, false]
       },
       sidebarReverse: false,
       colorTheme: 'cihuy-code-dark',
@@ -23,7 +23,8 @@ const cihuySlice = createSlice({
       settingSync: true,
       editorLayout: {
         openedFiles: [],
-        currentlyOpen: null
+        currentlyOpen: null,
+        wordWrap: false
       }
     }
   },
@@ -33,6 +34,9 @@ const cihuySlice = createSlice({
     },
     setColorTheme: (state, action) => {
       state.data.colorTheme = action.payload
+    },
+    tgglWordWrap: (state) => {
+      state.data.editorLayout.wordWrap = !state.data.editorLayout.wordWrap
     },
     tgglSettingSync: (state) => {
       state.data.settingSync = !state.data.settingSync
@@ -134,6 +138,7 @@ export const {
   hndlSelected,
   setColorTheme,
   tgglSettingSync,
+  tgglWordWrap,
   tgglPanel,
   tgglPanelNavPage,
   tgglPrimNavPage,

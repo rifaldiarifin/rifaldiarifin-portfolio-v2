@@ -54,6 +54,14 @@ const searchPopupSlice = createSlice({
       state.data.isActive = true
       state.data.label = 'Opened Editor'
     },
+    openListOfColorTheme: (state, action) => {
+      if(typeof action.payload !== 'string') throw new Error('Menu label must be a string!')
+      state.data.actionName = 'LIST_OF_COLOR_THEME'
+      state.data.allowLabel = true
+      state.data.allowSearch = false
+      state.data.isActive = true
+      state.data.label = action.payload
+    },
     closeSearchPopup: (state) => {
       state.data.isActive = false
     }
@@ -67,6 +75,7 @@ export const {
   openCommandPallete,
   openOpenView,
   openSearchFile,
-  openColorTheme
+  openColorTheme,
+  openListOfColorTheme
 } = searchPopupSlice.actions
 export default searchPopupSlice.reducer
