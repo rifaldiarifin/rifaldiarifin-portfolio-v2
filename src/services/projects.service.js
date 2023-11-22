@@ -7,7 +7,7 @@ export default function getProjects() {
       description:
         'Remake project of an old Cafe CBN project. a Self-Service Kiosk Ordering (Single-Page Application), provide devices for customer satisfaction in ordering according to what they want, with easy-to-navigate interface, just touch, pay and get your order.',
       technologyUsed: ['React', 'Node.js', 'Firebase', 'Chart.js', 'Netlify'],
-      src: '/img/cafe-cbn-remake-overview.webp',
+      src: '/img/projects/cafe-cbn-remake-overview.webp',
       alt: 'Cafe CBN Remake',
       github: 'https://github.com/rifaldiarifin/cafe-cbn-remake',
       externalLink: 'https://cafecbn.netlify.app',
@@ -18,7 +18,7 @@ export default function getProjects() {
       title: 'Cafe CBN API',
       description: 'API data for Cafe CBN application',
       technologyUsed: ['Typescript', 'MongoDB', 'Express', 'Node.js', 'Jest', 'Vercel'],
-      src: '/img/cafe-cbn-api-overview.webp',
+      src: '/img/projects/cafe-cbn-api-overview.webp',
       alt: 'Cafe CBN API',
       github: 'https://github.com/rifaldiarifin/cafe-cbn-api',
       externalLink: null,
@@ -30,7 +30,7 @@ export default function getProjects() {
       description:
         'Reports and handles all community complaints, to realize good communication between communities. (Single-Page Application)',
       technologyUsed: ['EJS', 'Node.js', 'Express', 'MySQL'],
-      src: '/img/lapormasyarakat_overview.webp',
+      src: '/img/projects/lapormasyarakat_overview.webp',
       alt: 'laporMasyarakat',
       github: 'https://github.com/rifaldiarifin/lapor-masyarakat',
       externalLink: null,

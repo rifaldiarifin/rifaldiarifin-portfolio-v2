@@ -109,8 +109,6 @@ export function rawExplorer() {
     ]
   }
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(rawExplorer)
-    }, 1000)
+    resolve(rawExplorer)
   })
 }
