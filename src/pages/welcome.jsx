@@ -1,14 +1,14 @@
-import { useRef, useState } from 'react'
+import { forwardRef, useRef, useState } from 'react'
 import {
   BracketXml,
   Control,
-  Space,
   String,
   Variable,
   VariableName,
   KeywordOperator,
   Bracket,
-  ControlName
+  ControlName,
+  Codes
 } from '../components/fragments/Codes'
 import Button from '../components/Elements/Button'
 import useScrollTo from '../hooks/useLandingScrollTo'
@@ -18,81 +18,66 @@ import ShowcaseGroup from '../components/fragments/ShowcaseGroup'
 import ShowcaseListGroup from '../components/fragments/ShowcaseListGroup'
 import useGetProjects from '../hooks/useGetProjects'
 
-const Welcome = () => {
+// eslint-disable-next-line react/display-name
+const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
   const { bestProjects, otherProjects } = useGetProjects()
   const [moreSkills, setMoreSkills] = useState(false)
   const [moreShowcase, setMoreShowcase] = useState(false)
   const toggleMoreSkills = () => setMoreSkills(!moreSkills)
   const toggleMoreShowcase = () => setMoreShowcase(!moreShowcase)
+  const heroSection = useRef(null)
   const about = useRef(null)
   const myskills = useRef(null)
   const projects = useRef(null)
   const contact = useRef(null)
-  useScrollTo({
-    about,
-    contact,
-    myskills,
-    projects
-  })
+  const componentRenderData = [
+    {
+      name: 'heroSection',
+      renderTime: 480,
+      ref: heroSection
+    },
+    {
+      name: 'about',
+      renderTime: 500,
+      ref: about
+    },
+    {
+      name: 'myskills',
+      renderTime: 520,
+      ref: myskills
+    },
+    {
+      name: 'projects',
+      renderTime: 530,
+      ref: projects
+    },
+    {
+      name: 'contact',
+      renderTime: 550,
+      ref: contact
+    }
+  ]
+  const { renderStatus } = useScrollTo({ refs: componentRenderData, currentlyOpen, editorBody })
   return (
     <>
-      <div className="codes">
-        <div className="write-code" data-numberline="1">
-          <Control val={'import'} />
-          <Space />
-          <ControlName val={'Welcome'} />
-          <Space />
-          <Control val={'from'} />
-          <Space />
-          <String val={"'rifaldiarifin/Welcome'"} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="2"></div>
-      </div>
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="3">
-          <Variable val={'const'} />
-          <Space />
-          <VariableName val={'App'} />
-          <Space />
-          <KeywordOperator val={'='} />
-          <Space />
-          <Bracket val={'()'} vart="1" />
-          <Space />
-          <Variable val={'=>'} />
-          <Space />
-          <Bracket val={'{'} vart="1" />
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="4">
-          <Space x="2" />
-          <Control val={'return'} />
-          <Space />
-          <Bracket val={'('} vart="2" />
-        </div>
-      </div>
+      <Codes>
+        <Control val={'import'} /> <ControlName val={'Welcome'} /> <Control val={'from'} /> <String val={"'rifaldiarifin/Welcome'"} />
+      </Codes>
+      <Codes line='2' />
+      <Codes line='3' disabled>
+        <Variable val={'const'} /> <VariableName val={'App'} /> <KeywordOperator val={'='} /> <Bracket val={'()'} vart="1" /> <Variable val={'=>'} /> <Bracket val={'{'} vart="1" />
+      </Codes>
+      <Codes line='4' disabled>
+        {''}  <Control val={'return'} /> <Bracket val={'('} vart="2" />
+      </Codes>
       {/* body */}
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="5">
-          <Space x="4" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-
+      <Codes line={'5'} disabled>
+        {''}    <BracketXml val={'<'} /><Variable val={'Welcome'} /><BracketXml val={'>'} />
+      </Codes>
       {/* HERO SECTION ####################### */}
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="6">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.HeroSection'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
+      <Codes line={'6'} renderStatus={renderStatus.heroSection} renderTime={componentRenderData[0].renderTime}
+        ref={heroSection}
+        frame={
           <div id="herosection" className="render">
             <div className="box">
               <h1>
@@ -112,36 +97,26 @@ const Welcome = () => {
                   style={'regular'}
                   moreClass={'rounded10'}
                   width={'200px'}
+                  ariaLabel={'Mail to rifaldiarifinn'}
                 >
                   Contact
                 </Button>
-                {/* <Button color="default" style={'regular'} moreClass={'rounded10'} width={'200px'}>Download CV</Button> */}
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        }
+      >
+        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.HeroSection'} /><BracketXml val={'>'} />
+      </Codes>
 
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="7">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.HeroSection'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="8"></div>
-      </div>
+      <Codes line={'7'} disabled>
+        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.HeroSection'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'8'} />
       {/* ABOUT ####################### */}
-      <div className="codes" ref={about}>
-        <div className="write-code disabled" data-numberline="9">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.About'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
+      <Codes line={'9'} renderStatus={renderStatus.about} renderTime={componentRenderData[1].renderTime}
+        ref={about}
+        frame={
           <div id="about" className="render dual-content">
             <div className="box content1">
               <h2>About Me</h2>
@@ -159,7 +134,7 @@ const Welcome = () => {
             <div className="box dsp-flex align-itms-center justify-center content2">
               <div className="card-group-photo">
                 <div className="main-card">
-                  <LazyLoadImage src="/img/me-removebg.png" alt="Rifaldi Arifin" effect="opacity" />
+                  <LazyLoadImage src="/img/me-removebg.webp" alt="Rifaldi Arifin" effect="opacity" />
                   <div></div>
                   <div></div>
                   <div></div>
@@ -171,29 +146,18 @@ const Welcome = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="10">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.About'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="11"></div>
-      </div>
+        }
+      >
+        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.About'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'10'} disabled>
+        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.About'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'11'} />
       {/* MY SKILLS ####################### */}
-      <div className="codes" ref={myskills}>
-        <div className="write-code disabled" data-numberline="12">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.MySkills'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
+      <Codes line={'12'} renderStatus={renderStatus.myskills} renderTime={componentRenderData[2].renderTime}
+        ref={myskills}
+        frame={
           <div id="myskills" className="render">
             <div className="listboard">
               <h2>My skills in developing</h2>
@@ -239,29 +203,18 @@ const Welcome = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="13">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.MySkills'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="14"></div>
-      </div>
+        }
+      >
+        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.MySkills'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'13'} disabled>
+        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.MySkills'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'14'} />
       {/* PROJECTS ####################### */}
-      <div className="codes" ref={projects}>
-        <div className="write-code disabled" data-numberline="16">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.Projects'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
+      <Codes line={'15'} renderStatus={renderStatus.projects} renderTime={componentRenderData[3].renderTime}
+        ref={projects}
+        frame={
           <div id="projects" className="render">
             <h2>Projects i&apos;ve worked on </h2>
             <div className="box dsp-flex fl-colm gap-50">
@@ -320,29 +273,18 @@ const Welcome = () => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="17">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.Projects'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="18"></div>
-      </div>
+        }
+      >
+        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.Projects'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'16'} disabled>
+        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.Projects'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'17'} />
       {/* CONTACT ####################### */}
-      <div className="codes" ref={contact}>
-        <div className="write-code disabled" data-numberline="19">
-          <Space x="6" />
-          <BracketXml val={'<'} />
-          <Variable val={'Welcome.Contact'} />
-          <BracketXml val={'>'} />
-        </div>
-        <div className="display-frame">
+      <Codes line={'18'} renderStatus={renderStatus.contact} renderTime={componentRenderData[4].renderTime}
+        ref={contact}
+        frame={
           <div id="contact" className="render">
             <div className="box">
               <h2>Get In Touch</h2>
@@ -357,59 +299,35 @@ const Welcome = () => {
                 style={'regular'}
                 color="default"
                 moreClass={'rounded10'}
+                ariaLabel={'Mail to Rifaldi Arifin'}
               >
                 {'Say Hello :D'}
               </Button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="20">
-          <Space x="6" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome.Contact'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="21">
-          <Space x="4" />
-          <BracketXml val={'</'} />
-          <Variable val={'Welcome'} />
-          <BracketXml val={'>'} />
-        </div>
-      </div>
+        }
+      >
+        {''}      <BracketXml val={'<'} /><Variable val={'Welcome.Contact'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'19'} disabled>
+        {''}      <BracketXml val={'</'} /><Variable val={'Welcome.Contact'} /><BracketXml val={'>'} />
+      </Codes>
+      <Codes line={'20'} disabled>
+        {''}    <BracketXml val={'</'} /><Variable val={'Welcome'} /><BracketXml val={'>'} />
+      </Codes>
       {/* ---- */}
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="22">
-          <Space x="2" />
-          <Bracket val={')'} vart="2" />
-        </div>
-      </div>
-
-      <div className="codes">
-        <div className="write-code disabled" data-numberline="23">
-          <Bracket val={'}'} vart="1" />
-        </div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="24"></div>
-      </div>
-      <div className="codes">
-        <div className="write-code" data-numberline="25">
-          <Control val={'export'} />
-          <Space />
-          <ControlName val={'default'} />
-          <Space />
-          <VariableName val={'App'} />
-        </div>
-      </div>
+      <Codes line={'21'} disabled>
+        {''}  <Bracket val={')'} vart="2" />
+      </Codes>
+      <Codes line={'22'} disabled>
+        <Bracket val={'}'} vart="1" />
+      </Codes>
+      <Codes line={'23'} disabled />
+      <Codes line={'24'}>
+        <Control val={'export'} /> <Control val={'default'} /> <ControlName val={'App'} />
+      </Codes>
     </>
   )
-}
+})
 
 export default Welcome
