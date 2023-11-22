@@ -40,7 +40,7 @@ const NavPage = ({
   )
 }
 
-const BtnHead = ({ icon = 'more', disabled = false, onClick = () => {} }) => {
+const BtnHead = ({ icon = 'more', disabled = false, onClick = () => {}, ariaLabel = null }) => {
   return (
     <Button
       icon={icon}
@@ -53,6 +53,7 @@ const BtnHead = ({ icon = 'more', disabled = false, onClick = () => {} }) => {
       color="classic"
       onClick={onClick}
       disabled={disabled}
+      ariaLabel={ariaLabel}
     />
   )
 }

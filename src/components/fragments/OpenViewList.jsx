@@ -11,12 +11,7 @@ const OpenViewList = ({ togglePrimaryNavPage, togglePanelNavPage }) => {
         label={'Side Bar'}
       />
       <CiSearchPopup.Li moreClass="prim-click" callback={() => togglePrimaryNavPage(1, false)} name={'Search'} />
-      <CiSearchPopup.Li
-        moreClass="prim-click"
-        callback={() => togglePrimaryNavPage(2, false)}
-        name={'Source Control'}
-      />
-      <CiSearchPopup.Li moreClass="prim-click" callback={() => togglePrimaryNavPage(3, false)} name={'Extensions'} />
+      <CiSearchPopup.Li moreClass="prim-click" callback={() => togglePrimaryNavPage(2, false)} name={'Extensions'} />
       <CiSearchPopup.Separator />
       <CiSearchPopup.Li callback={() => togglePanelNavPage(0, false)} name={'Problems'} label={'Panel'} />
       <CiSearchPopup.Li callback={() => togglePanelNavPage(1, false)} name={'Terminal'} />

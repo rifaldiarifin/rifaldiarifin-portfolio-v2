@@ -21,7 +21,7 @@ const ExtensionLi = ({ icon, displayName, description, publisher, onClick }) => 
           {publisher}
         </div>
         <div className="options">
-          <Button icon={'settings gradient'} style={'fill'} color="classic" moreClass={'icon'} />
+          <Button icon={'settings gradient'} style={'fill'} color="classic" moreClass={'icon'} ariaLabel={`Setting ${displayName}`} />
         </div>
       </div>
     </div>

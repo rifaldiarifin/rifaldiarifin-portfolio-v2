@@ -26,15 +26,15 @@ const AlertWindow = ({
       </div>
       <div className="footer-alert">
         {alertType === 'message' ? (
-          <Button style="fill" color={alertStyle} onClick={action.ok}>
+          <Button style="fill" color={alertStyle} onClick={action.ok} ariaLabel={'OK Option'}>
             OK
           </Button>
         ) : alertType === 'confirm' ? (
           <>
-            <Button style="fill" color={alertStyle} onClick={action.yes}>
+            <Button style="fill" color={alertStyle} onClick={action.yes} ariaLabel={'Yes Option'}>
               Yes
             </Button>
-            <Button style="regular" color={alertStyle} onClick={action.no}>
+            <Button style="regular" color={alertStyle} onClick={action.no} ariaLabel={'No Option'}>
               No
             </Button>
           </>

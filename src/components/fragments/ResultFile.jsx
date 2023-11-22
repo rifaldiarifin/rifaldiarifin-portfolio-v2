@@ -29,6 +29,7 @@ const ResultFile = ({ name, onClickFile = () => {}, index, onDismisFile = () => 
           brightness={'var(--icon1)'}
           color="classic"
           onClick={onDismiss}
+          ariaLabel={`result ${name}`}
         />
       </div>
     </div>

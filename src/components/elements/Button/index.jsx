@@ -5,7 +5,7 @@ const Button = ({
   type = 'button',
   to = '/',
   id = undefined,
-  onClick = () => {},
+  onClick = () => { },
   style = undefined,
   color = 'default',
   disabled = false,
@@ -17,19 +17,20 @@ const Button = ({
   width = undefined,
   height = undefined,
   moreClass = undefined,
-  allowNewTab = false
+  allowNewTab = false,
+  ariaLabel = null
 }) => {
   switch (type) {
     case 'hyperlink':
       return (
         <Link
           to={to}
-          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
-            disabled ? ' disabled' : ''
-          }`}
+          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${disabled ? ' disabled' : ''
+            }`}
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}
+          aria-label={ariaLabel}
         >
           {icon && (
             <span
@@ -44,14 +45,14 @@ const Button = ({
       return (
         <a
           href={to}
-          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
-            disabled ? ' disabled' : ''
-          }`}
+          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${disabled ? ' disabled' : ''
+            }`}
           target={allowNewTab ? '_blank' : null}
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}
           rel="noreferrer"
+          aria-label={ariaLabel}
         >
           {icon && (
             <span
@@ -67,12 +68,12 @@ const Button = ({
       return (
         <button
           type={type}
-          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${
-            disabled ? ' disabled' : ''
-          }`}
+          className={`btn ${style ? 'btn-' + style : ''} ${color}${moreClass ? ` ${moreClass}` : ''}${disabled ? ' disabled' : ''
+            }`}
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}
+          aria-label={ariaLabel}
         >
           {icon && (
             <span
