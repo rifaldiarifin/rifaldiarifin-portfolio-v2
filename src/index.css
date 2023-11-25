@@ -1980,7 +1980,7 @@ a {
     --panel-inactiveForeground: #895503;
     --panel-activeForeground: #895503;
     --panel-border: #d4d4d4;
-    --panelTitle-activeBorder: #ffffff;
+    --panelTitle-activeBorder: #000000;
 
     /* Sidebar */
     --sideBarTitle-foreground: #000000;
