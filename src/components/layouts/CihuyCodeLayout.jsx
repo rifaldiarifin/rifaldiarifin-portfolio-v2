@@ -406,25 +406,53 @@ const CiPrimSidebar_BtnNav = ({ icon, isActive, ariaLabel = null, onClick = () =
   )
 }
 
-const CiPrimSidebar_BtnOption = ({ icon, dpList, onClick, position = 'right-2', ariaLabel }) => {
-  return (
-    <li>
-      <DynamicDropdown
-        button={
+const CiPrimSidebar_BtnOption = ({
+  type = 'button',
+  to,
+  icon,
+  iconSize = '28px',
+  dpList,
+  onClick,
+  position = 'right-2',
+  ariaLabel
+}) => {
+  switch (type) {
+    case 'link':
+      return (
+        <li>
           <Button
+            type="link"
+            to={to}
             icon={`gradient ${icon}`}
-            iconSize={'28px'}
+            iconSize={iconSize}
             moreClass={'icon'}
             onClick={onClick}
             ariaLabel={ariaLabel}
+            allowNewTab
           />
-        }
-        position={position}
-      >
-        {dpList}
-      </DynamicDropdown>
-    </li>
-  )
+        </li>
+      )
+
+    default:
+      return (
+        <li>
+          <DynamicDropdown
+            button={
+              <Button
+                icon={`gradient ${icon}`}
+                iconSize={'28px'}
+                moreClass={'icon'}
+                onClick={onClick}
+                ariaLabel={ariaLabel}
+              />
+            }
+            position={position}
+          >
+            {dpList}
+          </DynamicDropdown>
+        </li>
+      )
+  }
 }
 
 CiPrimarySidebar.BtnNav = CiPrimSidebar_BtnNav

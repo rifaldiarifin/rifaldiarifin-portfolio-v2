@@ -53,7 +53,7 @@ const Button = ({
           id={id}
           onClick={(e) => onClick(e)}
           style={{ height, minHeight: height, width, minWidth: width }}
-          rel="noreferrer"
+          rel={allowNewTab ? 'noreferrer' : null}
           aria-label={ariaLabel}
         >
           {icon && (

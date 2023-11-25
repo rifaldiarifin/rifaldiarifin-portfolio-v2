@@ -389,6 +389,18 @@ inspired by Visual Studio Code App`,
           buttonOptions={
             <>
               <CiPrimarySidebar.BtnOption
+                type="link"
+                to="https://id.linkedin.com/in/rifaldi-arifin-a8a06b270"
+                icon="linkedin"
+                ariaLabel="Rifaldi Arifin Linkedin"
+              />
+              <CiPrimarySidebar.BtnOption
+                type="link"
+                to="https://github.com/rifaldiarifin"
+                icon="github"
+                ariaLabel="Rifaldi Arifin Github"
+              />
+              <CiPrimarySidebar.BtnOption
                 icon={'male-user'}
                 dpList={
                   <>

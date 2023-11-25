@@ -69,12 +69,12 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
         <Variable val={'const'} /> <VariableName val={'App'} /> <KeywordOperator val={'='} /> <Bracket val={'()'} vart="1" /> <Variable val={'=>'} /> <Bracket val={'{'} vart="1" />
       </Codes>
       <Codes line="4" disabled>
-        <Bl x='2'/>
+        <Bl x='2' />
         <Control val={'return'} /> <Bracket val={'('} vart="2" />
       </Codes>
       {/* body */}
       <Codes line={'5'} disabled>
-        <Bl x='4'/>
+        <Bl x='4' />
         <BracketXml val={'<'} /><Variable val={'Welcome'} /><BracketXml val={'>'} />
       </Codes>
       {/* HERO SECTION ####################### */}
@@ -112,11 +112,11 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'<'} /><Variable val={'Welcome.HeroSection'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'7'} disabled>
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'</'} /><Variable val={'Welcome.HeroSection'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'8'} />
@@ -158,11 +158,11 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'<'} /><Variable val={'Welcome.About'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'10'} disabled>
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'</'} /><Variable val={'Welcome.About'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'11'} />
@@ -220,11 +220,11 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'<'} /><Variable val={'Welcome.MySkills'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'13'} disabled>
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'</'} /><Variable val={'Welcome.MySkills'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'14'} />
@@ -295,11 +295,11 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'<'} /><Variable val={'Welcome.Projects'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'16'} disabled>
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'</'} /><Variable val={'Welcome.Projects'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'17'} />
@@ -332,20 +332,20 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
           </div>
         }
       >
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'<'} /><Variable val={'Welcome.Contact'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'19'} disabled>
-        <Bl x='6'/>
+        <Bl x='6' />
         <BracketXml val={'</'} /><Variable val={'Welcome.Contact'} /><BracketXml val={'>'} />
       </Codes>
       <Codes line={'20'} disabled>
-        <Bl x='4'/>
+        <Bl x='4' />
         <BracketXml val={'</'} /><Variable val={'Welcome'} /><BracketXml val={'>'} />
       </Codes>
       {/* ---- */}
       <Codes line={'21'} disabled>
-        <Bl x='2'/>
+        <Bl x='2' />
         <Bracket val={')'} vart="2" />
       </Codes>
       <Codes line={'22'} disabled>

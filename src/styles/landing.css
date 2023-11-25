@@ -622,7 +622,7 @@
 .showcase-list-group > ul {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
 }
 
