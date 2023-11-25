@@ -1212,7 +1212,7 @@
   */
 #root {
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: 100svh;
     background-color: var(--main-color);
     color: var(--text2);
 }
@@ -1254,7 +1254,7 @@ body {
     font-weight: 400;
     color: var(--text1);
     height: fit-content;
-    min-height: 100vh;
+    min-height: 100svh;
     overflow-x: hidden;
     background-color: var(--second-color);
 }
@@ -2343,7 +2343,7 @@ a {
     background-position: center;
     background-size: cover;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 40px 1fr auto auto;
@@ -2381,7 +2381,7 @@ a {
 }
 
 .cihuy-code.pnl-active.full-panel {
-    --panel: calc(100vh - var(--statusbar) - 40px);
+    --panel: calc(100svh - var(--statusbar) - 40px);
 }
 
 #ci-panel .btn-fullpanel>span {
@@ -3299,7 +3299,7 @@ a {
     scroll-behavior: smooth;
     position: relative;
     min-width: 100%;
-    height: calc(100vh - 40px - 40px - var(--editor-directory) - var(--panel) - var(--statusbar));
+    height: calc(100svh - 40px - 40px - var(--editor-directory) - var(--panel) - var(--statusbar));
     display: flex;
     flex-direction: column;
     padding: 6px 8px;
@@ -3884,7 +3884,7 @@ a {
 
 @media (max-width: 1200px) {
     #ci-primary-sidebar>.primary-bar {
-        height: calc(100vh - var(--statusbar) - 40px);
+        height: calc(100svh - var(--statusbar) - 40px);
         position: absolute;
         left: var(--activitybar);
     }
@@ -3901,7 +3901,7 @@ a {
     /* --------- */
     #ci-secondary-sidebar {
         position: absolute;
-        height: calc(100vh - var(--statusbar) - 40px);
+        height: calc(100svh - var(--statusbar) - 40px);
         top: 40px;
         right: 0;
         z-index: 4;
@@ -4150,7 +4150,7 @@ a {
 .error-page {
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -4343,7 +4343,7 @@ a {
 }
 
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page .details>.readme {
-    height: calc(100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
+    height: calc(100svh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
     padding: var(--pad-horiz);
     padding-bottom: 50px;
     white-space: pre-wrap;
@@ -4360,7 +4360,7 @@ a {
 
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page .details>.info {
     min-width: 250px;
-    height: calc(100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
+    height: calc(100svh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
     box-sizing: border-box;
     padding: var(--pad-horiz);
     padding-bottom: 0;
@@ -4412,7 +4412,7 @@ a {
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page.contributions,
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page.changelog,
 #ci-editorlayout .extension-page>.ext-body>.navpages>.page.status {
-    height: calc(100vh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
+    height: calc(100svh - 40px - 40px - 164px - 30px - 22px - var(--pad-horiz) - 16px - var(--editor-directory) - var(--panel) - var(--statusbar));
     padding: var(--pad-horiz);
     padding-bottom: 50px;
     box-sizing: border-box;
@@ -4660,9 +4660,8 @@ a {
 }
 
 .codes .display-frame {
-    --hero-section: calc(100vh - 40px - 40px - 26px - var(--panel) - var(--statusbar) - 208px);
+    --hero-section: calc(100svh - 40px - 40px - 26px - var(--panel) - var(--statusbar) - 208px);
     box-sizing: border-box;
-    overflow: hidden;
     max-height: calc(0% + 40px);
     padding-left: var(--padding-line-code);
     padding-right: var(--padding-line-code);
@@ -4699,6 +4698,8 @@ a {
 }
 
 .codes>.display-frame .card-group-photo {
+    --w-card: 300px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4709,7 +4710,7 @@ a {
 .codes>.display-frame .card-group-photo>.main-card {
     position: relative;
     aspect-ratio: 1 / 1.1;
-    width: 300px;
+    width: var(--w-card);
     display: grid;
     background-color: var(--base-accent);
     border: 1px solid var(--base-accent);
@@ -4784,14 +4785,14 @@ a {
 
 .codes>.display-frame .card-group-photo>.bg-card:nth-child(2) {
     aspect-ratio: 1 / 1.1;
-    width: 300px;
+    width: var(--w-card);
     transform: translateY(20px) translateX(20px);
     z-index: 1;
 }
 
 .codes>.display-frame .card-group-photo>.bg-card:nth-child(3) {
     aspect-ratio: 1 / 1.1;
-    width: 200px;
+    width: 70%;
     transform: translateY(-74px) translateX(-70px);
 }
 
@@ -5872,12 +5873,19 @@ a {
     }
 }
 
+@media (max-width: 520px){
+    .codes>.display-frame .card-group-photo {
+        --w-card: 240px;
+        /* transform: perspective(500px) rotateY(-10deg) rotateX(6deg) scale(.8); */
+    }
+}
+
 /* LOADING RESOURCE */
 
 .loading-resources {
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -5934,7 +5942,7 @@ a {
     --time-loading: 2s;
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     z-index: 999;
     gap: 10px;
     display: flex;
@@ -6101,7 +6109,7 @@ h1.markdown.heading {
 
 #screenalert {
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     top: 0;
     left: 0;
     right: 0;
