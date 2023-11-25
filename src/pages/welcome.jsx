@@ -103,7 +103,7 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
                   style={'regular'}
                   moreClass={'rounded10'}
                   width={'200px'}
-                  ariaLabel={'Mail to rifaldiarifinn'}
+                  ariaLabel={'Contact'}
                 >
                   Contact
                 </Button>
@@ -324,7 +324,7 @@ const Welcome = forwardRef(({ currentlyOpen }, editorBody) => {
                 style={'regular'}
                 color="default"
                 moreClass={'rounded10'}
-                ariaLabel={'Mail to Rifaldi Arifin'}
+                ariaLabel={'Say Hello'}
               >
                 {'Say Hello :D'}
               </Button>
