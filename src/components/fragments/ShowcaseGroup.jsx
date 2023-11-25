@@ -41,6 +41,7 @@ const Li = ({
                 moreClass={'icon rounded10'}
                 brightness={'var(--icon4)'}
                 height={'36px'}
+                ariaLabel={`${title} Github`}
               />
             )}
             {externalLink && (
@@ -55,6 +56,7 @@ const Li = ({
                 moreClass={'icon rounded10'}
                 brightness={'var(--icon4)'}
                 height={'36px'}
+                ariaLabel={`${title} Website`}
               />
             )}
           </div>
