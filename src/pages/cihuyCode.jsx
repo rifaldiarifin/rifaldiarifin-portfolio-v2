@@ -118,7 +118,7 @@ const CihuyCode = () => {
   const openAbout = () => {
     popupAlert({
       title: 'Cihuy Code',
-      description: `Version: 1.0.0, 
+      description: `Version: 1.3.0, 
 inspired by Visual Studio Code App`,
       alertType: 'message',
       alertStyle: 'info'
@@ -137,7 +137,7 @@ inspired by Visual Studio Code App`,
   }
   const forwardPort = () => {
     toast({
-      title: `Don't take serious, sorry hahaha.`,
+      title: `Don't take serious, sorry.`,
       source: 'Forward Port',
       type: 'error'
     })

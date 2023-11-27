@@ -69,7 +69,7 @@ export default function getProjects() {
       src: null,
       alt: null,
       github: 'https://github.com/rifaldiarifin/portfolio-rifaldiarifin',
-      externalLink: null,
+      externalLink: 'https://rifaldiarifin.github.io/rifaldiarifin-portfolio-v1',
       bestProject: false
     },
     {
