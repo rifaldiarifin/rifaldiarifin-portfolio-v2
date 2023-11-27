@@ -118,7 +118,7 @@ const CihuyCode = () => {
   const openAbout = () => {
     popupAlert({
       title: 'Cihuy Code',
-      description: `Version: 1.3.0, 
+      description: `Version: 1.3.1, 
 inspired by Visual Studio Code App`,
       alertType: 'message',
       alertStyle: 'info'
