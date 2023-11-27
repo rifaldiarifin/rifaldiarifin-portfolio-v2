@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import { useDocumentTitle } from '../hooks/useDocumentHandler'
 import useExplorer from '../hooks/useExplorer'
 import useCihuyCode from '../hooks/useCihuyCode'
 import SectionBox from '../components/fragments/SectionBox'
@@ -42,7 +41,6 @@ const Page404 = React.lazy(() => import('./page404.jsx'))
 const Extension = React.lazy(() => import('./extension.jsx'))
 
 const CihuyCode = () => {
-  useDocumentTitle('Portfolio')
   const titleBarRef = useRef(null)
   const primarySidebarRef = useRef(null)
   const secondarySidebarRef = useRef(null)
