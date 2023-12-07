@@ -41,9 +41,6 @@ const cihuyCommands = {
           {'\n'}
           <a href="mailto:rifaldiarifinn@gmail.com" target="_blank" className="hyperlink" rel="noreferrer">
             Contact
-          </a>{' '}
-          <a href="#" target="_blank" className="hyperlink" rel="noreferrer">
-            Download CV
           </a>
           {'\n'}
           {'\n'}
