@@ -394,6 +394,13 @@ inspired by Visual Studio Code App`,
               />
               <CiPrimarySidebar.BtnOption
                 type="link"
+                to="https://www.fiverr.com/rifaldiarifin"
+                icon="fiverr"
+                ariaLabel="Rifaldi Arifin Fiverr"
+                iconSize="24px"
+              />
+              <CiPrimarySidebar.BtnOption
+                type="link"
                 to="https://github.com/rifaldiarifin"
                 icon="github"
                 ariaLabel="Rifaldi Arifin Github"
