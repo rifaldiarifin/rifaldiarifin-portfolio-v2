@@ -1,7 +1,7 @@
 {
   "name": "rifaldiarifin-portfolio-v2",
   "private": true,
-  "version": "1.3.4",
+  "version": "1.3.5",
   "type": "module",
   "scripts": {
     "dev-host": "vite --host",
