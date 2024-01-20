@@ -1,9 +1,23 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import pluginPurgeCSS from 'vite-plugin-purge'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    pluginPurgeCSS({
+      content: [
+        'index.html',
+        './src/**/*.js',
+        './src/**/*.jsx',
+        './src/**/**/*.jsx',
+        './src/**/**/**/*.jsx',
+        './src/**/**/**/**/*.jsx'
+      ],
+      css: ['src/index.css']
+    })
+  ],
   server: {
     port: 3000,
     hmr: {
