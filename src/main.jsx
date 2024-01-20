@@ -5,6 +5,8 @@ import { RouterProvider } from 'react-router-dom'
 import store from './redux/store'
 import router from './routes'
 import './index.css'
+import '@vscode/codicons/dist/codicon.css'
+import reportWebVitals from './reportwebvitals'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,3 +15,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 )
+
+reportWebVitals(console.log)
