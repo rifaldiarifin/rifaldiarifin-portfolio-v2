@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { predictClass } from '../../utils/predictClass'
 import Button from '../elements/Button'
-import Icons8 from '../elements/Icons8'
+import ButtonCodicon from '../elements/ButtonCodicon'
 import DynamicDropdown from '../fragments/DynamicDropdown'
 import { forwardRef } from 'react'
 import { useToastNotificationData } from '../../contexts/ToastNotificationContext'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
+import Codicon from '../elements/Codicon'
 
 // Container Cihuy Code Layout ############################################
 const CihuyCodeLayout = ({
@@ -51,11 +52,11 @@ export const CiToastNotification = () => {
       case 'info':
         return 'info'
       case 'error':
-        return 'cancel'
-      case 'warning':
         return 'error'
+      case 'warning':
+        return 'warning'
       case 'success':
-        return 'checkmark'
+        return 'pass'
 
       default:
         return 'info'
@@ -70,7 +71,8 @@ export const CiToastNotification = () => {
             <div className="toast-header">
               <div className="box dsp-flex align-itms-center gap-6">
                 <div className="toast-icon">
-                  <Icons8 icon={typeCheck()} gradient />
+                  {/* <Icons8 icon={typeCheck()} gradient /> */}
+                  <Codicon icon={typeCheck()} />
                 </div>
                 {toast.title}
               </div>
@@ -170,11 +172,10 @@ export const CiSearchPopup = ({
             {label}
             <div>
               {toolButton}
-              <Button
-                style={'fill'}
+              <ButtonCodicon
                 color="classic"
                 iconStyle={'filled'}
-                icon={'delete'}
+                icon={'close'}
                 iconSize={'14px'}
                 height={'20px'}
                 moreClass={'icon'}
@@ -202,8 +203,7 @@ export const CiSearchPopup = ({
 
 const CiSearchPopup_btnTool = ({ icon, size = '14px', style = 'regular', onClick, ariaLabel = null, moreClass }) => {
   return (
-    <Button
-      style={'fill'}
+    <ButtonCodicon
       color="classic"
       iconStyle={style}
       icon={icon}
@@ -220,11 +220,11 @@ const CiSearchPopup_Li = ({
   name,
   label,
   leftIcon = null,
-  leftIconSize = '20px',
-  leftIconStyle = 'regular',
+  leftIconSize = '18px',
+  // leftIconStyle = 'regular',
   rightIcon = null,
-  rightIconSize = '14px',
-  rightIconStyle = 'regular',
+  rightIconSize = '18px',
+  // rightIconStyle = 'regular',
   // keyCode = [],
   isActive = false,
   disabledAutoActive = false,
@@ -276,13 +276,14 @@ const CiSearchPopup_Li = ({
       <div>
         {leftIcon && (
           <div className="sp-left-icon">
-            <Icons8 gradient icon={leftIcon} style={leftIconStyle} size={leftIconSize} />
+            <Codicon icon={leftIcon} size={leftIconSize} />
+            {/* <Icons8 gradient icon={leftIcon} style={leftIconStyle} size={leftIconSize} /> */}
           </div>
         )}
         {name}
         {isChecked && (
           <div className="checked-icon">
-            <Icons8 gradient icon={'done'} style={'filled'} size={'18px'} />
+            <Codicon icon={'check'} size={leftIconSize} />
           </div>
         )}
       </div>
@@ -306,7 +307,8 @@ const CiSearchPopup_Li = ({
         {label}
         {rightIcon && (
           <div className="sp-right-icon">
-            <Icons8 gradient icon={rightIcon} style={rightIconStyle} size={rightIconSize} />
+            <Codicon icon={rightIcon} size={rightIconSize} />
+            {/* <Icons8 gradient icon={rightIcon} style={rightIconStyle} size={rightIconSize} /> */}
           </div>
         )}
       </div>
@@ -354,14 +356,13 @@ const CiTitlebar_Menu = ({ name, dpList, ariaLabel }) => {
   )
 }
 
-const CiTitlebar_Btnbar = ({ icon, isActive, ariaLabel = null, onClick }) => {
+const CiTitlebar_Btnbar = ({ icon, iconActive, isActive, ariaLabel = null, onClick }) => {
   return (
-    <Button
+    <ButtonCodicon
       style={'fill'}
       color="classic"
-      iconStyle={isActive ? 'filled' : 'regular'}
-      icon={`${icon} gradient`}
-      iconSize={'24px'}
+      icon={`${isActive ? icon : iconActive}`}
+      iconSize={'20px'}
       height={'26px'}
       moreClass={'icon'}
       onClick={onClick}
@@ -395,9 +396,9 @@ export const CiPrimarySidebar = forwardRef(
 const CiPrimSidebar_BtnNav = ({ icon, isActive, ariaLabel = null, onClick = () => {} }) => {
   return (
     <li>
-      <Button
-        icon={`gradient ${icon}`}
-        iconSize={'28px'}
+      <ButtonCodicon
+        icon={`${icon}`}
+        iconSize={'24px'}
         onClick={onClick}
         ariaLabel={ariaLabel}
         moreClass={`icon${predictClass(() => isActive)}`}
@@ -438,12 +439,12 @@ const CiPrimSidebar_BtnOption = ({
         <li>
           <DynamicDropdown
             button={
-              <Button
-                icon={`gradient ${icon}`}
-                iconSize={'28px'}
-                moreClass={'icon'}
+              <ButtonCodicon
+                icon={`${icon}`}
+                iconSize={'24px'}
                 onClick={onClick}
                 ariaLabel={ariaLabel}
+                moreClass={'icon'}
               />
             }
             position={position}
@@ -489,26 +490,25 @@ export const CiPanel = ({ menuBar, onFullPanel = () => {}, onClose = () => {}, c
       <div className="panel-header">
         <ul>{menuBar}</ul>
         <div className="box">
-          <Button
-            icon={'forward'}
-            iconStyle="filled"
-            iconSize={'16px'}
+          <ButtonCodicon
+            icon={'chevron-right'}
+            iconSize={'20px'}
             height={'26px'}
             moreClass={'btn-fullpanel icon'}
             style={'fill'}
-            brightness={'var(--icon1)'}
+            brightness={'var(--icon2)'}
             color="classic"
             ariaLabel={'Toggle expand panel'}
             onClick={onFullPanel}
           />
-          <Button
-            icon={'delete'}
+          <ButtonCodicon
+            icon={'close'}
             iconStyle="filled"
-            iconSize={'16px'}
+            iconSize={'20px'}
             height={'26px'}
             moreClass={'icon'}
             style={'fill'}
-            brightness={'var(--icon1)'}
+            brightness={'var(--icon2)'}
             color="classic"
             ariaLabel={'Toggle open panel'}
             onClick={onClose}
@@ -609,10 +609,9 @@ const CiEditorLayout_Menubar = ({
   return (
     <li className={`menubar${predictClass(() => checkOpen())}`} tabIndex={0} onClick={onClickMenubar}>
       {name}
-      <Button
-        icon={'delete'}
-        iconStyle="filled"
-        iconSize={'12px'}
+      <ButtonCodicon
+        icon={'close'}
+        iconSize={'16px'}
         height={'20px'}
         moreClass={'close icon'}
         style={'fill'}
@@ -633,7 +632,8 @@ const CiEditorLayout_Directory = ({ directory }) => {
       {arrDirectory.map((directory, index) => (
         <div key={`${directory}${index}`} className="dir-arrow">
           {directory}
-          {index !== arrDirectory.length - 1 && <Icons8 icon="forward" style="filled" size={'11px'} gradient />}
+          {/* {index !== arrDirectory.length - 1 && <Icons8 icon="forward" style="filled" size={'11px'} gradient />} */}
+          {index !== arrDirectory.length - 1 && <Codicon icon="chevron-right" size={'16px'} />}
         </div>
       ))}
     </>
@@ -649,27 +649,27 @@ export const CiStatusbar = ({ children, onClickPorts = () => {}, onClickProblems
     <footer id="ci-statusbar">
       <div className="box">
         <button className="remote" aria-label="remote">
-          <Icons8 icon="remote-desktop" gradient />
+          <Codicon icon="remote" />
         </button>
         {children}
         <div className="mrgn-x-10"></div>
         <button className="btn-sts" onClick={onClickProblems}>
-          <Icons8 icon="cancel" gradient />
+          <Codicon icon="error" />
           0
-          <Icons8 icon="error" gradient />0
+          <Codicon icon="warning" />0
         </button>
         <button className="btn-sts" onClick={onClickPorts}>
-          <Icons8 icon="radio-tower" gradient />0
+          <Codicon icon="radio-tower" />0
         </button>
         {/* <p>Copyright © 2023, All Rights Reserved.</p> */}
       </div>
       <div className="box pad-r-8">
         <button className="btn-sts" aria-label="Ext React Code Render">
-          <Icons8 icon="code" gradient />
+          <Codicon icon="file-code" />
           React Code Render
         </button>
         <button className="btn-sts" aria-label="Toggle Notification">
-          <Icons8 icon="notification" gradient />
+          <Codicon icon="bell" />
         </button>
       </div>
     </footer>
@@ -679,7 +679,6 @@ export const CiStatusbar = ({ children, onClickPorts = () => {}, onClickProblems
 // Components
 export const BtnIcon = ({
   icon = 'rounded-square',
-  iconStyle,
   height = '26px',
   iconSize = '20px',
   brightness = 'var(--icon1)',
@@ -687,9 +686,8 @@ export const BtnIcon = ({
   onClick = () => {}
 }) => {
   return (
-    <Button
+    <ButtonCodicon
       icon={icon}
-      iconStyle={iconStyle}
       iconSize={iconSize}
       height={height}
       moreClass={'icon'}

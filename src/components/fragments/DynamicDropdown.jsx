@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { predictClass } from '../../utils/predictClass'
 import Icons8 from '../elements/Icons8'
+import Codicon from '../elements/Codicon'
 
 const DynamicDropdown = ({ button, position, moreClass, children, openOnHover = false }) => {
   const dropdownParent = useRef(null)
@@ -68,7 +69,8 @@ const DyGroup = ({ name }) => {
     <div className="dy-group-button" onMouseEnter={switchPoint}>
       {name}
       <div className="icon">
-        <Icons8 icon="forward" style="filled" size={'11px'} gradient />
+        {/* <Icons8 icon="forward" style="filled" size={'11px'} gradient /> */}
+        <Codicon icon="chevron-right" size={'16px'} />
       </div>
     </div>
   )

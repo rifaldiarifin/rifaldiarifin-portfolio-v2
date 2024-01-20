@@ -28,7 +28,7 @@ const ColorThemeList = ({ currentTheme, setTheme, closeAfterClick = () => {} }) 
       <CiSearchPopup.Li
         isActive={currentTheme === 'cihuy-code-light'}
         name={'Cihuy Code Light'}
-        rightIcon={'settings'}
+        rightIcon={'settings-gear'}
         callback={themes.cihuyCodeLight}
         disabledAutoActive
         closeAfterClick={closeAfterClick}
@@ -36,7 +36,7 @@ const ColorThemeList = ({ currentTheme, setTheme, closeAfterClick = () => {} }) 
       <CiSearchPopup.Li
         isActive={currentTheme === 'light-visual-studio'}
         name={'Light (Visual Studio)'}
-        rightIcon={'settings'}
+        rightIcon={'settings-gear'}
         callback={themes.lightVisualStudio}
         disabledAutoActive
         closeAfterClick={closeAfterClick}
@@ -45,7 +45,7 @@ const ColorThemeList = ({ currentTheme, setTheme, closeAfterClick = () => {} }) 
       <CiSearchPopup.Li
         isActive={currentTheme === 'dark-2077'}
         name={'2077'}
-        rightIcon={'settings'}
+        rightIcon={'settings-gear'}
         callback={themes.dark2077}
         disabledAutoActive
         closeAfterClick={closeAfterClick}
@@ -53,7 +53,7 @@ const ColorThemeList = ({ currentTheme, setTheme, closeAfterClick = () => {} }) 
       <CiSearchPopup.Li
         isActive={currentTheme === 'cihuy-code-dark'}
         name={'Cihuy Code Dark'}
-        rightIcon={'settings'}
+        rightIcon={'settings-gear'}
         callback={themes.cihuyCodeDark}
         disabledAutoActive
         closeAfterClick={closeAfterClick}
@@ -61,7 +61,7 @@ const ColorThemeList = ({ currentTheme, setTheme, closeAfterClick = () => {} }) 
       <CiSearchPopup.Li
         isActive={currentTheme === 'dark-visual-studio'}
         name={'Dark (Visual Studio)'}
-        rightIcon={'settings'}
+        rightIcon={'settings-gear'}
         callback={themes.darkVisualStudio}
         disabledAutoActive
         closeAfterClick={closeAfterClick}
@@ -69,7 +69,7 @@ const ColorThemeList = ({ currentTheme, setTheme, closeAfterClick = () => {} }) 
       <CiSearchPopup.Li
         isActive={currentTheme === 'dark-monokai'}
         name={'Monokai'}
-        rightIcon={'settings'}
+        rightIcon={'settings-gear'}
         callback={themes.darkMonokai}
         disabledAutoActive
         closeAfterClick={closeAfterClick}

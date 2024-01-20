@@ -334,24 +334,28 @@ inspired by Visual Studio Code App`,
             <>
               <CiTitleBar.Btnbar
                 ariaLabel="Toggle primarybar"
-                icon={'show-left-side-panel'}
+                icon={'layout-sidebar-left'}
+                iconActive={'layout-sidebar-left-off'}
                 isActive={sidebarReverse ? secondarySidebar : primarySidebar.primaryBar}
                 onClick={sidebarReverse ? toggleSecondarySidebar : togglePrimarySidebar}
               />
               <CiTitleBar.Btnbar
                 ariaLabel="Toggle panel"
-                icon={'show-bottom-panel'}
+                icon={'layout-panel'}
+                iconActive={'layout-panel-off'}
                 isActive={panel.panel}
                 onClick={togglePanel}
               />
               <CiTitleBar.Btnbar
                 ariaLabel="Toggle secondarybar"
-                icon={'show-right-side-panel'}
+                icon={'layout-sidebar-right'}
+                iconActive={'layout-sidebar-right-off'}
                 isActive={sidebarReverse ? primarySidebar.primaryBar : secondarySidebar}
                 onClick={sidebarReverse ? togglePrimarySidebar : toggleSecondarySidebar}
               />
               <CiTitleBar.Btnbar
-                icon={'dashboard-layout'}
+                icon={'layout'}
+                iconActive={'layout'}
                 onClick={toggleCustomizeLayout}
                 ariaLabel="Toggle customize layout"
               />
@@ -366,7 +370,7 @@ inspired by Visual Studio Code App`,
             <>
               <CiPrimarySidebar.BtnNav
                 ariaLabel="Toggle Explorer"
-                icon={'documents'}
+                icon={'files'}
                 isActive={primarySidebar.navindex[0] && primarySidebar.primaryBar}
                 onClick={() => togglePrimaryNavPage(0)}
               />
@@ -378,7 +382,7 @@ inspired by Visual Studio Code App`,
               />
               <CiPrimarySidebar.BtnNav
                 ariaLabel="Toggle Extensions"
-                icon={'puzzle'}
+                icon={'extensions'}
                 isActive={primarySidebar.navindex[2] && primarySidebar.primaryBar}
                 onClick={() => togglePrimaryNavPage(2)}
               />
@@ -406,7 +410,7 @@ inspired by Visual Studio Code App`,
                 ariaLabel="Rifaldi Arifin Github"
               />
               <CiPrimarySidebar.BtnOption
-                icon={'male-user'}
+                icon={'account'}
                 dpList={
                   <>
                     <DynamicDropdown.Li name={'rifaldiarifin (GitHub)'} callback={goToGithub} />
@@ -424,7 +428,7 @@ inspired by Visual Studio Code App`,
                 position={sidebarReverse ? 'left-2' : 'right-2'}
               />
               <CiPrimarySidebar.BtnOption
-                icon={'settings'}
+                icon={'settings-gear'}
                 ariaLabel="Toggle Settings"
                 dpList={
                   <>
@@ -591,7 +595,13 @@ inspired by Visual Studio Code App`,
             <>
               <DynamicDropdown
                 button={
-                  <BtnIcon icon="more" iconStyle={'filled'} iconSize="16px" ariaLabel={'Toggle options editor'} />
+                  <BtnIcon
+                    icon="ellipsis"
+                    iconStyle={'filled'}
+                    iconSize="16px"
+                    brightness="inherit"
+                    ariaLabel={'Toggle options editor'}
+                  />
                 }
                 position={'bottom-1'}
               >
@@ -686,7 +696,7 @@ inspired by Visual Studio Code App`,
           toolButton={
             searchPopup.actionName === 'CUSTOMIZE_LAYOUT' && (
               <CiSearchPopup.btnTool
-                icon={'reboot'}
+                icon={'discard'}
                 onClick={resetView}
                 moreClass={'prim-click secn-click'}
                 ariaLabel={'reset layout'}
@@ -806,13 +816,13 @@ inspired by Visual Studio Code App`,
                 <>
                   <CiSearchPopup.Li
                     name={'Cihuy Code Light'}
-                    rightIcon={'settings'}
+                    rightIcon={'settings-gear'}
                     callback={() => setTheme('cihuy-code-light')}
                     closeAfterClick={closeSearch}
                   />
                   <CiSearchPopup.Li
                     name={'Cihuy Code Dark'}
-                    rightIcon={'settings'}
+                    rightIcon={'settings-gear'}
                     callback={() => setTheme('cihuy-code-dark')}
                     closeAfterClick={closeSearch}
                   />
@@ -821,7 +831,7 @@ inspired by Visual Studio Code App`,
                 <>
                   <CiSearchPopup.Li
                     name={'2077'}
-                    rightIcon={'settings'}
+                    rightIcon={'settings-gear'}
                     callback={() => setTheme('dark-2077')}
                     closeAfterClick={closeSearch}
                   />

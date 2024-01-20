@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Icons8 from '../elements/Icons8'
+import Codicon from '../elements/Codicon'
 
 const SectionBox = ({ children, name, isActive, minHeight }) => {
   const [state, setState] = useState(isActive ?? false)
@@ -7,7 +7,7 @@ const SectionBox = ({ children, name, isActive, minHeight }) => {
     <div className={`section-box${state ? ' active' : ''}`}>
       <div className="section-header" onClick={() => setState(!state)}>
         <div className="icon">
-          <Icons8 icon="forward" size={'12px'} />
+          <Codicon icon="chevron-right" size={'16px'} />
         </div>
         {name}
       </div>

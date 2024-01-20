@@ -1,11 +1,11 @@
 import Button from '../components/elements/Button'
-import Icons8 from '../components/elements/Icons8'
+import Codicon from '../components/elements/Codicon'
 
 const Page404 = ({ onOpenShortcut }) => {
   return (
     <>
       <div className="page404">
-        <Icons8 icon="cancel" gradient />
+        <Codicon icon="error" />
         <p>The editor could not be opened because the file was not found.</p>
         <Button
           color="default"

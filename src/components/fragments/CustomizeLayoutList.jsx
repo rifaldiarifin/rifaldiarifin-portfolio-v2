@@ -22,63 +22,63 @@ const CustomizeLayoutList = ({
       <CiSearchPopup.Li
         name={'Menu Bar'}
         callback={toggleMenuBar}
-        leftIcon={'navigation-toolbar-top'}
+        leftIcon={'layout-menubar'}
         isActive
         label={'Visibility'}
-        rightIcon={menuBar ? 'eye' : 'hide'}
+        rightIcon={menuBar ? 'eye' : 'eye-closed'}
       />
       <CiSearchPopup.Li
         name={'Activity Bar'}
         callback={toggleActivityBar}
         moreClass="prim-click"
-        leftIcon={'show-left-side-panel'}
-        rightIcon={primarySidebar.activityBar ? 'eye' : 'hide'}
+        leftIcon={'layout-activitybar-left'}
+        rightIcon={primarySidebar.activityBar ? 'eye' : 'eye-closed'}
       />
       <CiSearchPopup.Li
         name={'Primary Side Bar'}
         callback={togglePrimarySidebar}
-        leftIcon={'show-left-side-panel'}
+        leftIcon={'layout-sidebar-left'}
         moreClass="prim-click"
-        rightIcon={primarySidebar.primaryBar ? 'eye' : 'hide'}
+        rightIcon={primarySidebar.primaryBar ? 'eye' : 'eye-closed'}
       />
       <CiSearchPopup.Li
         name={'Secondary Side Bar'}
         callback={toggleSecondarySidebar}
         moreClass="secn-click"
-        leftIcon={'show-right-side-panel'}
-        rightIcon={secondarySidebar ? 'eye' : 'hide'}
+        leftIcon={'layout-sidebar-right'}
+        rightIcon={secondarySidebar ? 'eye' : 'eye-closed'}
       />
       <CiSearchPopup.Li
         name={'Panel'}
         callback={togglePanel}
-        leftIcon={'show-bottom-panel'}
-        rightIcon={panel.panel ? 'eye' : 'hide'}
+        leftIcon={'layout-panel'}
+        rightIcon={panel.panel ? 'eye' : 'eye-closed'}
       />
       <CiSearchPopup.Li
         name={'Status Bar'}
         callback={toggleStatusBar}
-        leftIcon={'navigation-toolbar-bottom'}
-        rightIcon={statusBar ? 'eye' : 'hide'}
+        leftIcon={'layout-statusbar'}
+        rightIcon={statusBar ? 'eye' : 'eye-closed'}
       />
       <CiSearchPopup.Separator />
       <CiSearchPopup.Li
         name={'Left'}
         callback={turnOffSidebarReverse}
         isChecked={!sidebarReverse}
-        leftIcon={'show-left-side-panel'}
+        leftIcon={'layout-sidebar-left'}
         label={'Primary Side Bar Position'}
       />
       <CiSearchPopup.Li
         name={'Right'}
         callback={turnOnSidebarReverse}
         isChecked={sidebarReverse}
-        leftIcon={'show-right-side-panel'}
+        leftIcon={'layout-sidebar-right'}
       />
       <CiSearchPopup.Separator />
       <CiSearchPopup.Li
         name={'Full Screen'}
         callback={() => toggleFullScreen()}
-        leftIcon={'full-page-view'}
+        leftIcon={'screen-full'}
         label={'Modes'}
       />
     </>

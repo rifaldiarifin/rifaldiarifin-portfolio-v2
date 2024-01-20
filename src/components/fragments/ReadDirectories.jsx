@@ -23,8 +23,9 @@ const ReadDirectories = ({ root, currentSelected, callback }) => {
           isSelected={currentSelected}
           directory={state.directory}
           callback={() => callback(state)}
-          icon="degrees"
-          iconSize="6px"
+          icon="file"
+          isRotateIcon={false}
+          iconSize="16px"
           lock
           pathMatchExpand
         >

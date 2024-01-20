@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom'
-import Icons8 from '../Icons8'
 import { predictClass } from '../../../utils/predictClass'
+import Codicon from '../Codicon'
 
 const File = ({
   name,
   type = 'hyperlink',
-  icon = 'degrees',
+  icon = 'file',
   directory = null,
   isSelected = false,
   indicator = null,
-  iconSize = '6px',
+  iconSize = '16px',
   to = '#',
   index,
   left,
@@ -30,9 +30,7 @@ const File = ({
       onClick={openFile}
       style={{ '--index': index, paddingLeft: left }}
     >
-      <div className="icon">
-        {icon === '#' ? '#' : <Icons8 icon={`${icon}${indicator ? ' gradient' : ''}`} size={iconSize} />}
-      </div>
+      <div className="icon">{icon === '#' ? '#' : <Codicon icon={`${icon}`} size={iconSize} />}</div>
       {name}
     </div>
   )

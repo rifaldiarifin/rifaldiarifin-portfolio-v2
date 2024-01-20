@@ -1,18 +1,19 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Icons8 from '../elements/Icons8'
 import useFolderAutoExpand from '../../hooks/useFolderAutoExpand'
 import { predictClass } from '../../utils/predictClass'
+import Codicon from '../elements/Codicon'
 
 const Folder = ({
   children,
   name,
-  icon = 'forward',
-  iconSize = '12px',
+  icon = 'chevron-right',
+  iconSize = '16px',
   to = '#',
   lock = false,
   directory = null,
   isSelected = false,
+  isRotateIcon = true,
   isActive = false,
   pathMatchExpand = false,
   callback = () => {}
@@ -33,12 +34,15 @@ const Folder = ({
   }
   return (
     <div
-      className={`folder${predictClass(() => isActive)}${predictClass(() => directory === isSelected, 'selected')}`}
+      className={`folder${predictClass(() => isActive)}${predictClass(
+        () => isRotateIcon,
+        'rotateonopen'
+      )}${predictClass(() => directory === isSelected, 'selected')}`}
       ref={ref}
     >
       <div className="folder-header" onClick={toggle}>
         <div className="icon">
-          <Icons8 icon={icon} size={iconSize} />
+          <Codicon icon={icon} size={iconSize} />
         </div>
         {name}
       </div>
