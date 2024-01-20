@@ -62,39 +62,10 @@ export function rawExplorer() {
           {
             uuid: '753cf124-3bdb-4575-a882-c656b1c7bf73',
             name: 'main.jsx',
-            type: 'paginated file',
+            type: 'file',
             directory: null,
             to: '/',
-            children: [
-              {
-                uuid: 'a3bc8afe-7475-4456-b66e-7dda01f98849',
-                name: 'About',
-                type: 'paginated',
-                directory: null,
-                to: '/#about'
-              },
-              {
-                uuid: 'a1fa52dc-c5d1-4a83-b329-869c20c39e56',
-                name: 'My Skills',
-                type: 'paginated',
-                directory: null,
-                to: '/#myskills'
-              },
-              {
-                uuid: '64525499-978c-4d0a-8e40-3a9a90c479e8',
-                name: 'Projects',
-                type: 'paginated',
-                directory: null,
-                to: '/#projects'
-              },
-              {
-                uuid: 'fd5157cb-351d-4f09-a048-c3215ad0e412',
-                name: 'Contact',
-                type: 'paginated',
-                directory: null,
-                to: '/#contact'
-              }
-            ]
+            children: null
           }
         ]
       },
