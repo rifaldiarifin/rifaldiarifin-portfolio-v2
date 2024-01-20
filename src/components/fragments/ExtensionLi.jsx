@@ -1,6 +1,6 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import Icons8 from '../elements/Icons8'
-import Button from '../elements/Button'
+import Codicon from '../elements/Codicon'
+import ButtonCodicon from '../elements/ButtonCodicon'
 
 const ExtensionLi = ({ icon, displayName, description, publisher, onClick }) => {
   return (
@@ -17,14 +17,15 @@ const ExtensionLi = ({ icon, displayName, description, publisher, onClick }) => 
       </div>
       <div className="ext-footer">
         <div className="publisher">
-          <Icons8 icon="verified-badge" style="filled" gradient />
+          <Codicon icon="verified-filled" />
           {publisher}
         </div>
         <div className="options">
-          <Button
-            icon={'settings gradient'}
+          <ButtonCodicon
+            icon={'settings-gear'}
             style={'fill'}
             color="classic"
+            iconSize={'14px'}
             moreClass={'icon'}
             ariaLabel={`Setting ${displayName}`}
           />

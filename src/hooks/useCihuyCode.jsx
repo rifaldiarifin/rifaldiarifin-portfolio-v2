@@ -55,7 +55,6 @@ const useCihuyCode = ({ explorer, extensionPages, primarySidebarRef, secondarySi
     dispatch(tgglSettingSync())
   }
   const toggleWordWrap = () => {
-    console.log('hahahah')
     dispatch(tgglWordWrap())
   }
   const closeSearch = () => {

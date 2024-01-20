@@ -2365,6 +2365,7 @@ a {
         'primarysidebar editorlayout secondarysidebar'
         'primarysidebar panel secondarysidebar'
         'statusbar statusbar statusbar';
+    overflow: hidden;
 }
 
 /* active */
@@ -3022,6 +3023,10 @@ a {
     --i8-gradient: rgb(55, 148, 255);
     --i8-ratio: 16px;
 }
+#ci-primary-sidebar .extension-list>.ext-footer>.publisher>.codicon {
+    --vscodicon-color: rgb(55, 148, 255);
+    --vscodicon-size: 16px;
+}
 
 #ci-primary-sidebar .extension-list>.ext-footer>.options>.btn {
     height: 20px;
@@ -3030,6 +3035,10 @@ a {
 #ci-primary-sidebar .extension-list>.ext-footer>.options>.btn>span {
     --i8-gradient: var(--sideBarTitle-foreground);
     --i8-ratio: 16px;
+}
+#ci-primary-sidebar .extension-list>.ext-footer>.options>.btn>.codicon {
+    --vscodicon-color: var(--sideBarTitle-foreground);
+    --vscodicon-size: 16px;
 }
 
 /* Panel */
@@ -3354,12 +3363,15 @@ a {
 
 #ci-editorlayout>.editorlayout-body::-webkit-scrollbar {
     width: 14px;
-    height: 6px;
+    height: 14px;
     background-color: var(--editor-background);
 }
 
 #ci-editorlayout>.editorlayout-body::-webkit-scrollbar-thumb:hover {
     background-color: var(--scrollbarSlider-activeBackground);
+}
+#ci-editorlayout>.editorlayout-body::-webkit-scrollbar-corner{
+    background-color: var(--editor-background);
 }
 
 #ci-editorlayout .blank-editor-page {
@@ -4345,6 +4357,9 @@ a {
 #ci-editorlayout .extension-page>.ext-header>.ext-optionview .options .btn>span {
     font-size: 13px;
     letter-spacing: normal;
+}
+#ci-editorlayout .extension-page>.ext-header>.ext-optionview .options .btn>.codicon {
+    font-size: 16px;
 }
 
 #ci-editorlayout .extension-page>.ext-body {

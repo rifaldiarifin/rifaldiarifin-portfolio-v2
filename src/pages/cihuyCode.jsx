@@ -124,8 +124,7 @@ inspired by Visual Studio Code App`,
       alertStyle: 'info'
     })
   }
-  const goToGithub = (event) => {
-    console.log(event)
+  const goToGithub = () => {
     window.open('https://github.com/rifaldiarifin', '_blank')
   }
   const checkUpdate = () => {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
+// eslint-disable-next-line no-unused-vars
 const useHotKeys = (keys) => {
   const [hotKeys, setHotKeys] = useState([])
-  console.log(keys)
   const pushKey = (payload = []) => {
     setHotKeys((prevState) => {
       const newState = [...prevState]

@@ -7,6 +7,7 @@ import { Paragraph, Star } from '../components/fragments/Markdown'
 import capitalize from '../utils/capitalize'
 import DropdownList from '../components/fragments/DropdownList'
 import Extension404 from './extension404'
+import ButtonCodicon from '../components/elements/ButtonCodicon'
 
 const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
   const params = useParams()
@@ -84,6 +85,13 @@ const Extension = ({ extensions, toast, toggleListOfColorTheme }) => {
                 >
                   Uninstall
                 </Button>
+                <ButtonCodicon
+                  icon={'settings-gear'}
+                  style={'fill'}
+                  color="classic"
+                  moreClass={'icon setting-ext'}
+                  ariaLabel={`Setting ${find.displayName}`}
+                />
               </div>
               <p>This extension is enabled globally.</p>
             </div>
