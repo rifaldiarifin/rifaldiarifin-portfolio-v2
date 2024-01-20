@@ -102,7 +102,11 @@ const Readme = () => {
       </Codes>
       <Codes line={'34'} />
       <Codes line={'35'}>
-        <Colors val={'Icon by'} /> <Variable val={'['} />
+        <Colors val={'Icon by:'} />
+        
+      </Codes>
+      <Codes line={'36'}>
+        <Variable val={'['} />
         <Control val={'Icons8'} />
         <Variable val={']'} />
         <Variable val={'('} />
@@ -114,9 +118,24 @@ const Readme = () => {
           }
         />
         <Variable val={')'} />
+        <Colors val={' and '} />
       </Codes>
-      <Codes line={'36'} />
       <Codes line={'37'}>
+      <Variable val={'['} />
+        <Control val={'Codicon'} />
+        <Variable val={']'} />
+        <Variable val={'('} />
+        <String
+          val={
+            <a href="https://github.com/microsoft/vscode-codicons" alt="Icons8" aria-label="Icons8" target="_blank" rel="noreferrer">
+              &quot;https://github.com/microsoft/vscode-codicons&quot;
+            </a>
+          }
+        />
+        <Variable val={')'} />
+      </Codes>
+      <Codes line={'38'} />
+      <Codes line={'39'}>
         <Colors val={'My favorite theme extensions, also applied in my portfolio'} /> <Variable val={'['} />
         <Control val={'2077 theme'} />
         <Variable val={']'} />
@@ -136,11 +155,11 @@ const Readme = () => {
         />
         <Variable val={')'} />
       </Codes>
-      <Codes line={'38'} />
-      <Codes line={'39'}>
+      <Codes line={'40'} />
+      <Codes line={'41'}>
         <Colors val={'**Enjoy! :D**'} />
       </Codes>
-      <Codes line={'40'} />
+      <Codes line={'42'} />
     </>
   )
 }

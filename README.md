@@ -32,7 +32,9 @@ The concept of this portfolio depicts the screen contents of a developer's work,
 
 The portfolio UI is inspired by [Visual Studio Code](https://code.visualstudio.com) app
 
-Icon by [Icons8](https://icons8.com)
+Icons by 
+[Icons8](https://icons8.com) and 
+[Codicon](https://github.com/microsoft/vscode-codicons)
 
 My favorite theme extensions, also applied in my portfolio [2077 theme](https://marketplace.visualstudio.com/items?itemName=Endormi.2077-theme)
 <br></br>
