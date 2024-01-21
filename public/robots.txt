@@ -1,2 +1,4 @@
 User-agent: *
-allow: /
+Allow: /
+
+Sitemap: https://rifaldiarifin.netlify.app/sitemap.xml
