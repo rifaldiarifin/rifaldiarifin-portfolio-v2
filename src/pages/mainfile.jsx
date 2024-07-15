@@ -133,7 +133,7 @@ const MainFile = forwardRef(({ currentlyOpen }, editorBody) => {
                 <div className="box content1">
                   <h2>About Me</h2>
                   <p>
-                    Hi there, My name is Rifaldi Arifin, I&apos;m a Web Developer with over 2 years of experience.
+                    Hi there, My name is Rifaldi Arifin, I&apos;m a Web Developer with over 3 years of experience.
                     <br></br>
                     <br></br>I am very interested in the world of programming, starting with a simple website. and now
                     creating user-friendly responsive websites, modern websites, single-page applications (SPA),

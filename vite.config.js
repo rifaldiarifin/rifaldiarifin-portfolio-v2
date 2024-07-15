@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react()
     // pluginPurgeCSS({
     //   content: [
     //     'index.html',
@@ -17,7 +17,7 @@ export default defineConfig({
     //   ],
     //   css: [
     //     'node_modules/@vscode/codicons/dist/codicon.css',
-    //     'src/index.css', 
+    //     'src/index.css',
     //     'src/assets/icons8/fluent/main.css',
     //     'src/assets/fonts/Fira_Code_v6.2/fira_code.css',
     //     'src/assets/fonts/googlefonts/Montserrat/main.css',

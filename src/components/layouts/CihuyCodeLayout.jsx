@@ -8,6 +8,7 @@ import { forwardRef } from 'react'
 import { useToastNotificationData } from '../../contexts/ToastNotificationContext'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 import Codicon from '../elements/Codicon'
+import Icons8 from '../elements/Icons8'
 
 // Container Cihuy Code Layout ############################################
 const CihuyCodeLayout = ({
@@ -71,8 +72,8 @@ export const CiToastNotification = () => {
             <div className="toast-header">
               <div className="box dsp-flex align-itms-center gap-6">
                 <div className="toast-icon">
-                  {/* <Icons8 icon={typeCheck()} gradient /> */}
-                  <Codicon icon={typeCheck()} />
+                  <Icons8 icon={typeCheck()} gradient />
+                  {/* <Codicon icon={typeCheck()} /> */}
                 </div>
                 {toast.title}
               </div>
@@ -412,6 +413,7 @@ const CiPrimSidebar_BtnOption = ({
   to,
   icon,
   iconSize = '28px',
+  iconStyle = 'regular',
   dpList,
   onClick,
   position = 'right-2',
@@ -425,6 +427,7 @@ const CiPrimSidebar_BtnOption = ({
             type="link"
             to={to}
             icon={`gradient ${icon}`}
+            iconStyle={iconStyle}
             iconSize={iconSize}
             moreClass={'icon'}
             onClick={onClick}

@@ -420,6 +420,12 @@
 .icons8-regular.whatsapp {
   --i8-icon-img: url('system_regular/icons8_whatsapp.ico');
 }
+.icons8-regular.upwork {
+  --i8-icon-img: url('system_regular/icons8_upwork.ico');
+}
+.icons8-regular.youtube {
+  --i8-icon-img: url('system_regular/icons8_youtube.ico');
+}
 
 /* System Filled ------------------------------------------------------------------------------------ */
 .icons8-filled.activity-feed {
@@ -805,4 +811,10 @@
 }
 .icons8-filled.whatsapp {
   --i8-icon-img: url('system_filled/icons8_whatsapp.ico');
+}
+.icons8-filled.upwork {
+  --i8-icon-img: url('system_filled/icons8_upwork.ico');
+}
+.icons8-filled.youtube {
+  --i8-icon-img: url('system_filled/icons8_youtube.ico');
 }

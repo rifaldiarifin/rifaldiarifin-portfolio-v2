@@ -172,7 +172,7 @@ const cihuyCommands = {
           {'\n'}
           <Ac2 vl={">"} /> HTML  <Ac2 vl={">"} /> CSS  <Ac2 vl={">"} /> Javascript{'\n'}
           {'\n'}
-          <Ac2 vl={"=>"} /> <Hlnk to={'https://github.com/rifaldiarifin/in-css'} />
+          <Ac2 vl={"=>"} /> <Hlnk to={'https://rifaldiarifin.github.io/rifaldiarifin-portfolio-v1/'} />
           {'\n'}
           {'\n'}
           =--------------------------------------------------------------------={'\n'}

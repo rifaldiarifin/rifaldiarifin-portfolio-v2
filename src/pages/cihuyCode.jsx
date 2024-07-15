@@ -136,7 +136,7 @@ inspired by Visual Studio Code App`,
   }
   const forwardPort = () => {
     toast({
-      title: `Don't take serious, sorry.`,
+      title: `NUH UH, what do you expect to do this :P`,
       source: 'Forward Port',
       type: 'error'
     })
@@ -397,10 +397,17 @@ inspired by Visual Studio Code App`,
               />
               <CiPrimarySidebar.BtnOption
                 type="link"
-                to="https://www.fiverr.com/rifaldiarifin"
-                icon="fiverr"
-                ariaLabel="Rifaldi Arifin Fiverr"
+                to="https://www.upwork.com/freelancers/~01e640511d16b0de85?mp_source=share"
+                icon="upwork"
+                iconStyle="filled"
+                ariaLabel="Rifaldi Arifin Upwork"
                 iconSize="24px"
+              />
+              <CiPrimarySidebar.BtnOption
+                type="link"
+                to="http://www.youtube.com/@CihuyCode"
+                icon="youtube"
+                ariaLabel="Rifaldi Arifin YouTube"
               />
               <CiPrimarySidebar.BtnOption
                 type="link"
